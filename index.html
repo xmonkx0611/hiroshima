@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Serene Coast (Light Beige, Slate Blue, Muted Teal) -->
-    <!-- Application Structure Plan: The SPA is architected around four primary sections. All detailed information is integrated. The Overview section includes a highlights grid. The Transport section includes a detailed summary table. The Daily Itinerary section features branching timelines for optional routes (Day 5 & 8, including the new Option C) and comprehensive intel cards for each day's specific information. The Preparation checklist has been updated to match the current travel logic. -->
+    <!-- Application Structure Plan: The SPA is architected around four primary sections. All detailed information is integrated. The Overview section includes a highlights grid. The Transport section includes a detailed summary table. The Daily Itinerary section features branching timelines for optional routes (Day 8 now includes Option C for the cloud sea) and comprehensive intel cards for each day's specific information. The Preparation checklist has been updated to match the current travel logic. -->
     <!-- Visualization & Content Choices: 1. Overview -> Bar Chart for time analysis & a new grid for highlights. 2. Transport -> Detailed summary table. 3. Daily Itinerary -> Enhanced Vertical Timeline with icons and branching navigation for optional routes. All intel from the source document is presented in context-aware "Intel Cards" below the timeline. 4. All location data is embedded directly with validated Google Maps links. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
@@ -185,6 +185,7 @@
                 { name: "鳥取砂丘", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJbx8cHUSPVTURazEAdQKsetg", type: "景點" },
                 { name: "岡山城", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJER_WDSUGVDURujV4pMtef44", type: "景點" },
                 { name: "後樂園", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJOeRmIUoGVDURkjPzFDy4Vv4", type: "景點" },
+                { name: "備中松山城", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJacUM4muyVjURZGTgH1Jqwt8", type: "景點"},
                 { name: "ばくだん屋", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJXYW6vFOfWjURBrgOMsNSr10", type: "美食" },
                 { name: "あなごめし うえの", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJH_vewlq3WjURmvDGpczFQB4", type: "美食" },
                 { name: "羽根屋 本店", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJx39PFo5DVzURnzw_QJEOBfc", type: "美食" },
@@ -199,12 +200,12 @@
                 { day: 5, route: "米子↔境港", transport: "JR境線", time: "09:18→10:02", cost: "JR Pass" },
                 { day: 6, route: "米子→由良→鳥取", transport: "JR山陰本線", time: "08:55→13:21", cost: "JR Pass" },
                 { day: 7, route: "鳥取→岡山", transport: "特急スーパーいなば", time: "10:00→11:49", cost: "JR Pass" },
-                { day: 8, route: "岡山↔倉敷", transport: "JR山陽本線", time: "09:18→09:35", cost: "JR Pass" },
+                { day: 8, route: "岡山↔倉敷/高梁", transport: "JR山陽本線/特急やくも", time: "依選項", cost: "JR Pass" },
                 { day: 9, route: "岡山→廣島", transport: "新幹線", time: "10:11→10:46", cost: "JR Pass" },
                 { day: 10, route: "廣島站→機場", transport: "機場利木津巴士", time: "06:40→07:28", cost: "¥1,450" }
             ],
             dailyData: {
-                 day1: {
+                day1: {
                     title: '序章・廣島之夜', date: '2/20 週五', location: '台灣 → 廣島', timeAnalysis: { travel: 4.5, activity: 1.5 },
                     timeline: [
                         { time: '16:50-20:20', type: '✈️', event: '航班飛行: CI112 TPE → HIJ' },
@@ -380,14 +381,28 @@
                                 { time: '傍晚', type: '🍽️', event: '晚餐: 返回岡山後，品嚐 <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJJc0mzSEHVDURqZ8zyHOUZiQ" target="_blank" class="text-blue-600 hover:underline">鳥好</a> 的串燒。' },
                                 { time: '晚上', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ7T_MCUwGVDUR00dIzm6mgEQ" target="_blank" class="text-blue-600 hover:underline">ダイワロイネットホテル岡山駅前</a>'}
                             ]
+                        },
+                        optionC: {
+                            label: '選項C: 雲海挑戰 (高強度)',
+                            timeline: [
+                                { time: '04:45-05:15', type: '➡️', event: '起床、著裝、出發。' },
+                                { time: '05:25-06:17', type: '🚆', event: '搭乘JR伯備線 [普通] 首班車前往備中高梁。' },
+                                { time: '06:20-08:30', type: '🌅', event: '搭乘預約的「雲海計程車」前往展望台，鑑賞雲海絕景。', stay: '約 2 小時' },
+                                { time: '08:30-12:00', type: '🏯', event: '鑑賞完畢後，計程車送至登山口，徒步登城。', stay: '約 3.5 小時' },
+                                { time: '中午', type: '🍽️', event: '午餐: 返回備中高梁站後，於車站周邊用餐。' },
+                                { time: '下午', type: '🚆', event: '搭乘JR返回岡山，下午為自由休息時間。' },
+                                { time: '傍晚', type: '🍽️', event: '晚餐: 岡山車站周邊自選。' },
+                                { time: '晚上', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ7T_MCUwGVDUR00dIzm6mgEQ" target="_blank" class="text-blue-600 hover:underline">ダイワロイネットホテル岡山駅前</a>'}
+                            ]
                         }
                     },
                     intel: {
-                         castle: { title: '百大名城', text: '<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJacUM4muyVjURZGTgH1Jqwt8" target="_blank" class="text-blue-600 hover:underline">備中松山城</a> 是選項B的參觀重點，也是珍貴的**日本現存12天守**之一。' },
+                         castle: { title: '百大名城', text: '<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJacUM4muyVjURZGTgH1Jqwt8" target="_blank" class="text-blue-600 hover:underline">備中松山城</a> 是選項B/C的參觀重點，也是珍貴的**日本現存12天守**之一。' },
                          sweets: { title: '人氣甜點', items: [
                             '倉敷的<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJjaYSejhWUTUR20HBP3TetO4" target="_blank" class="text-blue-600 hover:underline">くらしき桃子</a>以水果聖代聞名。',
                             '岡山的<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJQxEnEA0HVDURM36F-Ras1EY" target="_blank" class="text-blue-600 hover:underline">Gowdy</a>同樣以高品質水果聖代聞名。'
-                         ]}
+                         ]},
+                         notes: { title: '特別提醒', text: '選項C需極早出發，且**務必提前數日向「高梁市觀光協會」預約與首班車銜接的「雲海乘合計程車」**。'}
                     }
                 },
                 day9: {
@@ -434,13 +449,17 @@
                     if (sectionId === 'overview') initOverview();
                     if (sectionId === 'transport') initTransport();
                     if (sectionId === 'daily') initDaily();
+                    if (sectionId === 'prep') initPrep();
                 }
             });
 
             function initOverview() {
                 if (overviewChartInstance) overviewChartInstance.destroy();
                 const labels = Object.keys(allData.dailyData).map(key => `Day ${key.replace('day', '')}`);
-                const activityData = Object.values(allData.dailyData).map(d => d.timeAnalysis.activity);
+                const activityData = Object.values(allData.dailyData).map(d => {
+                    if(d.options) return d.options.optionA.timeline.reduce((acc, item) => acc + (parseFloat(item.stay) || 0), 0);
+                    return d.timeAnalysis.activity;
+                });
                 const travelData = Object.values(allData.dailyData).map(d => d.timeAnalysis.travel);
                 overviewChartInstance = new Chart(overviewChartCtx, {
                     type: 'bar',
@@ -560,6 +579,11 @@
                         <div class="timeline-item relative pb-8"><div class="timeline-icon text-lg">${item.type}</div><div class="ml-8"><p class="font-bold text-gray-800">${item.time}</p><p class="text-gray-600">${item.event}</p>${item.stay ? `<p class="text-sm text-blue-500 mt-1">建議停留: ${item.stay}</p>` : ''}</div></div>`).join('')}
                     </div>`;
                 }
+            }
+
+            function initPrep() {
+                const prepList = document.getElementById('prep-list');
+                prepList.innerHTML = allData.prepList.map(item => `<li><strong>[Day ${item.day}] ${item.task}</strong></li>`).join('');
             }
             
             // Initial Load
