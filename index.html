@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>山陰山陽10日紀行：互動式作戰儀表板 v2.8</title>
+    <title>山陰山陽10日紀行：互動式作戰儀表板 v2.9</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Serene Coast (Light Beige, Slate Blue, Muted Teal) -->
-    <!-- Application Structure Plan: The SPA is architected around four primary sections. All detailed information from the v0.011 markdown is now fully integrated. The Overview section includes a highlights grid. The Transport section includes a detailed summary table. The Daily Itinerary section features branching timelines for optional routes and comprehensive intel cards for each day's specific information, providing a complete, self-contained operational view. -->
-    <!-- Visualization & Content Choices: 1. Overview -> Bar Chart for time analysis & a new grid for highlights. 2. Transport -> Now includes a detailed summary table populated from daily data. 3. Daily Itinerary -> Enhanced Vertical Timeline with icons and branching navigation for optional routes. All intel from the source document is presented in context-aware "Intel Cards" below the timeline. 4. All location data is embedded directly with validated Google Maps links. -->
+    <!-- Application Structure Plan: The SPA is architected around four primary sections. All detailed information is integrated. The Overview section includes a highlights grid. The Transport section includes a detailed summary table. The Daily Itinerary section features branching timelines for optional routes (Day 5 & 8, including the new Option C) and comprehensive intel cards for each day's specific information. The Preparation checklist has been updated to match the current travel logic. -->
+    <!-- Visualization & Content Choices: 1. Overview -> Bar Chart for time analysis & a new grid for highlights. 2. Transport -> Detailed summary table. 3. Daily Itinerary -> Enhanced Vertical Timeline with icons and branching navigation for optional routes. All intel from the source document is presented in context-aware "Intel Cards" below the timeline. 4. All location data is embedded directly with validated Google Maps links. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
@@ -160,14 +160,8 @@
             <h2 class="text-3xl font-bold border-b-2 pb-2">行前準備</h2>
             <div class="bg-white p-6 rounded-lg shadow-lg">
                  <h3 class="text-xl font-semibold mb-4">關鍵任務檢查清單</h3>
-                 <ul class="list-disc list-inside space-y-2 text-gray-700">
-                     <li><strong>[Day 2] 宮島潮汐查詢:</strong> 出發前務必確認當日滿潮與乾潮時間，以規劃最佳觀賞時機。</li>
-                     <li><strong>[Day 3] JR Pass 啟用:</strong> 於廣島站開始使用，確認啟用日期無誤。</li>
-                     <li><strong>[Day 3] 行李轉送 (廣島→米子):</strong> 確認寄送單填寫正確 (飯店名稱、地址、預計送達日期)。</li>
-                     <li><strong>[Day 5] 雲海計程車 (若選擇):** 若要挑戰雲海，務必提前數日向「高梁市觀光協會」預約。</li>
-                     <li><strong>[Day 8] 行李轉送 (岡山→廣島):** 確認寄送單填寫正確。</li>
-                     <li><strong>[Day 4] 日落時間查詢:</strong> 出發前再次確認出雲地區的日落時間，確保能準時抵達稻佐之濱。</li>
-                     <li><strong>[Day 9] 最終伴手禮採購:</strong> 購買「うえの」的星鰻飯便當，作為完美的旅途句點。</li>
+                 <ul id="prep-list" class="list-disc list-inside space-y-2 text-gray-700">
+                     <!-- JS will populate this -->
                  </ul>
             </div>
         </section>
@@ -210,7 +204,7 @@
                 { day: 10, route: "廣島站→機場", transport: "機場利木津巴士", time: "06:40→07:28", cost: "¥1,450" }
             ],
             dailyData: {
-                day1: {
+                 day1: {
                     title: '序章・廣島之夜', date: '2/20 週五', location: '台灣 → 廣島', timeAnalysis: { travel: 4.5, activity: 1.5 },
                     timeline: [
                         { time: '16:50-20:20', type: '✈️', event: '航班飛行: CI112 TPE → HIJ' },
