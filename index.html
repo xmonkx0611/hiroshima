@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>山陰山陽10日紀行：互動式作戰儀表板 v3.2</title>
+    <title>山陰山陽11日紀行：互動式作戰儀表板 v5.8 (深度資訊豐富版)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Serene Coast (Light Beige, Slate Blue, Muted Teal) -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <!-- Application Structure Plan: The itinerary is 11 days. The Overview section now features 14 highly detailed Insight Cards for key attractions and recommended dining spots, incorporating history, expert tips, photography, and popular menus. Day 3 and Day 4 feature dedicated sunset viewing time slots for Lake Shinji and Inasa Beach. The overall structure maintains the four-section SPA (Overview, Transport/Lodging, Daily Itinerary, Preparation) with enhanced data for deeper exploration. -->
     <style>
         body {
             font-family: 'Noto Sans TC', sans-serif;
@@ -71,7 +71,7 @@
     <header class="bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3">
             <div class="flex flex-col md:flex-row justify-between items-center">
-                <h1 class="text-2xl font-bold text-gray-800">山陰山陽10日紀行</h1>
+                <h1 class="text-2xl font-bold text-gray-800">山陰山陽11日紀行</h1>
                 <nav id="main-nav" class="flex flex-wrap justify-center space-x-2 md:space-x-6 mt-2 md:mt-0">
                     <button data-section="overview" class="main-nav-item text-gray-500 font-semibold py-2 px-2 border-b-4 border-transparent hover:text-gray-800 hover:border-gray-300">行程總覽</button>
                     <button data-section="transport" class="main-nav-item text-gray-500 font-semibold py-2 px-2 border-b-4 border-transparent hover:text-gray-800 hover:border-gray-300">交通住宿</button>
@@ -90,15 +90,16 @@
             <h2 class="text-3xl font-bold border-b-2 pb-2">行程總覽</h2>
             <div class="bg-white p-6 rounded-lg shadow-lg">
                 <h3 class="text-xl font-semibold mb-4">每日 Chill 指數分析 (活動 vs. 移動時間)</h3>
-                <p class="text-gray-600 mb-4">此圖表分析每日「活動時間」與「交通移動時間」的佔比。綠色部分越高，代表當日行程越悠閒 (Chill)；紅色部分越高，則代表該日為長途移動日，需做好相應準備。透過此圖，您可以快速掌握整趟旅程的節奏與強度分佈。</p>
+                <p class="text-gray-600 mb-4">此圖表分析每日「活動時間」與「交通移動時間」的佔比。藍色部分越高，代表當日行程越悠閒 (Chill)；紅色部分越高，則代表該日為長途移動日，需做好相應準備。透過此圖，您可以快速掌握整趟旅程的節奏與強度分佈。</p>
                 <div class="chart-container">
                     <canvas id="overviewChart"></canvas>
                 </div>
             </div>
              <div class="bg-white p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl font-semibold mb-4">重點景點 & 美食一覽</h3>
-                <div id="highlights-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <!-- JS will populate highlights -->
+                <h3 class="text-xl font-semibold mb-4">重點景點 & 美食深度解析 (共 14 個精選項目)</h3>
+                <p class="text-gray-600 mb-6">以下是本次 11 日行程中的核心目標，融合了歷史人文、專家建議與美食人氣焦點。**列表已按行程順序排列**。點擊地圖連結即可導航。</p>
+                <div id="highlights-grid" class="space-y-6">
+                    <!-- JS will populate detailed highlights blocks -->
                 </div>
             </div>
         </section>
@@ -107,7 +108,7 @@
         <section id="transport" class="main-section hidden space-y-8">
             <h2 class="text-3xl font-bold border-b-2 pb-2">交通住宿</h2>
             <div class="bg-white p-6 rounded-lg shadow-lg">
-                 <h3 class="text-xl font-semibold mb-4">住宿一覽表</h3>
+                 <h3 class="text-xl font-semibold mb-4">住宿一覽表 (11日版)</h3>
                  <div class="overflow-x-auto">
                     <table class="w-full text-left">
                         <thead>
@@ -126,9 +127,10 @@
                  <p><strong>地面通行證:</strong> 山陽&山陰地區鐵路周遊券 (7日券)</p>
                  <p><strong>啟用日期:</strong> Day 3 (2/22 週日)</p>
                  <p><strong>有效期限:</strong> 至 Day 9 (2/28 週六) 結束</p>
+                 <p class="text-sm text-red-600 mt-2"><strong>重要提醒:</strong> JR Pass 涵蓋了 Day 3~9 的長途移動。Day 1-2 和 Day 10-11 需自理市區交通與機場巴士。</p>
              </div>
-            <div class="bg-white p-6 rounded-lg shadow-lg">
-                 <h3 class="text-xl font-semibold mb-4">主要交通摘要</h3>
+             <div class="bg-white p-6 rounded-lg shadow-lg">
+                 <h3 class="text-xl font-semibold mb-4">主要交通摘要 (11日版)</h3>
                  <div class="overflow-x-auto">
                     <table class="w-full text-left">
                         <thead>
@@ -147,16 +149,16 @@
             <div class="bg-white p-6 rounded-lg shadow-lg">
                 <h3 class="text-xl font-semibold mb-4">交通戰術建議</h3>
                 <ul class="list-disc list-inside space-y-2 text-gray-700">
-                    <li><strong>JR Pass 劃位:</strong> 對於長途的特急列車（如やくも、スーパーいなば），建議抵達日本後，盡早一次性劃好所有指定席座位，確保旅途舒適。</li>
+                    <li><strong>JR Pass 劃位:</strong> 對於長途的特急列車（如やくも、スーパーおき），建議抵達日本後，盡早一次性劃好所有指定席座位，確保旅途舒適。</li>
                     <li><strong>行李轉送 (宅急便):</strong> 這是維持 "Chill" 的核心戰術。善用飯店或便利商店的行李寄送服務，可以讓您在城市間移動時輕裝上陣，大幅提升旅遊品質。</li>
-                    <li><strong>IC卡準備:</strong> 準備一張 ICOCA 或 SUICA 卡，用於支付JR Pass不包含的市區交通，如廣島路面電車、巴士等，可省去每次購票的麻煩。</li>
+                    <li>**IC卡準備:** 準備一張 ICOCA 或 SUICA 卡，用於支付JR Pass不包含的市區交通，如廣島路面電車、松江/米子/鳥取巴士等，可省去每次購票的麻煩。</li>
                 </ul>
             </div>
         </section>
 
         <!-- Section: 每日行程 -->
         <section id="daily" class="main-section hidden space-y-8">
-            <h2 class="text-3xl font-bold border-b-2 pb-2">每日行程</h2>
+            <h2 class="text-3xl font-bold border-b-2 pb-2">每日行程 (11天)</h2>
             <nav id="day-nav" class="flex flex-wrap justify-center bg-white p-2 rounded-lg shadow-md gap-1"></nav>
             <div id="daily-content" class="mt-6"></div>
         </section>
@@ -165,23 +167,29 @@
         <section id="prep" class="main-section hidden space-y-8">
             <h2 class="text-3xl font-bold border-b-2 pb-2">行前準備</h2>
             <div class="bg-white p-6 rounded-lg shadow-lg">
-                <p class="mb-6 text-gray-600">這份清單是根據本次10日行程的特殊需求（如長途移動、行李轉送、特定景點挑戰）所彙整的作戰檢查表。請在出發前逐一確認，確保所有任務都已完成，以利行程順暢。</p>
+                <p class="mb-6 text-gray-600">這份清單已根據行程天數與地點的變動（增加松江與足立美術館）重新彙整。請在出發前逐一確認。</p>
                 <div id="prep-list-container" class="space-y-6">
                 </div>
+            </div>
             <div class="bg-white p-6 rounded-lg shadow-lg">
                 <h3 class="text-xl font-semibold mb-4">其他專家建議</h3>
                  <div class="space-y-4">
+                    <!-- 新增: 工頭堅的核心旅遊哲學 -->
+                    <div>
+                        <h4 class="font-bold text-red-600">★ 工頭堅旅行哲學：深度與文化</h4>
+                        <p class="text-gray-600">工頭堅強調「不給別人添麻煩」是日本旅行的核心原則，在山陰山陽這樣充滿歷史底蘊的地區，建議採取「沉浸式體驗」而非走馬看花。要深入了解當地文化，通過參與祭典、品嚐季節料理，並給予自己足夠的時間慢慢品味，才能獲得更深刻的體驗。</p>
+                    </div>
                     <div>
                         <h4 class="font-bold">通訊建議</h4>
                         <p class="text-gray-600">建議購買具備吃到飽流量的SIM卡或租借Pocket WiFi。山陰地區部分路段訊號可能較弱，但主要城市與景點均有良好覆蓋。</p>
                     </div>
                     <div>
                         <h4 class="font-bold">貨幣與支付</h4>
-                        <p class="text-gray-600">主要城市（廣島、岡山）的店家多數接受信用卡與電子支付。但在山陰地區的小鎮或鄉土料理店，仍建議準備足夠的日圓現金。</p>
+                        <p class="text-gray-600">主要城市（廣島、岡山、松江）的店家多數接受信用卡與電子支付。但在山陰地區的小鎮或鄉土料理店，仍建議準備足夠的日圓現金。</p>
                     </div>
                     <div>
                         <h4 class="font-bold">打包策略</h4>
-                        <p class="text-gray-600">2月底仍屬冬季末，山陰地區可能比山陽地區更冷。建議採用「洋蔥式」穿搭法：內層排汗、中層保暖（如羽絨或Fleece）、外層防風防水。一雙舒適防滑的健行鞋對於備中松山城的行程至關重要。</p>
+                        <p class="text-gray-600">2月底至3月初仍屬冬季。山陰地區 (松江、出雲、鳥取) 可能比山陽地區更冷，且濕度較高。建議採用「洋蔥式」穿搭法：內層排汗、中層保暖（如羽絨或Fleece）、外層防風防水。一雙舒適防滑的健行鞋對於備中松山城的行程至關重要。</p>
                     </div>
                  </div>
             </div>
@@ -190,336 +198,645 @@
 
     <script>
         // --- DATA STORE ---
+        // Helper function for Google Map link
+        const generateMapLink = (placeId) => {
+            return `https://www.google.com/maps/search/?api=1&query=%20&query_place_id=${placeId}`;
+        };
+        
+        // 詳細景點與美食資料 (已按行程順序重排 - Day 1 ~ Day 9)
+        const detailedHighlights = [
+            {
+                name: "ばくだん屋 (辣味沾麵)",
+                type: "美食",
+                mapUrl: generateMapLink('ChIJXYW6vFOfWjURBrgOMsNSr10'), 
+                expertRec: "宵夜/特色美食：廣島獨有的 B 級美食。湯汁冰涼，可自選辣度，口感清爽，適合深夜挑戰。",
+                historyCulture: "看板料理：**辛いつけ麺 (辣味沾麵)**。人氣搭配：**辣味飯 (辛い飯)**、**搭配水煮蛋**。",
+                focusPoints: `
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>**料理特色**：冰鎮的拉麵條搭配冰涼的辣味湯汁，清爽解膩，尤其適合疲憊的旅程。</li>
+                        <li>**IG/FB 人氣**：拍攝沾麵的湯汁與麵條，以及挑戰極辣的表情。</li>
+                        <li>**拍照點**：店內充滿個性的裝潢，以及拉麵的特寫。</li>
+                    </ul>
+                `
+            },
+            {
+                name: "嚴島神社",
+                type: "景點",
+                mapUrl: generateMapLink('ChIJcYWdrbWwWjURPZLfbHPpJOo'), // 宮島
+                expertRec: "工頭堅建議：下午前往可拍攝背光夕陽，退潮時可走到鳥居下方。嚴島神社迴廊在漲潮時會倒映在海上，非常壯觀。**賞月名所**，漲潮時與明月相輝映。",
+                historyCulture: "世界遺產，創建於593年，是日本國內少有的海上神社，以其獨特的**海上大鳥居**聞名。社殿建於潮間帶，隨著潮汐變化展現出兩種截然不同的美景。",
+                focusPoints: `
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>**參拜重點**：把握潮汐時間，感受滿潮時的「漂浮感」和退潮時的「莊嚴感」。</li>
+                        <li>**御守/御朱印**：**交通安全守** (海上鳥居造型) 和海上鳥居設計的御朱印帳極具人氣。</li>
+                        <li>**絕佳拍照點**：大鳥居 (近景/遠景)、漲潮時的社殿迴廊倒影、彌山展望台 (纜車可達)。</li>
+                    </ul>
+                `
+            },
+            {
+                name: "あなごめし うえの (星鰻飯)",
+                type: "美食",
+                mapUrl: generateMapLink('ChIJH_vewlq3WjURmvDGpczFQB4'), 
+                expertRec: "百年老店：宮島口名物。其**星鰻飯便當**即使冷掉也美味，是 Day 11 機場前必買的「儀式感便當」。",
+                historyCulture: "看板料理：**星鰻飯 (あなごめし)**。人氣搭配：**あなごめし便當** (可選現場吃或外帶便當)。",
+                focusPoints: `
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>**料理特色**：星鰻肉質比鰻魚**更細緻清爽**，醬汁入味卻不搶戲。使用宮島口特產的星鰻製作。</li>
+                        <li>**IG/FB 人氣**：拍攝充滿儀式感的**木製便當盒**，以及盒內排列整齊、烤得焦香的星鰻。</li>
+                        <li>**拍照點**：店門口的古樸日式建築外觀，以及星鰻飯便當的特寫。</li>
+                    </ul>
+                `
+            },
+            {
+                name: "松江城 (千鳥城) & 宍道湖夕陽",
+                type: "景點",
+                mapUrl: generateMapLink('ChIJt2R4SoxdVTURG4V36XpB8vI'), // 松江城
+                expertRec: "專家見解：國寶五城之一，因屋頂造型像**千鳥展翅**而得名。**宍道湖夕陽**被列入日本夕陽百選，同時也是**絕佳賞月聖地**。",
+                historyCulture: "日本**國寶五城之一**，山陰地區唯一現存天守，俗稱「千鳥城」。宍道湖是日本第七大湖，也是日本夕陽百選名所。松江被稱為「水都」，其城市美學與宍道湖的夕陽是密不可分的整體。",
+                focusPoints: `
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>**城與園**：登上松江城天守，將宍道湖美景「借景」入園。推薦體驗**堀川遊覽船**。</li>
+                        <li>**夕陽攻略**：最佳觀賞點為**島根縣立美術館**面向宍道湖的玻璃帷幕大廳。日落時間需提前確認。</li>
+                        <li>**拍照點**：天守閣外觀、宍道湖夕陽下的嫁ヶ島剪影。</li>
+                    </ul>
+                `
+            },
+            {
+                name: "八雲庵 (松江午餐)",
+                type: "美食",
+                mapUrl: generateMapLink('ChIJ02lYpEJfVTUR28v-M_1J62k'), 
+                expertRec: "文化體驗：位於松江城旁邊的古老武家屋敷建築中，品嚐**鴨肉蕎麥麵**，是富有松江氛圍的用餐選擇。",
+                historyCulture: "看板料理：**鴨肉蕎麥麵 (鴨なんばそば)**。人氣搭配：**割子蕎麥麵套餐**。",
+                focusPoints: `
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>**料理特色**：鴨肉湯頭濃郁，搭配松江特有的蕎麥麵。</li>
+                        <li>**環境特色**：餐廳本身是古老的武家屋敷建築，院子裡有小橋流水。</li>
+                        <li>**拍照點**：古色古香的用餐環境、鴨肉蕎麥麵熱氣騰騰的特寫。</li>
+                    </ul>
+                `
+            },
+            {
+                name: "島根縣立古代出雲歴史博物館",
+                type: "景點",
+                mapUrl: generateMapLink('ChIJT6v-h_FcVzUR6e30D0a_m9k'), // 島根縣立古代出雲歴史博物館
+                expertRec: "深度文化：位於出雲大社旁，展示出雲神話與古代歷史，尤其以**巨大的宇豆柱**複原件和**銅鐸收藏**聞名。建議在參拜前參觀，有助於理解神社的文化深度。",
+                historyCulture: "主要展示以出雲大社為中心的古代文化和神話，是深入了解島根縣歷史和神話傳說的重要場所。收藏有大量考古文物。",
+                focusPoints: `
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>**參觀重點**：古代出雲大社的巨大**宇豆柱**（Uzu-bashira）複原件、銅劍銅鐸等國寶級文物。</li>
+                        <li>**歷史背景**：透過展示了解出雲神話的起源和演變，如八百萬神明聚會的傳說。</li>
+                        <li>**絕佳拍照點**：博物館的現代建築設計和中庭展出的宇豆柱。</li>
+                    </ul>
+                `
+            },
+            {
+                name: "お福 ぜんざい (出雲善哉)",
+                type: "美食",
+                mapUrl: generateMapLink('ChIJx4Ym1s5dVzUR3_z2aD98a7I'), 
+                expertRec: "文化體驗：善哉 (紅豆湯) 的起源地就在出雲。參拜後，用一碗甜湯為身體補充能量，感受傳統文化。",
+                historyCulture: "看板料理：**出雲善哉 (ぜんざい)**。人氣搭配：**冷/熱善哉**、**搭配烤麻糬**。",
+                focusPoints: `
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>**料理特色**：紅豆湯搭配軟糯的麻糬，口味濃郁，甜度適中。</li>
+                        <li>**文化意義**：紅豆的紅色在日本有驅魔除厄的意義，在神社周邊品嚐具有特別的文化體驗。</li>
+                        <li>**拍照點**：古色古香的店內，以及溫暖的紅豆湯特寫。</li>
+                    </ul>
+                `
+            },
+            {
+                name: "出雲大社 & 稻佐之濱夕陽",
+                type: "景點",
+                mapUrl: generateMapLink('ChIJM0G9XoZcVzURmbcJMDPMRmc'), // 出雲大社
+                expertRec: "專家見解：出雲大社是日本最古老神社，以結緣聞名。**稻佐之濱**是傳說中八百萬神明登陸地，充滿靈氣，是日本夕陽百選名所。",
+                historyCulture: "主祭神為**大國主大神**，以**結緣**聞名。每年農曆十月（神在月）全日本的八百萬神明都會聚集於此開會。稻佐之濱的巨型礁石上設有**弁天神社**，與夕陽同框被列入日本夕陽百選。",
+                focusPoints: `
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>**參拜重點**：遵循獨特的**「二拜四拍手一拜」**方式參拜。留意四座不同材質的鳥居。</li>
+                        <li>**夕陽攻略**：**稻佐之濱**是最佳觀賞點。**專家建議**：日落前一小時抵達，拍攝巨型礁石上的**弁天神社**被夕陽染紅的畫面。</li>
+                        <li>**絕佳拍照點**：神樂殿巨大的注連繩、散佈在神社境內的可愛**兔子雕像**、稻佐之濱的巨型礁石。</li>
+                    </ul>
+                `
+            },
+            {
+                name: "羽根屋 本店 (割子蕎麥麵)",
+                type: "美食",
+                mapUrl: generateMapLink('ChIJx39PFo5DVzURnzw_QJEOBfc'), 
+                expertRec: "文化體驗：出雲的靈魂美食，以獨特的**「三段式割子」**盛裝。參拜大社後必吃。",
+                historyCulture: "看板料理：**出雲割子蕎麥麵**。人氣搭配：**三段割子蕎麥麵套餐**。",
+                focusPoints: `
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>**料理特色**：出雲蕎麥麵是日本三大蕎麥麵之一，特色是連殼磨粉，顏色較深，香氣濃郁。</li>
+                        <li>**IG/FB 人氣**：拍攝三層堆疊的漆器碗，以及將藥味和醬汁淋在頂層的儀式感。</li>
+                        <li>**拍照點**：店內充滿傳統日式風情，食物本身即是藝術品。</li>
+                    </ul>
+                `
+            },
+            {
+                name: "足立美術館",
+                type: "景點",
+                mapUrl: generateMapLink('ChIJF2yF8A_lVjUREz8d40xV998'), // 足立美術館
+                expertRec: "專家見解：庭園被譽為**「活畫作」**，從室內各處的窗框望出去，每一景都像裱框的畫作。**秋季為紅葉絕景名所**。",
+                historyCulture: "以近代日本畫家**橫山大觀**的作品收藏聞名，但最著名的還是**連續多年蟬聯日本庭園第一**的日式庭園。創辦人足立全康強調「庭園也是一幅畫」。",
+                focusPoints: `
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>**參觀重點**：欣賞「枯山水庭」、「白砂青松庭」等六座庭園，以及從窗戶欣賞的「生之掛軸」和「生之庭園」。</li>
+                        <li>**藝術焦點**：橫山大觀的收藏是館內鎮館之寶，展現了日本近代畫的精華。</li>
+                        <li>**絕佳拍照點**：館內各處的觀景窗框 (必須從室內拍攝，框中風景就是最佳構圖)。</li>
+                    </ul>
+                `
+            },
+            {
+                name: "鳥取砂丘",
+                type: "景點",
+                mapUrl: generateMapLink('ChIJbx8cHUSPVTURazEAdQKsetg'), // 鳥取砂丘
+                expertRec: "專家見解：建議帶**防風眼鏡**，避免砂飛入眼。登上**馬之背**，可眺望沙與海的交界線，感受大自然的力量。**夏季可體驗滑砂/滑翔傘**。",
+                historyCulture: "日本最大的海岸砂丘，長約16公里、寬約2.4公里。這裡被指定為天然紀念物，並以強風吹出的**「風紋」**和沙子滑落形成的**「沙簾」**聞名。",
+                focusPoints: `
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>**體驗重點**：可體驗滑砂、滑翔傘或駱駝騎乘。</li>
+                        <li>**裝備建議**：穿防風外套並攜帶護目鏡或太陽眼鏡，若遇強風可於入口處租借「長靴」。</li>
+                        <li>**絕佳拍照點**：登上最高點「馬之背」，拍攝面前的風紋與遠方的日本海。</li>
+                    </ul>
+                `
+            },
+            {
+                name: "炭火焼肉 福ふく (鳥取和牛)",
+                type: "美食",
+                mapUrl: generateMapLink('ChIJo8zzQy-QVTURZsutYnwMDto'), 
+                expertRec: "專家推薦：品嚐鳥取和牛的頂級名店，**油酸含量高**，脂肪熔點低，入口即化。",
+                historyCulture: "看板料理：**鳥取和牛燒肉**。人氣搭配：**鳥取和牛油酸55特級部位**。",
+                focusPoints: `
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>**料理特色**：鳥取和牛特點在於**高油酸**，帶來入口即化的柔滑口感。</li>
+                        <li>**IG/FB 人氣**：拍攝和牛美麗的油花紋路，以及烤網上滋滋作響的特級肉片。</li>
+                        <li>**拍照點**：特級肉品的近景、爐火上的燒烤特寫。</li>
+                    </ul>
+                `
+            },
+            {
+                name: "味司 野村 (醬汁豬排丼)",
+                type: "美食",
+                mapUrl: generateMapLink('ChIJExtR8UkGVDUR8otU2Ytg350'), 
+                expertRec: "專家推薦：岡山的靈魂美食，有別於一般日式豬排丼。作為**醬汁豬排丼的創始店**，必訪！",
+                historyCulture: "看板料理：**醬汁豬排丼 (デミカツ丼)**。人氣搭配：**特製醬汁豬排丼** (含蛋與多明格拉斯醬)。",
+                focusPoints: `
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>**料理特色**：將炸豬排浸泡在特調的**多明格拉斯醬 (Demi-glace sauce)** 中，濃郁的洋食風味與豬排完美結合。</li>
+                        <li>**IG/FB 人氣**：拍攝豬排被濃郁深色醬汁覆蓋，並搭配光澤白飯的特寫，展現其獨特的濕潤感。</li>
+                        <li>**拍照點**：店內充滿歷史感的氛圍，以及丼飯上淋滿醬汁的畫面。</li>
+                    </ul>
+                `
+            },
+            {
+                name: "くらしき桃子 (水果聖代)",
+                type: "美食",
+                mapUrl: generateMapLink('ChIJjaYSejhWUTUR20HBP3TetO4'), 
+                expertRec: "專家推薦：岡山**水果王國**代表。聖代以當季新鮮水果為主。是倉敷美觀地區必訪的下午茶。",
+                historyCulture: "看板料理：**季節限定水果聖代**。人氣搭配：**白桃聖代 (夏季)**、**草莓聖代 (冬季/春季)**。",
+                focusPoints: `
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>**料理特色**：使用當地高品質水果，如晴王葡萄、白桃、草莓等。口感清爽、視覺華麗。</li>
+                        <li>**IG/FB 人氣**：拍攝聖代頂端堆疊著滿滿水果的特寫，展現水果王國的魅力。</li>
+                        <li>**拍照點**：美觀地區的白壁建築與色彩鮮豔的聖代合影。</li>
+                    </ul>
+                `
+            },
+            {
+                name: "義式餐廳 Trattoria Pappa",
+                type: "美食",
+                mapUrl: generateMapLink('ChIJx0TzBUIGVDUR0n-gB8j1G1M'), 
+                expertRec: "換口味推薦：岡山站前的人氣義式餐廳，主打手作義大利麵。適合在多日日式料理後調整味蕾。",
+                historyCulture: "提供高品質的義大利麵和義式料理，在當地擁有高評價，適合尋求西式美食的旅客。",
+                focusPoints: `
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>**料理特色**：手作義大利麵、窯烤披薩、季節義式菜餚。</li>
+                        <li>**環境特色**：溫馨舒適的義式小館氛圍。</li>
+                        <li>**拍照點**：色彩豐富的義大利麵擺盤。</li>
+                    </ul>
+                `
+            },
+        ];
+
         const allData = {
             prepList: [
                 {
                     category: '重要文件與預訂',
                     items: [
-                        '<strong>護照與簽證:</strong> 確認護照效期超過6個月，並檢查是否需要簽證。',
-                        '<strong>電子機票:</strong> 列印或儲存華航來回電子機票。',
-                        '<strong>住宿憑證:</strong> 儲存所有飯店的預訂確認信。',
-                        '<strong>旅遊保險:</strong> 投保旅遊平安險與不便險，並保留保單副本。'
+                        '**護照與簽證**: 確認護照效期超過6個月，並檢查是否需要簽證。',
+                        '**電子機票**: 列印或儲存華航來回電子機票。',
+                        '**住宿憑證**: 儲存所有飯店的預訂確認信。',
+                        '**旅遊保險**: 投保旅遊平安險與不便險，並保留保單副本。'
                     ]
                 },
                 {
                     category: '交通與票券',
                     items: [
-                        '<strong>JR Pass:</strong> 務必在出發前購買「山陽&山陰地區鐵路周遊券(7日)」兌換券。抵達廣島後於車站綠色窗口兌換實體票券。',
-                        '<strong>[關鍵任務] 雲海計程車 (Day 8 選項C):</strong> 若計畫觀賞備中松山城雲海，<strong>必須提前數日</strong>向「高梁市觀光協會」預約與首班車銜接的「雲海乘合計程車」。此為高時效性關鍵任務。',
-                        '<strong>IC卡 (ICOCA/SUICA):</strong> 準備或儲值一張IC卡，用於支付JR Pass範圍外的交通 (如廣島路面電車) 及便利商店小額消費。'
+                        '**JR Pass**: 務必在出發前購買「山陽&山陰地區鐵路周遊券(7日)」兌換券。抵達廣島後於車站綠色窗口兌換實體票券。',
+                        '**[關鍵任務] 雲海計程車 (Day 9 選項C)**: 若計畫觀賞備中松山城雲海，**必須提前數日**向「高梁市觀光協會」預約與首班車銜接的「雲海乘合計程車」。此為高時效性關鍵任務。',
+                        '**IC卡 (ICOCA/SUICA)**: 準備或儲值一張IC卡，用於支付JR Pass範圍外的市區交通 (如廣島路面電車、松江/米子巴士等)。',
+                        '**專家建議**: 購買**岡山樂享周遊券**超划算，可換取約2000日圓價值，涵蓋了許多岡山城周邊景點的門票。'
                     ]
                 },
                 {
                     category: '行李策略',
                     items: [
-                        '<strong>行李箱寄送 (宅急便):</strong> 善用此服務以利輕裝移動。',
-                        '  • <strong>Day 3 (廣島→米子):</strong> 早上從廣島飯店將大行李箱寄送至 Day 4 的米子飯店。',
-                        '  • <strong>Day 6 (米子→岡山):</strong> 早上從米子飯店將大行李箱寄送至 Day 7 的岡山飯店。',
-                        '<strong>過夜包:</strong> 準備一個輕便的過夜包，用於 Day 3 (出雲) 及 Day 6 (鳥取) 的住宿。',
+                        '**專家策略：行李轉送 (宅急便) 戰術**：這是維持「Chill」旅行節奏的核心戰術。將大件行李寄送到後一站的飯店，讓您在城市間移動時能輕裝上陣，大幅提升移動的效率與遊玩品質。',
+                        ' • **Day 3 (廣島→米子)**: 早上從廣島飯店將大行李箱寄送至 Day 5 的米子飯店。',
+                        ' • **Day 7 (米子→廣島)**: 早上從米子飯店將大行李箱寄送至 Day 10 的廣島飯店。',
+                        '**過夜包**：準備一個輕便的過夜包，用於 Day 3-4 (松江) 和 Day 7 (鳥取) 的住宿。',
                     ]
                 },
                 {
                     category: '衣物與裝備',
                     items: [
-                        '<strong>舒適的鞋子:</strong> 行程包含大量步行，特別是 Day 8 的備中松山城為山城，務必穿著防滑好走的鞋子。',
-                        '<strong>洋蔥式穿搭:</strong> 2-3月的山陰山陽地區天氣仍偏冷，日夜溫差大，建議採多層次穿搭以便調整。',
-                        '<strong>雨具:</strong> 準備輕便的雨傘或雨衣以應對多變天氣。',
-                        '<strong>個人藥品:</strong> 攜帶常備藥品，如感冒藥、腸胃藥等。'
+                        '**舒適的鞋子**: 行程包含大量步行，特別是 Day 9 的備中松山城為山城，務必穿著防滑好走的鞋子。',
+                        '**洋蔥式穿搭**: 2月底至3月初仍屬冬季，山陰地區可能更冷。建議採多層次穿搭以便調整。',
+                        '**雨具**: 準備輕便的雨傘或雨衣以應對多變天氣。',
+                        '**個人藥品**: 攜帶常備藥品，如感冒藥、腸胃藥等。'
                     ]
                 },
                 {
                     category: '通訊與應用程式',
                     items: [
-                        '<strong>網路:</strong> 準備日本上網SIM卡、eSIM或租借Wi-Fi分享器。',
-                        '<strong>必備App:</strong>',
-                        '  • <strong>Google Maps:</strong> 預先下載離線地圖，以防網路不穩。',
-                        '  • <strong>乘換案內/Japan Transit Planner:</strong> 用於查詢精確的鐵路班次。',
-                        '  • <strong>Google Translate:</strong> 翻譯App，用於菜單或溝通。'
+                        '**網路**: 準備日本上網SIM卡、eSIM或租借Wi-Fi分享器。',
+                        '**必備App**: Google Maps (預先下載離線地圖), 乘換案內/Japan Transit Planner (查詢精確班次), Google Translate。'
                     ]
                 },
                 {
                     category: '金錢與支付',
                     items: [
-                        '<strong>日幣現鈔:</strong> 準備足夠的日圓現鈔，部分小店或鄉下地區可能不接受信用卡。',
-                        '<strong>信用卡:</strong> 攜帶1-2張海外消費回饋較佳的信用卡。'
+                        '**日幣現鈔**: 準備足夠的日圓現鈔，部分山陰小店可能不接受信用卡。',
+                        '**信用卡**: 攜帶1-2張海外消費回饋較佳的信用卡。'
                     ]
                 },
                 {
-                    category: '其他',
+                    category: '資源補給點 (購物/電器)',
                     items: [
-                        '<strong>行動電源:</strong> 每日在外時間長，手機使用頻繁，務必攜帶。',
-                        '<strong>購物清單:</strong> 預先列好購物清單，特別留意 Day 9 為廣島的最後採購日。'
+                        '**廣島 (Bic Camera)**: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJg1ZMX1SfWjURzaaH1iJiJ_U" target="_blank" class="text-blue-600 hover:underline">ビックカメラ 広島駅前店 (BicCamera)</a> (廣島站前)',
+                        '**岡山 (Bic Camera)**: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJURFlCUwGVDURegSIB8cZxxY" target="_blank" class="text-blue-600 hover:underline">ビックカメラ 岡山駅店</a> (岡山站內)',
+                        '**廣島 (唐吉軻德)**: <a href="https://www.google.com/maps/search/?api=1&query=ドン・キホーテ+広島八丁堀店" target="_blank" class="text-blue-600 hover:underline">ドン・キホーテ 広島八丁堀店</a> (廣島市區，需搭路面電車)'
                     ]
                 }
             ],
             accommodation: [
-                { day: "1-2", city: "廣島", name: "ダイワロイネットホテル広島駅前 (廣島站前大和Roynet飯店)", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJY4bETyafWjURgAY7RAhVJMM" },
-                { day: "3", city: "出雲", name: "天然温泉 八雲の湯 ドーミーイン出雲 (Dormy Inn Izumo)", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ2e7EMYZDVzURD52vGpvK6Q4" },
-                { day: "4-5", city: "米子", name: "米子ワシントンホテルプラザ (米子華盛頓廣場飯店)", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJeXkplnj3VjURmOTqf9J8A5E" },
-                { day: "6", city: "鳥取", name: "鳥取ワシントンホテルプラザ (鳥取華盛頓廣場飯店)", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJSYgqicKPVTURx9fQJ_1eZUg" },
-                { day: "7-8", city: "岡山", name: "ダイワロイネットホテル岡山駅前 (岡山站前大和ROYNET飯店)", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ7T_MCUwGVDUR00dIzm6mgEQ" },
-                { day: "9", city: "廣島", name: "ダイワロイネットホテル広島駅前 (廣島站前大和Roynet飯店)", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJY4bETyafWjURgAY7RAhVJMM" },
+                { day: "1-2", city: "廣島", name: "ダイワロイネットホテル広島駅前 (廣島站前大和Roynet飯店)", url: generateMapLink('ChIJY4bETyafWjURgAY7RAhVJMM') },
+                { day: "3-4", city: "松江", name: "天然温泉だんだんの湯 ドーミーインEXPRESS松江 (Dormy Inn Matsue)", url: generateMapLink('ChIJt2R4SoxdVTURG4V36XpB8vI') },
+                { day: "5-6", city: "米子", name: "米子ワシントンホテルプラザ (米子華盛頓廣場飯店)", url: generateMapLink('ChIJeXkplnj3VjURmOTqf9J8A5E') },
+                { day: "7", city: "鳥取", name: "鳥取ワシントンホテルプラザ (鳥取華盛頓廣場飯店)", url: generateMapLink('ChIJSYgqicKPVTURx9fQJ_1eZUg') },
+                { day: "8-9", city: "岡山", name: "ダイワロイネットホテル岡山駅前 (岡山站前大和ROYNET飯店)", url: generateMapLink('ChIJ7T_MCUwGVDUR00dIzm6mgEQ') },
+                { day: "10", city: "廣島", name: "ダイワロイネットホテル広島駅前 (廣島站前大和Roynet飯店)", url: generateMapLink('ChIJY4bETyafWjURgAY7RAhVJMM') },
             ],
-            highlights: [
-                { name: "嚴島神社", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJcYWdrbWwWjURPZLfbHPpJOo", type: "景點", desc: "海上鳥居，人與神的交界" },
-                { name: "廣島和平紀念公園", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJgzAzVG2iWjURZRZ1udXOKeE", type: "景點", desc: "歷史的反思與對和平的祈願" },
-                { name: "出雲大社", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJM0G9XoZcVzURmbcJMDPMRmc", type: "景點", desc: "日本神話故鄉，最強姻緣祈願地" },
-                { name: "鳥取砂丘", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJbx8cHUSPVTURazEAdQKsetg", type: "景點", desc: "沙與海交織的壯麗自然奇觀" },
-                { name: "岡山城", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJER_WDSUGVDURujV4pMtef44", type: "景點", desc: "漆黑如烏的戰國名城" },
-                { name: "後樂園", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJOeRmIUoGVDURkjPzFDy4Vv4", type: "景點", desc: "日本三大名園，開闊的迴遊式庭園" },
-                { name: "備中松山城", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJacUM4muyVjURZGTgH1Jqwt8", type: "景點", desc: "雲海之上的天空之城"},
-                { name: "ばくだん屋", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJXYW6vFOfWjURBrgOMsNSr10", type: "美食", desc: "廣島流辣味沾麵" },
-                { name: "あなごめし うえの", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJH_vewlq3WjURmvDGpczFQB4", type: "美食", desc: "宮島口百年星鰻飯名店" },
-                { name: "羽根屋 本店", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJx39PFo5DVzURnzw_QJEOBfc", type: "美食", desc: "出雲三段式「割子蕎麥麵」" },
-                { name: "炭火焼肉 福ふく", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJo8zzQy-QVTURZsutYnwMDto", type: "美食", desc: "品嚐頂級「鳥取和牛」" },
-                { name: "味司 野村", url: "https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJExtR8UkGVDUR8otU2Ytg350", type: "美食", desc: "岡山「醬汁豬排丼」創始店" },
-            ],
+            highlights: [], 
             transportSummary: [
                 { day: 1, route: "機場→廣島站", transport: "機場利木津巴士", time: "21:10→21:58", cost: "¥1,450" },
-                { day: 2, route: "廣島↔宮島口", transport: "JR山陽本線", time: "08:32→09:00", cost: "¥420 (自理)" },
-                { day: 3, route: "廣島→岡山→出雲", transport: "新幹線/特急やくも", time: "13:59→18:08", cost: "JR Pass" },
-                { day: 4, route: "出雲→米子", transport: "特急やくも", time: "19:34→20:05", cost: "JR Pass" },
-                { day: 5, route: "米子↔境港", transport: "JR境線", time: "09:18→10:02", cost: "JR Pass" },
-                { day: 6, route: "米子→由良→鳥取", transport: "JR山陰本線", time: "08:55→13:21", cost: "JR Pass" },
-                { day: 7, route: "鳥取→岡山", transport: "特急スーパーいなば", time: "10:00→11:49", cost: "JR Pass" },
-                { day: 8, route: "岡山↔倉敷/高梁", transport: "JR山陽本線/特急やくも", time: "依選項", cost: "JR Pass" },
-                { day: 9, route: "岡山→廣島", transport: "新幹線", time: "10:11→10:46", cost: "JR Pass" },
-                { day: 10, route: "廣島站→機場", transport: "機場利木津巴士", time: "06:40→07:28", cost: "¥1,450" }
+                { day: 2, route: "廣島↔宮島口", transport: "JR山陽本線", time: "08:32→09:20", cost: "¥1,200 (自理)" },
+                { day: 3, route: "廣島→岡山→松江", transport: "新幹線/特急やくも", time: "13:59→18:10", cost: "JR Pass" },
+                { day: 4, route: "松江↔出雲大社", transport: "JR/一畑電車", time: "13:35→14:45", cost: "JR Pass + ¥500" },
+                { day: 5, route: "松江→安來→米子", transport: "JR山陰本線/接駁車", time: "14:02→14:25", cost: "JR Pass" },
+                { day: 6, route: "米子↔境港", transport: "JR境線", time: "09:18→10:02", cost: "JR Pass" },
+                { day: 7, route: "米子→由良→鳥取", transport: "JR特急スーパーまつかぜ", time: "12:28→13:50", cost: "JR Pass" },
+                { day: 8, route: "鳥取→岡山", transport: "特急スーパーいなば", time: "10:00→11:49", cost: "JR Pass" },
+                { day: 9, route: "岡山↔倉敷/高梁", transport: "JR山陽本線/特急やくも", time: "依選項", cost: "JR Pass" },
+                { day: 10, route: "岡山→廣島", transport: "新幹線 のぞみ", time: "10:11→10:46", cost: "¥5,610 (自理)" },
+                { day: 11, route: "廣島站→機場", transport: "機場利木津巴士", time: "06:30→07:30", cost: "¥1,450" }
             ],
             dailyData: {
                 day1: {
                     title: '序章・廣島之夜', date: '2/20 週五', location: '台灣 → 廣島', timeAnalysis: { travel: 4.5, activity: 1.5 },
                     timeline: [
-                        { time: '16:50-20:20', type: '✈️', event: '航班飛行: CI112 TPE → HIJ' },
-                        { time: '21:10-22:00', type: '🚌', event: '機場交通: 機場利木津巴士 →「JR廣島站新幹線口」<br><span class="text-sm text-gray-500">交通花費: ¥1,450</span>' },
-                        { time: '22:00-22:30', type: '🏨', event: '關鍵任務: 於 <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJO1MgvFOfWjUR6-cLRTI_QSg" target="_blank" class="text-blue-600 hover:underline">広島 (廣島站)</a> 兌換JR Pass & 飯店Check-in' },
-                        { time: '22:30', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJXYW6vFOfWjURBrgOMsNSr10" target="_blank" class="text-blue-600 hover:underline">ばくだん屋 (Bakudanya)</a> 品嚐廣島特有辣味沾麵 (辛いつけ麺)。'},
-                        { time: '23:00', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJY4bETyafWjURgAY7RAhVJMM" target="_blank" class="text-blue-600 hover:underline">ダイワロイネットホテル広島駅前</a>'}
+                        { time: '16:50-20:20', type: '✈️', event: '航班飛行: CI112 TPE → HIJ', description: '旅程的起點，準備降落在這座浴火重生的城市。' },
+                        { time: '21:10-22:00', type: '🚌', event: '機場交通: 廣島機場利木津巴士 →「JR廣島站新幹線口」', description: '效率是關鍵，利木津巴士是連接機場與市中心最可靠的脈絡。' , cost: '¥1,450'},
+                        { time: '22:00-22:30', type: '🏨', event: '關鍵任務: 於 <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJJO1MgvFOfWjUR6-cLRTI_QSg" target="_blank" class="text-blue-600 hover:underline">JR廣島站 綠色窗口</a> 兌換JR Pass & 飯店Check-in', description: '抵達後的第一項作戰任務，確保未來七日的交通命脈暢通無阻。'},
+                        { time: '22:30', type: '🍽️', event: '宵夜/晚餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJXYW6vFOfWjURBrgOMsNSr10" target="_blank" class="text-blue-600 hover:underline">ばくだん屋 ekie店</a> 品嚐廣島特有辣味沾麵 (辛いつけ麺)。', description: '用廣島特有的辣味沾麵喚醒味蕾，為這趟旅程揭開辛辣而刺激的序幕。'},
+                        { time: '23:00', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJY4bETyafWjURgAY7RAhVJMM" target="_blank" class="text-blue-600 hover:underline">ダイワロイネットホテル広島駅前</a>', description: '安頓下來，儲備明日探索所需的體力。'}
                     ],
                     intel: {
-                        supply: { title: '周邊補給 (廣島站)', items: [
-                            '電器行: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJg1ZMX1SfWjURzaaH1iJiJ_U" target="_blank" class="text-blue-600 hover:underline">ビックカメラ 広島駅前店 (BicCamera)</a>',
-                            '藥妝店: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJK1YjKAKfWjUREJsmECpZsnM" target="_blank" class="text-blue-600 hover:underline">マツモトキヨシ (松本清)</a>',
-                            '超市: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJSYjcbwCfWjURgUzfXGeSLcA" target="_blank" class="text-blue-600 hover:underline">成城石井</a>'
+                        supply: { title: '周邊補給 (廣島站)', items: [ 
+                            '**大型電器行**：<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJg1ZMX1SfWjURzaaH1iJiJ_U" target="_blank" class="text-blue-600 hover:underline">ビックカメラ 広島駅前店 (BicCamera)</a>', 
+                            '**藥妝店**：<a href="https://www.google.com/maps/search/?api=1&query=マツモトキヨシ+ekie広島店" target="_blank" class="text-blue-600 hover:underline">マツモトキヨシ (松本清) ekie店</a>',
+                            '**超市**：<a href="https://www.google.com/maps/search/?api=1&query=成城石井+広島ekie店" target="_blank" class="text-blue-600 hover:underline">成城石井 広島ekie店</a>'
                         ]},
-                        ramen: { title: '一蘭拉麵', text: '廣島市區本通商店街有<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJX1hOtQ2iWjURgaNZqdbnK9I" target="_blank" class="text-blue-600 hover:underline">「一蘭 広島本通店」</a>，可作為宵夜備案。' },
-                        gourmet_alt: { title: '新增美食推薦', items: [
-                            '<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ0-BXGhGiWjURsW59iSmAGpA" target="_blank" class="text-blue-600 hover:underline">みっちゃん総本店 (Mitchan總本店)</a>: 廣島燒的傳奇創始店之一。',
-                            '<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJNe7e_ASiWjURybECNyNYRLQ" target="_blank" class="text-blue-600 hover:underline">八昌</a>: 米其林必比登推薦的廣島燒名店。'
-                        ]},
-                        notes: { title: '特別提醒', text: 'HARBS / 多慶屋 在全山陰山陽地區均無分店。'},
-                        night_supply: { title: '宵夜與補給', items: [ '<strong>便利商店:</strong> 飯店樓下即有 <a href="https://www.google.com/maps/search/?api=1&query=FamilyMart+near+ダイワロイネットホテル広島駅前" target="_blank" class="text-blue-600 hover:underline">FamilyMart</a>，或可於廣島站周邊尋找 7-Eleven 或 Lawson。', '<strong>宵夜選項:</strong> 廣島站周邊有許多營業至深夜的居酒屋，或可考慮前往本通商店街的<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJX1hOtQ2iWjURgaNZqdbnK9I" target="_blank" class="text-blue-600 hover:underline">一蘭拉麵</a>。' ]}
+                        ramen: { title: '宵夜備案：拉麵 (一蘭)', text: '廣島市區本通商店街有<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJX1hOtQ2iWjURgaNZqdbnK9I" target="_blank" class="text-blue-600 hover:underline">「一蘭 広島本通店」</a>，可作為宵夜備案。' },
+                        notes: { title: '特別提醒', text: 'HARBS / 多慶屋 在全山陰山陽地區均無分店。'}
+                    },
+                    insights: {
+                        expert_strategy: { title: '**專家策略：山陽山陰高效率規劃**', text: '工頭堅等旅遊達人建議，選擇JR站周邊的商務酒店，能確保交通與生活機能的最佳連動性。購買山陰山陽JR Pass最划算，涵蓋五縣交通。' },
+                        hiroshima_night: { title: '專家見解：初探廣島', text: '廣島的夜晚不僅是旅程的開始，更是一個感受城市脈動的時刻。廣島車站本身就是一個巨大的複合商城(ekie)，集結了美食、伴手禮與各式商店。' },
+                        bakudanya: { title: '美食筆記：廣島辣味沾麵', text: '「ばくだん屋」的辣味沾麵是廣島的B級美食代表，湯汁冰涼，可自由選擇辣度，清爽解膩，適合深夜挑戰。' }
                     }
                 },
                 day2: {
                     title: '神之島・嚴島神社深度一日', date: '2/21 週六', location: '廣島 ↔ 宮島', timeAnalysis: { travel: 1.5, activity: 7.5 },
                     timeline: [
-                        { time: '08:00', type: '🍽️', event: '早餐: 於廣島站內咖啡廳或麵包店快速用餐。' },
-                        { time: '08:15', type: '➡️', event: '離開飯店，步行至月台。'},
-                        { time: '08:32-09:20', type: '🚆', event: '搭乘 JR山陽本線 [普通] 及 JR渡輪 前往宮島。<br><span class="text-sm text-gray-500">交通花費: (¥420 + ¥180) x 2 = ¥1,200 (本日自理)</span>', stay: '約 50 分鐘' },
-                        { time: '09:20-16:00', type: '⛩️', event: '嚴島神社 & 宮島全日探索。核心目標為參拜 <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJcYWdrbWwWjURPZLfbHPpJOo" target="_blank" class="text-blue-600 hover:underline">嚴島神社</a>，並根據潮汐時間漫步表參道商店街。', stay: '約 6.5 小時' },
-                        { time: '中午', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJH_vewlq3WjURmvDGpczFQB4" target="_blank" class="text-blue-600 hover:underline">あなごめし うえの (上野商店)</a> 品嚐星鰻飯，或於 <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ-09CoP22WjURI-2htsgeZyk" target="_blank" class="text-blue-600 hover:underline">牡蠣屋</a> 品嚐烤牡蠣。'},
-                        { time: '16:00之後', type: '🚆', event: '從宮島搭乘渡輪與JR返回廣島車站。'},
-                        { time: '傍晚', type: '🍽️', event: '晚餐: 廣島市區自選，推薦牡蠣料理專門店。'},
-                        { time: '晚上', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJY4bETyafWjURgAY7RAhVJMM" target="_blank" class="text-blue-600 hover:underline">ダイワロイネットホテル広島駅前</a>'}
+                        { time: '08:00', type: '🍽️', event: '早餐: 飯店內或廣島站內咖啡廳。', description: '享受一頓快速而高效的早餐，為神之島的深度探索儲備能量。' },
+                        { time: '08:15', type: '➡️', event: '前往宮島口月台。', description: '準時出發是深度旅遊的必要紀律。'},
+                        { time: '08:32-09:20', type: '🚆', event: '搭乘 JR山陽本線 及 JR渡輪 前往宮島。', description: '從現代化的城市，航向被譽為「神之島」的聖地。**專家建議**：搭乘JR渡輪建議坐左側可拍攝海上鳥居。', cost: '¥1,200 (自理)'},
+                        { time: '09:20-12:00', type: '⛩️', event: '嚴島神社參拜 & 宮島表參道商店街。', description: '踏上人神共存的島嶼，感受漂浮於海上的朱紅色神殿。', stay: '約 2.5 小時' },
+                        { time: '12:00-13:30', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJH_vewlq3WjURmvDGpczFQB4" target="_blank" class="text-blue-600 hover:underline">あなごめし うえの</a> (星鰻飯) 或 <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ-09CoP22WjURI-2htsgeZyk" target="_blank" class="text-blue-600 hover:underline">牡蠣屋</a> (烤牡蠣)。', description: '無論是百年老店的星鰻飯，還是炭火現烤的肥美牡蠣，都是對這片海域恩惠的最高禮讚。'},
+                        { time: '13:30-16:00', type: '🚶', event: '宮島深度探索 (彌山纜車/紅葉谷公園)', description: '搭乘纜車登頂獅子岩展望台，俯瞰瀨戶內海全景，或根據潮汐漫步退潮後的鳥居下方。', stay: '約 2.5 小時'},
+                        { time: '16:00-18:00', type: '🍽️', event: '下午茶/購物: 楓葉饅頭、宮島杓子購物。', description: '品嚐炸楓葉饅頭，並購買代表幸運的宮島杓子作為伴手禮。'},
+                        { time: '18:00-19:00', type: '🚆', event: '返回廣島站，回飯店稍作休息。', description: '從神之島返回人間。'},
+                        { time: '19:30', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJrT7G0Q2iWjURx8u-Qe2g944" target="_blank" class="text-blue-600 hover:underline">すし丸 (迴轉壽司)</a> 品嚐瀨戶內海地魚', description: '用人氣迴轉壽司店的**瀨戶內海地魚**，滿足對海鮮的渴望。**【美食任務：迴轉壽司已達成】**'},
+                        { time: '21:00', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJY4bETyafWjURgAY7RAhVJMM" target="_blank" class="text-blue-600 hover:underline">ダイワロイネットホテル広島駅前</a>', description: '為隔日的長途移動日養精蓄銳。'}
                     ],
                     intel: {
-                        castle: { title: '百大名城', text: '<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJw-f36qaYWjURMpYztSzpe_U" target="_blank" class="text-blue-600 hover:underline">広島城 (廣島城)</a>位於和平紀念公園步行範圍內(約15分鐘)，可於次日安排。'},
-                        shrine: { title: '人氣神社 & 御守', items: [
-                            '**嚴島神社 (世界文化遺產):** 絕對的參拜重點。',
-                            '**人氣御朱印帳:** 以海上鳥居為設計，極具人氣，值得收藏。 ',
-                            '**交通安全御守:** 以海上鳥居為造型的「交通安全守」非常獨特。'
+                        supply: { title: '周邊補給 (廣島站)', items: [ 
+                            '**大型電器行**：<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJg1ZMX1SfWjURzaaH1iJiJ_U" target="_blank" class="text-blue-600 hover:underline">ビックカメラ 広島駅前店 (BicCamera)</a>', 
+                            '**唐吉軻德**：<a href="https://www.google.com/maps/search/?api=1&query=ドン・キホーテ+広島八丁堀店" target="_blank" class="text-blue-600 hover:underline">ドン・キホーテ 広島八丁堀店</a> (需搭路面電車)',
+                            '**藥妝店**：<a href="https://www.google.com/maps/search/?api=1&query=マツモトキヨシ+ekie広島店" target="_blank" class="text-blue-600 hover:underline">マツモトキヨシ (松本清) ekie店</a>'
                         ]},
-                        sweets: { title: '人氣甜點', text: '宮島表參道商店街的<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJsxCiCbawWjURD1uzvrrMY8I" target="_blank" class="text-blue-600 hover:underline">岩村もみじ屋 (Iwamura Momijiya)</a>販售的「揚げもみじ (炸楓葉饅頭)」，是必吃甜點。'},
-                        souvenir: { title: '特色伴手禮', text: '宮島是「杓子 (飯勺)」的發源地，作為祈求好運的象徵，是極具代表性的伴手禮。'},
-                        rain_plan: { title: '雨天備案', text: '若雨勢較大，可增加室內的<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJpbpftsqwWjURD6UNc1rni0A" target="_blank" class="text-blue-600 hover:underline">宮島水族館</a>。'},
-                        gourmet_alt: { title: '新增美食推薦', items: [
-                            '<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJZVb_krawWjURKn7rSPn-Zd8" target="_blank" class="text-blue-600 hover:underline">咖啡廳 天心閣</a>: 評價極高的起司蛋糕專賣店。',
-                            '<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ6wW4t7awWjURK4GnY1lF_rk" target="_blank" class="text-blue-600 hover:underline">パン屋の勝谷 (Bakery Katsutani-pan)</a>: 以巨大的烤牡蠣咖哩麵包聞名。'
+                        shrine: { title: '當季資訊 & 御守', items: [
+                            '**嚴島神社**: 世界文化遺產。**交通安全御守** (海上鳥居造型) 獨特。',
+                            '**當季特色**: 2月仍為廣島**牡蠣**盛產期，宮島口有許多牡蠣料理。**冬季限定海鮮**。',
+                            '**祭典 (PDF)**: 廣島花卉節 (5/3-5)；宮島水中花火大會 (夏季)。'
                         ]},
-                        night_supply: { title: '宵夜與補給', items: [ '<strong>便利商店:</strong> <a href="https://www.google.com/maps/search/?api=1&query=convenience+store+near+ダイワロイネットホテル広島駅前" target="_blank" class="text-blue-600 hover:underline">廣島站周邊</a> 有多家 7-Eleven, FamilyMart, Lawson 可供選擇。', '<strong>宵夜選項:</strong> 可在車站ekie商場尋找居酒屋，或探索車站南口的店家。' ]}
+                        rain_plan: { title: '雨天備案', text: '若雨勢較大，可增加室內的<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJpbpftsqwWjURD6UNc1rni0A" target="_blank" class="text-blue-600 hover:underline">宮島水族館</a>。'}
+                    },
+                    insights: {
+                        itsukushima: { title: '**專家見解：嚴島神社的二元之美與攝影點**', text: '參觀嚴島神社的精髓在於掌握潮汐。滿潮時，社殿與迴廊彷彿漂浮於海上。**嚴島神社迴廊在漲潮時會倒映在海上，非常壯觀。推薦搭乘櫓槳船近距離觀賞海上鳥居，避開人潮。宮島纜車可登頂獅子岩展望台，俯瞰瀨戶內海全景。**' },
+                        miyajima_gourmet: { title: '美食筆記：宮島的味覺饗宴', text: '宮島是美食的一級戰區。**星鰻飯 (あなごめし)**：宮島口上野商店是百年創始名店。**烤牡蠣 (焼き牡蠣)**：廣島是日本最大牡蠣產地，**冬季限定的牡蠣料理**不容錯過。' },
+                        sushimaru: { title: '迴轉壽司：すし丸 (晚餐)', text: 'すし丸主打瀨戶內海地魚，魚種新鮮多樣，價格實惠。推薦品嚐**炙燒星鰻壽司**與**冬季限定的牡蠣壽司**。' },
+                        kento_depth: { title: '深度旅行建議', text: '工頭堅建議，嚴島神社也是絕佳的**賞月名所**，在滿月夜晚，鳥居在漲潮水面上倒影，充滿神秘氣氛。這正是實踐「慢慢品味」旅行哲學的絕佳時機。' }
                     }
                 },
                 day3: {
-                    title: '沉思與轉進・前進眾神之國', date: '2/22 週日', location: '廣島 → 出雲', timeAnalysis: { travel: 4.5, activity: 3.0 },
+                    title: '沉思與轉進・國寶松江城與夕陽絕景', date: '2/22 週日', location: '廣島 → 松江', timeAnalysis: { travel: 4.5, activity: 3.5 },
                     timeline: [
-                        { time: '08:00', type: '🍽️', event: '早餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJkQEAsFOfWjUR_2bHXl_A_Hs" target="_blank" class="text-blue-600 hover:underline">おかし処たかぎ (Okashidokoro Takagi)</a> (高木珈琲) 體驗日式早餐。' },
-                        { time: '09:00-12:00', type: '🏛️', event: '歷史巡禮: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJgzAzVG2iWjURZRZ1udXOKeE" target="_blank" class="text-blue-600 hover:underline">廣島和平紀念公園</a><br><span class="text-sm text-gray-500">交通花費: ¥220</span>', stay: '3 小時' },
-                        { time: '12:00-13:30', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJmzvTd1SfWjUR2g2q4LUHBlI" target="_blank" class="text-blue-600 hover:underline">麗ちゃん</a> 品嚐廣島燒 & 執行行李轉送任務。' },
-                        { time: '13:50-18:10', type: '🚆', event: '長途移動: 前往出雲 (經岡山轉車)<br><span class="text-sm text-gray-500">のぞみ 28号 & やくも 15号</span>', stay: '約 4.3 小時' },
-                        { time: '傍晚', type: '🍽️', event: '晚餐: 出雲市車站周邊自選，或飯店免費宵夜拉麵。'},
-                        { time: '晚上', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ2e7EMYZDVzURD52vGpvK6Q4" target="_blank" class="text-blue-600 hover:underline">天然温泉 八雲の湯 ドーミーイン出雲</a>'}
+                        { time: '08:00', type: '🍽️', event: '早餐 & 行李轉送： <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJkQEAsFOfWjUR_2bHXl_A_Hs" target="_blank" class="text-blue-600 hover:underline">おかし処たかぎ (高木珈琲)</a>', description: '執行行李轉送任務（大行李至 Day 5 米子飯店）。**專家提醒**：提早辦理手續，確保「輕裝」轉進。' },
+                        { time: '09:00-12:00', type: '🏛️', event: '歷史巡禮: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJgzAzVG2iWjURZRZ1udXOKeE" target="_blank" class="text-blue-600 hover:underline">廣島和平紀念公園</a>', description: '這是一段需要靜心體會的歷史。完成從見證、理解到反思與祈願的路徑。', stay: '3 小時' },
+                        { time: '12:00-13:30', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJmzvTd1SfWjUR2g2q4LUHBlI" target="_blank" class="text-blue-600 hover:underline">麗ちゃん</a> 品嚐廣島燒 & JR Pass啟用', description: '用廣島燒為山陽的行程暫時畫上句點。在廣島站兌換並啟用JR Pass。'},
+                        { time: '13:59-18:10', type: '🚆', event: '長途移動: 新幹線 (廣島→岡山) & 特急やくも (岡山→松江)', description: '搭乘「のぞみ 28號」新幹線，於岡山轉乘「特急やくも 17號」，正式宣告進入古老的山陰國度。', cost: 'JR Pass'},
+                        { time: '18:30-19:30', type: '🌅', event: '絕景鑑賞: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJG470YcxdVTUR_1G0d_2e7k0" target="_blank" class="text-blue-600 hover:underline">宍道湖夕陽</a>', description: '抵達松江後，直奔宍道湖畔，在**島根縣立美術館**前欣賞被譽為**日本夕陽百選**的夢幻景色。', stay: '約 1 小時'},
+                        { time: '19:30', type: '🍽️', event: '晚餐: 飯店周邊自選 (推薦居酒屋或在地日式)。', description: '享受松江的寧靜夜晚，品嚐冬季**宍道湖蜆**料理。'},
+                        { time: '21:30', type: '🏨', event: '宵夜/住宿: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJt2R4SoxdVTURG4V36XpB8vI" target="_blank" class="text-blue-600 hover:underline">ドーミーインEXPRESS松江</a>', description: '享受溫泉與免費宵夜拉麵 (夜鳴きそば)。'}
                     ],
                     intel: {
-                        supply: { title: '周邊補給 (出雲市站)', items: [
-                            '電器行: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJN63K1ZFDVzURvY-Nzbt0Lnw" target="_blank" class="text-blue-600 hover:underline">エディオン 今市店</a>',
-                            '唐吉軻德: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJAQBAwpdDVzURhDMoxD9FIiY" target="_blank" class="text-blue-600 hover:underline">MEGAドン・キホーテ 出雲店</a> (需搭計程車)'
+                        supply: { title: '周邊補給 (松江站)', items: [
+                            '**大型電器行**：<a href="https://www.google.com/maps/search/?api=1&query=ビックカメラ+松江+駅前" target="_blank" class="text-blue-600 hover:underline">Bic Camera</a> (車站周邊，規模較小，可作備選)',
+                            '**唐吉軻德**：<a href="https://www.google.com/maps/search/?api=1&query=ドン・キホーテ+松江+駅前" target="_blank" class="text-blue-600 hover:underline">ドン・キホーテ 松江店</a> (需搭車)',
+                            '**藥妝店/超市**：車站周邊有藥妝店和 <a href="https://www.google.com/maps/search/?api=1&query=イオンスタイル+松江+駅前" target="_blank" class="text-blue-600 hover:underline">AEON</a> (超市)'
                         ]},
-                        gourmet_alt: { title: '新增美食推薦', items: [
-                            '<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJPTaCj4hDVzURPW7cuqeIwUs" target="_blank" class="text-blue-600 hover:underline">日本海庄や 出雲市駅前店</a>: 品嚐山陰特有「猛者蝦」。'
-                        ]},
-                        ramen_alt: { title: '人氣拉麵', text: '廣島車站ekie內有<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJZxghdlSfWjURab731Ypkp8c" target="_blank" class="text-blue-600 hover:underline">「尾道らーめん 三公」</a> (醬油系)。'},
-                        night_supply: { title: '宵夜與補給', items: [ '<strong>便利商店:</strong> 飯店對面即有 <a href="https://www.google.com/maps/search/?api=1&query=7-Eleven+near+ドーミーイン出雲" target="_blank" class="text-blue-600 hover:underline">7-Eleven</a>。', '<strong>宵夜選項:</strong> Dormy Inn 飯店提供免費的「夜鳴きそば」(醬油拉麵) 作為宵夜，是絕佳選擇。' ]}
+                        night_supply: { title: '宵夜選項', items: [ 'Dormy Inn 飯店提供免費的「夜鳴きそば」作為宵夜。'] }
+                    },
+                    insights: {
+                        peace_park: { title: '專家見解：和平紀念公園的行走路線', text: '建議的參觀順序是從「原爆穹頂」→「和平紀念資料館」→「和平之火」。完成從見證、理解到反思與祈願的路徑。' },
+                        yakumo: { title: '交通筆記：特急列車「八雲號 (やくも)」', text: '連接岡山與山陰的重要列車，因路線多彎，採用了特殊的「擺式列車」技術。長時間乘坐，務必提前劃位以確保舒適。' },
+                        shinji_sunset: { title: '**絕景攻略：宍道湖夕陽 (日本夕陽百選)**', text: '宍道湖被稱為「水都」松江的眼睛。**最佳觀賞點**是島根縣立美術館的湖畔（玻璃帷幕大廳），這裡是賞月和夕陽的絕佳位置。' },
+                        matsue_food_culture: { title: '松江文化與名產', text: '松江是日本三大茶道文化城市之一，**和菓子**文化發達，名產有**德拉瓦葡萄** (4-7月) 和**冬季松葉蟹**（11月開始）。當季可品嚐**宍道湖蜆湯**等特色美食。' }
                     }
                 },
                 day4: {
-                    title: '眾神之國與日落絕景', date: '2/23 週一', location: '出雲 → 米子', timeAnalysis: { travel: 2.0, activity: 5.5 },
-                        timeline: [
-                        { time: '上午', type: '🍽️', event: '早餐: 出雲市區咖啡廳或便利商店。Check-out並將行李寄存於車站。' },
-                        { time: '中午', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJx39PFo5DVzURnzw_QJEOBfc" target="_blank" class="text-blue-600 hover:underline">羽根屋 本店</a> 品嚐出雲割子蕎麥麵。' },
-                        { time: '13:00-15:00', type: '🏛️', event: '博物館巡禮: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJqbBzkL1cVzURLU-QlVM62_I" target="_blank" class="text-blue-600 hover:underline">島根縣立古代出雲歴史博物館</a>', stay: '2 小時' },
-                        { time: '15:00-17:15', type: '⛩️', event: '參拜: 出雲大社', stay: '約 2.25 小時' },
-                        { time: '17:15-18:30', type: '🌅', event: '絕景鑑賞: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJM0G9XoZcVzURmbcJMDPMRmc" target="_blank" class="text-blue-600 hover:underline">稻佐之濱</a>夕陽 (預估日落 18:00)', stay: '約 1.25 小時' },
-                        { time: '18:30-20:15', type: '🚆', event: '戰術性撤離 & 移動至米子<br><span class="text-sm text-gray-500">特急やくも 30号</span>', stay: '約 1.75 小時' },
-                        { time: '20:15', type: '🍽️', event: '晚餐: 抵達米子Check-in後，於車站周邊自選。'},
-                        { time: '晚上', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJeXkplnj3VjURmOTqf9J8A5E" target="_blank" class="text-blue-600 hover:underline">米子ワシントンホテルプラザ</a>'}
+                    title: '國寶與神話・出雲大社與絕美夕陽 (含歷史博物館)', date: '2/23 週一', location: '松江 ↔ 出雲', timeAnalysis: { travel: 3.0, activity: 7.0 },
+                    timeline: [
+                        { time: '08:00', type: '🍽️', event: '早餐: 飯店內或松江站周邊咖啡廳。', description: '儲備體力，準備開始神話之國的巡禮。' },
+                        { time: '09:00-12:00', type: '🏯', event: '國寶巡禮: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJt2R4SoxdVTURG4V36XpB8vI" target="_blank" class="text-blue-600 hover:underline">松江城</a> (國寶五城)', description: '參觀國寶「千鳥城」，登上天守閣俯瞰松江市區。**專家建議**：推薦體驗**堀川遊覽船**。', stay: '約 3 小時' },
+                        { time: '12:00-13:30', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ02lYpEJfVTUR28v-M_1J62k" target="_blank" class="text-blue-600 hover:underline">八雲庵</a> (鴨肉蕎麥麵)', description: '在松江城旁邊的古老武家屋敷建築中，品嚐溫熱的鴨肉蕎麥麵。**名產：出雲蕎麥麵**。' },
+                        { time: '13:35-14:45', type: '🚆', event: '移動: JR山陰本線 (松江駅 13:35 → 出雲市 14:05) & 一畑電車 (出雲市 14:20 → 大社前 14:45)', description: '搭乘 JR 前往出雲市駅，轉乘**一畑電車**直達大社前。 JR Pass涵蓋JR區間，一畑電車需自費。', cost: 'JR Pass + ¥500 (自理)'},
+                        { time: '14:45-16:00', type: '🏛️', event: '深度歷史: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJT6v-h_FcVzUR6e30D0a_m9k" target="_blank" class="text-blue-600 hover:underline">島根縣立古代出雲歴史博物館</a>', description: '參觀出雲大社的古代歷史和神話背景，為稍後的參拜做好知識儲備。', stay: '約 1.25 小時' },
+                        { time: '16:00-16:45', type: '☕', event: '下午茶/休息: <a href="https://www.google.com/maps/search/?api=1&query=お福+ぜんざい" target="_blank" class="text-blue-600 hover:underline">お福 ぜんざい</a> (出雲善哉)', description: '在神門通上享用出雲的特色甜點「善哉」（紅豆麻糬湯）。', stay: '約 45 分鐘' },
+                        { time: '16:45-18:00', type: '⛩️', event: '參拜: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJm0G9XoZcVzURmbcJMDPMRmc" target="_blank" class="text-blue-600 hover:underline">出雲大社</a>', description: '在充滿神話色彩的古老神社中，體驗獨特的「二拜四拍手一拜」。', stay: '約 1.25 小時' },
+                        { time: '18:00-19:30', type: '🌅', event: '絕景鑑賞: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJm6p-M-xcVzUR-9426fH9Vq8" target="_blank" class="text-blue-600 hover:underline">稻佐之濱</a>夕陽', description: '前往八百萬神明登陸的聖地，靜待夕陽，拍攝巨型礁石上的弁天神社剪影。', stay: '約 1.5 小時' },
+                        { time: '20:00', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJx39PFo5DVzURnzw_QJEOBfc" target="_blank" class="text-blue-600 hover:underline">羽根屋 本店</a> (出雲割子蕎麥麵)', description: '用出雲的靈魂美食「割子蕎麥麵」結束這趟神話之旅。'},
+                        { time: '21:00', type: '🚆', event: '返回松江飯店 (一畑電車 + JR/巴士)', description: '經由出雲市轉乘 JR 返回松江，準備隔日前往米子。' },
                     ],
                     intel: {
-                        shrine: { title: '人氣神社 & 御守', items: [
-                            '**出雲大社:** 本日參拜核心。',
-                            '**人氣御守:** 以祈求良緣的「縁結び守」最為聞名。 '
+                        supply: { title: '周邊補給 (出雲大社)', items: [
+                            '**藥妝店/超市**：出雲市站前有藥妝店和 AEON (超市)。'
                         ]},
-                        sweets: { title: '人氣甜點', text: '出雲大社神門通上有許多店家販售<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJVVVVVZhcVzURD0weqj_xopk" target="_blank" class="text-blue-600 hover:underline">「出雲ぜんざい (出雲善哉)」</a>。'},
-                        supply: { title: '周邊補給 (米子站)', items: [
-                            '藥妝店: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJlTNS6X73VjUR-0ZMmodtq48" target="_blank" class="text-blue-600 hover:underline">Drugstore Wellness</a>',
-                            '唐吉軻德: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJzdSHHgD3VjUR3JTxT1gn25I" target="_blank" class="text-blue-600 hover:underline">MEGAドン・キホーテ 米子店</a> (需搭計程車)'
+                        shrine: { title: '當季資訊', items: [
+                            '**出雲大社**: 本日參拜核心。**參拜方式**：獨特的「二拜四拍手一拜」。',
+                            '**名產**: 出雲蕎麥麵 (日本三大蕎麥麵之一)，紅豆湯 (善哉) 源於此。'
                         ]},
-                        night_supply: { title: '宵夜與補給', items: [ '<strong>便利商店:</strong> <a href="https://www.google.com/maps/search/?api=1&query=convenience+store+near+米子ワシントンホテルプラザ" target="_blank" class="text-blue-600 hover:underline">米子站前</a> 有多家便利商店可供選擇。', '<strong>宵夜選項:</strong> 米子站周邊有許多居酒屋，或可嘗試尋找深夜營業的牛骨拉麵店。' ]}
+                        gourmet_alt: { title: '在地美食推薦', items: [
+                            '**出雲割子蕎麥麵**: 三層漆器盛裝，獨特吃法。',
+                            '**當季水果 (PDF)**: 2月為廣島檸檬產季，3月有德拉瓦葡萄 (4月開始)。'
+                        ]},
+                        festival: { title: '當季活動', text: '山陰地區冬季有**溫泉街燈飾活動**。若在農曆10月造訪，則為**神在月**。' }
+                    },
+                    insights: {
+                        matsue_castle: { title: '**專家見解：國寶松江城與千鳥之舞**', text: '松江城是日本國寶五城之一，因其屋頂造型像**千鳥展翅**而得名「千鳥城」。**專家建議**：登上天守閣，可將宍道湖、中海和松江市區美景盡收眼底。' },
+                        izumo_sunset: { title: '**絕景攻略：稻佐之濱夕陽 (神話聖地)**', text: '稻佐之濱被列入日本夕陽百選，其夕陽景色帶有強烈的神聖感。此地是神話中的八百萬神明登陸地。' },
+                        yakumoan: { title: '美食筆記：八雲庵 (午餐)', text: '位於松江城旁的八雲庵是著名的庭園古宅餐廳，提供高品質的蕎麥麵。在歷史建築中用餐，是松江特有的文化體驗。' },
+                        ofukuzen: { title: '甜點筆記：出雲善哉 (下午茶)', text: '「善哉」（紅豆湯）起源於出雲大社。在參拜完畢後，來一碗熱騰騰的紅豆湯，既暖身又符合當地的傳統文化。' },
+                        izumo_museum_tip: { title: '博物館參觀建議', text: '島根縣立古代出雲歴史博物館是了解出雲大社文化和神話背景的最佳起點，其展示的**古代宇豆柱**複原件極具震撼力。建議在參拜前優先參觀，以增強參拜時的文化感受。' }
                     }
                 },
                 day5: {
-                    title: '妖怪國度深度一日', date: '2/24 週二', location: '米子 ↔ 境港', timeAnalysis: { travel: 1.5, activity: 7.0 },
+                    title: '藝術與移動・足立美術館 → 妖怪米子', date: '2/24 週二', location: '松江 → 安來 → 米子', timeAnalysis: { travel: 1.5, activity: 5.0 },
                     timeline: [
-                        { time: '上午', type: '🍽️', event: '早餐: 飯店或米子市區咖啡廳，享受悠閒早晨。'},
-                        { time: '09:18-10:02', type: '🚆', event: '搭乘JR境線(鬼太郎列車)前往境港。'},
-                        { time: '10:02-16:00', type: '🚶', event: '境港/鬼太郎之里 深度一日遊，參觀水木茂紀念館。', stay: '約 6 小時' },
-                        { time: '中午', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJW_JY7yVUVjURlhgjuCHKfno" target="_blank" class="text-blue-600 hover:underline">境港水産物直売センター</a> 內食堂品嚐海鮮丼。'},
-                        { time: '16:00之後', type: '🚆', event: '從境港返回米子飯店。'},
-                        { time: '傍晚', type: '🍽️', event: '晚餐: 米子車站周邊自選。'},
-                        { time: '晚上', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJeXkplnj3VjURmOTqf9J8A5E" target="_blank" class="text-blue-600 hover:underline">米子ワシントンホテルプラザ</a>'}
+                        { time: '上午', type: '🍽️', event: '早餐: 飯店Check-out，寄放過夜包。', description: '在松江享受最後一頓早餐。' },
+                        { time: '09:00-12:30', type: '🎨', event: '藝術巡禮: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJF2yF8A_lVjUREz8d40xV998" target="_blank" class="text-blue-600 hover:underline">足立美術館</a> (連續第一的庭園)', description: '搭乘免費接駁車前往安來市的足立美術館。欣賞被譽為「活畫作」的庭園美景。', stay: '約 3.5 小時' },
+                        { time: '12:30-13:30', type: '🍽️', event: '午餐: 足立美術館內或周邊簡餐。', description: '在可觀賞庭園的餐廳中享受午餐。' },
+                        { time: '14:02-14:25', type: '🚆', event: '移動與轉送行李：JR山陰本線 (安來駅 14:02 → 米子駅 14:25)', description: '搭乘 JR山陰本線。**JR Pass** 涵蓋。領取 Day 3 寄來的大行李。', cost: 'JR Pass'},
+                        { time: '15:30-17:30', type: '☕', event: '下午茶: 米子車站周邊咖啡廳/購物。', description: '休息片刻，可前往車站周邊進行補給。' },
+                        { time: '19:00', type: '🍽️', event: '晚餐: 飯店周邊自選 (推薦牛骨拉麵)。', description: '尋找當地特色的「牛骨拉麵」 (本日指定**拉麵**)，體驗與豚骨拉麵截然不同的清甜湯頭。**【美食任務：拉麵已達成】**'},
+                        { time: '21:00', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJeXkplnj3VjURmOTqf9J8A5E" target="_blank" class="text-blue-600 hover:underline">米子ワシントンホテルプラザ</a>', description: '連住兩晚，作為境港和鳥取移動的基地。'}
+                    ],
+                    intel: {
+                        supply: { title: '周邊補給 (米子站)', items: [
+                            '**大型電器行 (備選)**：<a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+テックランド+米子店" target="_blank" class="text-blue-600 hover:underline">ヤマダデンキ テックランド 米子店</a> (需搭車)',
+                            '**唐吉軻德**：<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJzdSHHgD3VjUR3JTxT1gn25I" target="_blank" class="text-blue-600 hover:underline">MEGAドン・キホーテ 米子店</a> (需搭車)',
+                            '**藥妝店/超市**：米子站前有多家藥妝店，生活機能佳。'
+                        ]},
+                        ramen: { title: '人氣拉麵', text: '米子當地以**牛骨拉麵 (牛骨ラーメン)**為特色。'},
+                        souvenir: { title: '當季名產', items: [
+                            '**米子/島根**: 冬季盛產**松葉蟹**（11月至3月）、猛者蝦。',
+                            '**當季水果**: 3月有**廣島檸檬**、4月有**德拉瓦葡萄**開始產季。'
+                        ]},
+                    },
+                    insights: {
+                        adachi_museum: { title: '**專家見解：足立美術館的「活畫作」**', text: '足立美術館的庭園被譽為**「活畫作」**，設計成從室內窗框望出去，每一景都像裱框的畫作。**專家提醒**：欣賞足立美術館需遵守禮儀，不可進入庭園，建議將美術館安排在上午，避開人潮。' },
+                        yasugi_travel: { title: '交通TIPS：前往足立美術館', text: '美術館提供 JR 安來站到美術館的**免費接駁巴士**，每小時一班，務必提前確認時刻表。' },
+                        sanin_gourmet: { title: '山陰美食：猛者蝦與松葉蟹', text: '山陰地區是海鮮寶庫，島根的「猛者蝦」外表粗獷但肉質甜美，有「夢幻之蝦」的美稱。冬季的「松葉蟹」是頂級美味。' }
+                    }
+                },
+                day6: {
+                    title: '妖怪國度深度一日', date: '2/25 週三', location: '米子 ↔ 境港', timeAnalysis: { travel: 1.5, activity: 7.0 },
+                    timeline: [
+                        { time: '上午', type: '🍽️', event: '早餐: 飯店或米子市區咖啡廳。', description: '準備前往充滿童趣與奇幻的妖怪世界。'},
+                        { time: '09:18-10:02', type: '🚆', event: '搭乘JR境線(鬼太郎列車)前往境港。', description: '從踏上彩繪著各式妖怪的列車那刻起，就已進入水木茂老師的奇幻世界。**JR Pass** 涵蓋。', cost: 'JR Pass'},
+                        { time: '10:02-12:30', type: '🚶', event: '境港/水木茂大道 深度一日遊，尋找177座妖怪青銅像。', description: '沿著「水木茂大道」漫步，尋找隱藏在各處的妖怪青銅像。**專家提醒**：整個小鎮就是一座巨大的妖怪主題樂園。', stay: '約 2.5 小時' },
+                        { time: '12:30-14:00', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJW_JY7yVUVjURlhgjuCHKfno" target="_blank" class="text-blue-600 hover:underline">境港水産物直売センター</a> 內食堂品嚐海鮮丼。', description: '境港是日本海側重要的漁港，用最新鮮的紅楚蟹和海產製成的海鮮丼犒賞自己。**當季海鮮：紅楚蟹**。'},
+                        { time: '14:00-16:00', type: '🏛️', event: '水木茂紀念館 & 購物。', description: '參觀水木茂老師的生平與作品，並在商店街購買妖怪伴手禮。', stay: '約 2 小時'},
+                        { time: '16:00-17:00', type: '🚆', event: '從境港返回米子飯店。', description: '告別妖怪，返回米子市區。'},
+                        { time: '19:00', type: '🍽️', event: '晚餐: 飯店周邊自選 (推薦當地居酒屋)', description: '享受在米子的最後一晚。可考慮前往**皆生溫泉**享受美肌之湯。'},
+                        { time: '21:00', type: '☕', event: '宵夜/休息: 米子車站周邊補給。', description: '米子站周邊有許多宵夜選擇，或可準備隔日長途移動的零食。'}
                     ],
                     intel: {
                         ramen: { title: '人氣拉麵', text: '米子當地以**牛骨拉麵 (牛骨ラーメン)**為特色。'},
                         souvenir: { title: '特色伴手禮', text: '水木茂大道的<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJVVXJd0tUVjURMMH94U-JGL0" target="_blank" class="text-blue-600 hover:underline">妖菓堂 (Yokado)</a>的妖怪和菓子。'},
-                        night_supply: { title: '宵夜與補給', items: [ '<strong>便利商店:</strong> <a href="https://www.google.com/maps/search/?api=1&query=convenience+store+near+米子ワシントンホテルプラザ" target="_blank" class="text-blue-600 hover:underline">米子站前</a> 有多家便利商店可供選擇。', '<strong>宵夜選項:</strong> 推薦嘗試米子站前的<a href="https://www.google.com/maps/search/?api=1&query=居酒屋+米子駅" target="_blank" class="text-blue-600 hover:underline">居酒屋</a>，體驗在地氛圍。' ]}
-                    }
-                },
-                day6: {
-                    title: '動漫巡禮 & 前進鳥取', date: '2/25 週三', location: '米子 → 由良 → 鳥取', timeAnalysis: { travel: 2.5, activity: 6.0 },
-                    timeline: [
-                        { time: '上午', type: '🍽️', event: '早餐: 米子市區解決。Check-out並攜帶過夜包出發。'},
-                        { time: '08:30-12:00', type: '🏛️', event: '由良/柯南小鎮 體驗 <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ89kHhMh1VjURfy7KxXz4Wy8" target="_blank" class="text-blue-600 hover:underline">青山剛昌故鄉館</a>', stay: '約 2 小時' },
-                        { time: '中午', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJuQDAHYV1VjURYeOg4bbYsR0" target="_blank" class="text-blue-600 hover:underline">喫茶ポアロ (白羅咖啡廳)</a>'},
-                        { time: '12:28-14:00', type: '🚆', event: '移動 & 飯店Check-in' },
-                        { time: '14:00-17:00', type: '🏜️', event: '<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJbx8cHUSPVTURazEAdQKsetg" target="_blank" class="text-blue-600 hover:underline">鳥取砂丘</a> & <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJF2dbUUWPVTUR6USg6_DP8x4" target="_blank" class="text-blue-600 hover:underline">砂之美術館</a> 深度體驗', stay: '3 小時' },
-                        { time: '傍晚', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJo8zzQy-QVTURZsutYnwMDto" target="_blank" class="text-blue-600 hover:underline">炭火焼肉 福ふく (FukFuk)</a> 品嚐鳥取和牛。'},
-                        { time: '晚上', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJSYgqicKPVTURx9fQJ_1eZUg" target="_blank" class="text-blue-600 hover:underline">鳥取ワシントンホテルプラザ</a>'}
-                    ],
-                    intel: {
-                        supply: { title: '周邊補給 (鳥取站)', items: [
-                             '電器行: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJVZPZ-KOPVTURDWWI8wECcOI" target="_blank" class="text-blue-600 hover:underline">ヤマダデンキ (Yamaden)</a> (步行約15分鐘)',
-                             '唐吉軻德: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ4xfkbuaPVTURh3A_ZIB7M9Y" target="_blank" class="text-blue-600 hover:underline">ドン・キホーテ 鳥取本店</a> (步行約10分鐘)'
-                        ]},
-                        castle: { title: '百大名城', text: '<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJVwup7ISPVTUREdKpLOvUwdg" target="_blank" class="text-blue-600 hover:underline">鳥取城跡</a> 可作為備選方案。'},
-                        ramen: { title: '人氣拉麵', text: '鳥取以**牛骨拉麵 (牛骨ラーメン)**聞名。'},
-                        souvenir: { title: '特色伴手禮', items: ['コナンの家 米花商店街: 柯南限定周邊商品。', '<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJua8IV02PVTURUv4ofvMcCxE" target="_blank" class="text-blue-600 hover:underline">砂丘会館</a>: 販售「砂たまご」(砂蛋)。']},
-                        night_supply: { title: '宵夜與補給', items: [ '<strong>便利商店:</strong> 飯店旁即有 <a href="https://www.google.com/maps/search/?api=1&query=Lawson+near+鳥取ワシントンホテルプラザ" target="_blank" class="text-blue-600 hover:underline">Lawson</a>。', '<strong>宵夜選項:</strong> 鳥取站前商店街有不少選擇，或可尋找連鎖牛丼店如 Sukiya。' ]}
+                    },
+                    insights: {
+                        mizuki_road: { title: '專家見解：水木茂大道的遊玩攻略', text: '水木茂大道的核心樂趣在於「集章拉力」。在觀光案內所或商店購買一本「妖怪導覽手冊」，沿途尋找設置在各處的印章，全部集滿後可以換取「完走證」。' },
+                        kitaro_train: { title: '交通筆記：JR境線 (鬼太郎列車)', text: '行駛的列車都有不同的妖怪主題彩繪，搭到哪一輛全憑運氣。' },
+                        seafood: { title: '美食筆記：境港的海之幸', text: '境港以捕獲量日本第一的「紅楚蟹」聞名，**冬季為松葉蟹（極品海鮮）產季**。在「境港水産物直売センター」可以找到最新鮮的漁獲。' }
                     }
                 },
                 day7: {
-                    title: '前進岡山 & 美學巡禮', date: '2/26 週四', location: '鳥取 → 岡山', timeAnalysis: { travel: 2.0, activity: 3.5 },
+                    title: '動漫巡禮 & 挑戰鳥取砂丘', date: '2/26 週四', location: '米子 → 由良 → 鳥取', timeAnalysis: { travel: 2.5, activity: 6.0 },
                     timeline: [
-                        { time: '上午', type: '🍽️', event: '早餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJS2FFW8KPVTUR_KIbupGrbOE" target="_blank" class="text-blue-600 hover:underline">すなば珈琲 鳥取駅前店</a>'},
-                        { time: '10:00-11:49', type: '🚆', event: '移動: 前往岡山<br><span class="text-sm text-gray-500">特急スーパーいなば 6号</span>', stay: '約 1.8 小時' },
-                        { time: '中午', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJbY-XI00GVDURSBrGhbRSxWc" target="_blank" class="text-blue-600 hover:underline">吾妻寿司</a> 品嚐散壽司'},
-                        { time: '14:00-17:00', type: '🏯', event: '名園與名城: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJER_WDSUGVDURujV4pMtef44" target="_blank" class="text-blue-600 hover:underline">岡山城</a> & <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJOeRmIUoGVDURkjPzFDy4Vv4" target="_blank" class="text-blue-600 hover:underline">後樂園</a><br><span class="text-sm text-gray-500">交通花費: ¥120</span>', stay: '3 小時' },
-                        { time: '傍晚', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJExtR8UkGVDUR8otU2Ytg350" target="_blank" class="text-blue-600 hover:underline">味司 野村</a> 品嚐醬汁豬排丼'},
-                        { time: '晚上', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ7T_MCUwGVDUR00dIzm6mgEQ" target="_blank" class="text-blue-600 hover:underline">ダイワロイネットホテル岡山駅前</a>'}
+                        { time: '上午', type: '🍽️', event: '早餐 & 行李轉送： 米子市區解決。Check-out並將大行李寄送至 Day 10 廣島飯店。', description: '執行行李轉送至廣島的任務，輕鬆前往下一個動漫主題小鎮。'},
+                        { time: '08:30-12:00', type: '🏛️', event: '由良/柯南小鎮 體驗 <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ89kHhMh1VjURfy7KxXz4Wy8" target="_blank" class="text-blue-600 hover:underline">青山剛昌故鄉館</a>', description: '從車站到博物館的「柯南大道」上，處處都是漫畫中的角色與場景。', stay: '約 2 小時' },
+                        { time: '中午', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJuQDAHYV1VjURYeOg4bbYsR0" target="_blank" class="text-blue-600 hover:underline">喫茶ポアロ (白羅咖啡廳)</a>', description: '在還原度極高的白羅咖啡廳用餐。'},
+                        { time: '12:28-13:50', type: '🚆', event: '移動 & 飯店Check-in：JR特急スーパーまつかぜ (由良駅 12:28 → 鳥取駅 13:50)', description: '搭乘 JR特急列車直達鳥取。**JR Pass** 涵蓋。準備下午的砂丘探索。', cost: 'JR Pass'},
+                        { time: '14:00-17:00', type: '🏜️', event:'<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJbx8cHUSPVTURazEAdQKsetg" target="_blank" class="text-blue-600 hover:underline">鳥取砂丘</a> & <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJF2dbUUWPVTUR6USg6_DP8x4" target="_blank" class="text-blue-600 hover:underline">砂之美術館</a> 深度體驗', description: '登上「馬之背」，眺望沙與海的交界線，感受大自然的力量。**專家建議**：帶防風眼鏡。', stay: '3 小時' },
+                        { time: '19:00', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJJo8zzQy-QVTURZsutYnwMDto" target="_blank" class="text-blue-600 hover:underline">炭火焼肉 福ふく</a> 品嚐鳥取和牛。', description: '用頂級的鳥取和牛（本日指定**燒肉**）犒賞一天的奔波，其細緻的油花與入口即化的口感，是味蕾的極致享受。**【美食任務：燒肉已達成】**'},
+                        { time: '21:00', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJSYgqicKPVTURx9fQJ_1eZUg" target="_blank" class="text-blue-600 hover:underline">鳥取ワシントンホテルプラザ</a>', description: '在鳥取市區的連鎖商務飯店休息，準備隔日的移動。'}
                     ],
                     intel: {
-                        castle: { title: '百大名城 & 日本三大名園', items: ['岡山城', '後樂園'] },
-                        souvenir: { title: '特色伴手禮', text: '<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ1woBYAAHVDUReeMI0gUUXyc" target="_blank" class="text-blue-600 hover:underline">廣榮堂</a>のきびだんご (吉備糰子)。'},
-                        supply: { title: '周邊補給 (岡山站)', items: [
-                            '電器行: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJURFlCUwGVDURegSIB8cZxxY" target="_blank" class="text-blue-600 hover:underline">ビックカメラ 岡山駅店</a>',
-                            '唐吉軻德: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJsfBHgkwGVDUR6_wcGnpjrU4" target="_blank" class="text-blue-600 hover:underline">ドン・キホーテ 岡山駅前店</a> (步行約5分鐘)'
+                        supply: { title: '周邊補給 (鳥取站)', items: [
+                            '**大型電器行 (備選)**：<a href="https://www.google.com/maps/search/?api=1&query=ヤマダデンキ+鳥取+駅前" target="_blank" class="text-blue-600 hover:underline">ヤマダデンキ (Yamaden)</a> (步行約15分鐘)',
+                            '**唐吉軻德**：<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ4xfkbuaPVTURh3A_ZIB7M9Y" target="_blank" class="text-blue-600 hover:underline">ドン・キホーテ 鳥取本店</a> (步行約10分鐘)',
+                            '**藥妝店**：鳥取站前有多家藥妝店。'
                         ]},
-                        night_supply: { title: '宵夜與補給', items: [ '<strong>便利商店:</strong> <a href="https://www.google.com/maps/search/?api=1&query=convenience+store+near+ダイワロイネットホテル岡山駅前" target="_blank" class="text-blue-600 hover:underline">岡山站前</a> 選擇眾多，包含 7-Eleven 及 FamilyMart。', '<strong>宵夜選項:</strong> 岡山站周邊相當熱鬧，有營業至深夜的拉麵店與居酒屋。' ]}
+                        castle: { title: '百大名城', text: '<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJvwup7ISPVTUREdKpLOvUwdg" target="_blank" class="text-blue-600 hover:underline">鳥取城跡</a> 可作為備選方案。'},
+                        ramen: { title: '人氣拉麵', text: '鳥取以**牛骨拉麵 (牛骨ラーメン)**聞名。'},
+                        souvenir: { title: '當季名產', items: [
+                            '**冬季名產**: **松葉蟹**（11月至3月產季）。', 
+                            '**柯南主題**: 柯南限定周邊商品。',
+                            '**水果**: **二十世紀梨** (8-9月為產季，此時為儲藏品)。', 
+                            '**戀人聖地**: <a href="https://www.google.com/maps/search/?api=1&query=白兔神社" target="_blank" class="text-blue-600 hover:underline">白兔神社</a> 是戀人聖地，可投姻緣石。'
+                        ]},
+                    },
+                    insights: {
+                        conan_town: { title: '專家見解：柯南小鎮的完全攻略', text: '從JR由良站（又稱柯南站）開始，整趟體驗就被精心設計過。沿著「柯南大道」步行至「青山剛昌故鄉館」。' },
+                        tottori_dunes: { title: '旅行TIPS：鳥取砂丘的最佳時刻與裝備', text: '鳥取砂丘在黃昏被染成一片金黃。**專家提醒**：建議帶**防風眼鏡**，並穿著方便脫的鞋子。**夏季活動**如滑砂、滑翔傘是不可錯過的體驗。' },
+                        tottori_wagyu: { title: '美食筆記：鳥取和牛的奧秘', text: '鳥取和牛的特點在於油酸含量高，使得脂肪熔點較低，造就了入口即化的柔滑口感。其中，「鳥取和牛油酸55」更是頂級品牌。' },
                     }
                 },
                 day8: {
-                    title: '倉敷漫步 & 孤高之城', date: '2/27 週五', location: '岡山 ↔ 倉敷 / 備中高梁', timeAnalysis: { travel: 1.5, activity: 7.0 },
+                    title: '國寶與名園・返回山陽核心', date: '2/27 週五', location: '鳥取 → 岡山', timeAnalysis: { travel: 2.0, activity: 3.5 },
+                    timeline: [
+                        { time: '上午', type: '🍽️', event: '早餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJS2FFW8KPVTUR_KIbupGrbOE" target="_blank" class="text-blue-600 hover:underline">すなば珈琲 鳥取駅前店</a>', description: '享受在鳥取的最後一頓咖啡。'},
+                        { time: '10:00-11:49', type: '🚆', event: '移動: 特急スーパーいなば (鳥取駅 10:00 → 岡山駅 11:49)', description: '搭乘「超級因幡號」，告別山陰，返回陽光普照的岡山。**JR Pass** 涵蓋。', cost: 'JR Pass' },
+                        { time: '中午', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJbY-XI00GVDURSBrGhbRSxWc" target="_blank" class="text-blue-600 hover:underline">吾妻寿司</a> 品嚐岡山散壽司', description: '抵達岡山後，先用在地的美味散壽司開啟山陽的美食探索。'},
+                        { time: '14:00-16:00', type: '🏯', event: '名園與名城: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJER_WDSUGVDURujV4pMtef44" target="_blank" class="text-blue-600 hover:underline">岡山城</a> & <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJOeRmIUoGVDURkjPzFDy4Vv4" target="_blank" class="text-blue-600 hover:underline">後樂園</a>', description: '隔著旭川相望的黑白對比。先登上漆黑的「烏城」，再到對岸的米其林三星庭園後樂園。', stay: '2 小時' },
+                        { time: '16:00-17:00', type: '☕', event: '下午茶/甜點: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJQxEnEA0HVDURM36F-Ras1EY" target="_blank" class="text-blue-600 hover:underline">Gowdy</a> 水果甜點', description: '用岡山水果王國的代表性甜點犒賞自己。'},
+                        { time: '17:30', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJExtR8UkGVDUR8otU2Ytg350" target="_blank" class="text-blue-600 hover:underline">味司 野村</a> 品嚐醬汁豬排丼', description: '品嚐岡山獨特的靈魂美食—「醬汁豬排丼」 (本日指定**炸豬排**料理)。**【美食任務：炸豬排料理已達成】**'},
+                        { time: '21:00', type: '🏨', event: '宵夜/住宿: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ7T_MCUwGVDUR00dIzm6mgEQ" target="_blank" class="text-blue-600 hover:underline">ダイワロイネットホテル岡山駅前</a>', description: '連住兩晚，可專注於周邊景點探索。'}
+                    ],
+                    intel: {
+                        supply: { title: '周邊補給 (岡山站)', items: [
+                            '**大型電器行**：<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJURFlCUwGVDURegSIB8cZxxY" target="_blank" class="text-blue-600 hover:underline">ビックカメラ 岡山駅店 (BicCamera)</a> (車站內，大型)',
+                            '**唐吉軻德**：<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJsfBHgkwGVDUR6_wcGnpjrU4" target="_blank" class="text-blue-600 hover:underline">ドン・キホーテ 岡山駅前店</a> (步行約5分鐘)',
+                            '**藥妝店/超市**：車站周邊選擇眾多。'
+                        ]},
+                        castle: { title: '百大名城 & 名園', items: ['岡山城 (烏城)', '後樂園 (日本三大名園)'] },
+                        souvenir: { title: '當季名產', items: [
+                            '**名產**: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ1woBYAAHVDUReeMI0gUUXyc" target="_blank" class="text-blue-600 hover:underline">廣榮堂</a>のきびだんご (吉備糰子)。', 
+                            '**特產**: **備前黃韭**是岡山特產蔬菜。',
+                            '**當季水果**: 岡山被譽為「水果王國」，2月為**廣島檸檬**持續產季，3月為**德拉瓦葡萄**初熟。'
+                        ]},
+                        festival: { title: '當季活動', text: '春季（3月下旬）是岡山**櫻花季**的開始，後樂園是最佳賞櫻景點之一。' }
+                    },
+                    insights: {
+                        okayama_castle_korakuen: { title: '**專家見解：感受城與園的「借景」美學**', text: '岡山後樂園是日本三大名園之一，其設計巧妙地將對岸漆黑的「烏城」岡山城借景入園。**專家建議**：登上後樂園的**唯心山制高點**，可一覽庭園全景。' },
+                        demi_katsudon: { title: '美食筆記：醬汁豬排丼 (デミカツ丼)', text: '岡山的「醬汁豬排丼」有別於一般的豬排丼。它是將炸豬排浸泡在特調的**多明格拉斯醬**中，結合了洋食風格。' },
+                        okayama_pass: { title: '專家建議：岡山樂享周遊券', text: '旅遊達人提醒，**購買岡山樂享周遊券超划算**，涵蓋了許多岡山城周邊景點的門票。' },
+                        gowdy_sweets: { title: '甜點筆記：岡山水果王國', text: 'Gowdy 和倉敷桃子一樣，主打使用岡山當季水果的高品質聖代。**岡山被譽為水果王國**，夏季白桃、秋季晴王葡萄為代表，是疲憊旅途中的視覺和味覺享受。' }
+                    }
+                },
+                day9: {
+                    title: '倉敷漫步 & 孤高之城 (選擇日)', date: '2/28 週六', location: '岡山 ↔ 倉敷 / 備中高梁', timeAnalysis: { travel: 1.5, activity: 7.0 },
                     options: {
                         optionA: {
-                            label: '選項A: Chill & 美學',
+                            label: '選項A: Chill & 美學 (倉敷)',
                             timeline: [
-                                { time: '上午', type: '🍽️', event: '早餐: 岡山站內便利商店或咖啡廳。' },
-                                { time: '09:18-09:35', type: '🚆', event: '搭乘JR山陽本線前往倉敷。'},
-                                { time: '09:35-17:00', type: '🎨', event: '倉敷美觀地區一日遊。深入參觀<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJVVXFlUdWUTUR0eP250FshZ0" target="_blank" class="text-blue-600 hover:underline">大原美術館</a>，並在<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJjaYSejhWUTUR20HBP3TetO4" target="_blank" class="text-blue-600 hover:underline">くらしき桃子</a>享用下午茶。', stay: '全日' },
-                                { time: '中午', type: '🍽️', event: '午餐: 倉敷美觀地區自選。' },
-                                { time: '傍晚', type: '🍽️', event: '晚餐: 返回岡山後，品嚐 <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ50K8C04GVDURxwB6M_p4nbw" target="_blank" class="text-blue-600 hover:underline">中華そば冨士屋</a>。' },
-                                { time: '晚上', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ7T_MCUwGVDUR00dIzm6mgEQ" target="_blank" class="text-blue-600 hover:underline">ダイワロイネットホテル岡山駅前</a>'}
+                                { time: '上午', type: '🍽️', event: '早餐: 岡山站內便利商店或咖啡廳。', description: '悠閒地享受在岡山的早晨。' },
+                                { time: '09:18-09:35', type: '🚆', event: '搭乘JR山陽本線前往倉敷 (岡山駅 09:18 → 倉敷駅 09:35)。', description: '搭上短程電車，前往江戶時代的商業重鎮。**JR Pass** 涵蓋。', cost: 'JR Pass'},
+                                { time: '09:35-12:30', type: '🎨', event: '倉敷美觀地區散策 & <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJVVXFlUdWUTUR0eP250FshZ0" target="_blank" class="text-blue-600 hover:underline">大原美術館</a>', description: '在楊柳垂岸的倉敷川畔漫步、參觀日本第一座私人西洋美術館。', stay: '約 3 小時' },
+                                { time: '12:30-14:00', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJy6f22j1WUTURJqK92w16n34" target="_blank" class="text-blue-600 hover:underline">倉敷味噌豬排名店（梅之木）</a>', description: '品嚐倉敷特有的煎烤味噌豬排飯。'},
+                                { time: '14:00-15:30', type: '☕', event: '下午茶: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJjaYSejhWUTUR20HBP3TetO4" target="_blank" class="text-blue-600 hover:underline">くらしき桃子</a> 水果聖代', description: '用華麗的水果聖代，為美學巡禮畫下甜蜜句點。'},
+                                { time: '15:30-18:00', type: '🛍️', event: '<a href="https://www.google.com/maps/search/?api=1&query=三井Outlet倉敷" target="_blank" class="text-blue-600 hover:underline">三井Outlet倉敷</a>購物', description: '從美學區轉戰購物區，Outlet是補貨的好去處。'},
+                                { time: '19:30', type: '🍽️', event: '晚餐: 返回岡山後，品嚐 <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJx0TzBUIGVDUR0n-gB8j1G1M" target="_blank" class="text-blue-600 hover:underline">トラットリア Pappa</a> (義大利麵)。', description: '享受一頓手作義大利麵（本日指定**義大利麵**），換個口味。**【美食任務：義大利麵已達成】**'},
+                                { time: '21:00', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ7T_MCUwGVDUR00dIzm6mgEQ" target="_blank" class="text-blue-600 hover:underline">ダイワロイネットホテル岡山駅前</a>', description: '在岡山的最後一晚。'}
                             ]
                         },
                         optionB: {
-                            label: '選項B: 歷史 & 挑戰',
+                            label: '選項B: 歷史 & 挑戰 (備中松山城)',
                             timeline: [
-                                { time: '上午', type: '🍽️', event: '早餐: 岡山站內便利商店或咖啡廳。' },
-                                { time: '09:05-09:39', type: '🚆', event: '搭乘JR特急 [やくも 5号] 前往備中高梁。'},
-                                { time: '09:40-13:30', type: '🏯', event: '挑戰日本最高的山城 <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJacUM4muyVjURZGTgH1Jqwt8" target="_blank" class="text-blue-600 hover:underline">備中松山城</a>。務必穿著防滑好走的鞋。', stay: '約 4 小時'},
-                                { time: '中午', type: '🍽️', event: '午餐: 備中高梁車站周邊。' },
-                                { time: '傍晚', type: '🍽️', event: '晚餐: 返回岡山後，品嚐 <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJJc0mzSEHVDURqZ8zyHOUZiQ" target="_blank" class="text-blue-600 hover:underline">鳥好</a> 的串燒。' },
-                                { time: '晚上', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ7T_MCUwGVDUR00dIzm6mgEQ" target="_blank" class="text-blue-600 hover:underline">ダイワロイネットホテル岡山駅前</a>'}
+                                { time: '上午', type: '🍽️', event: '早餐: 岡山站內便利商店或咖啡廳。', description: '準備迎接一場硬核的「攻城戰」。' },
+                                { time: '09:05-09:39', type: '🚆', event: '搭乘JR特急 [やくも 5號] 前往備中高梁 (岡山駅 09:05 → 備中高梁駅 09:39)。', description: '搭乘「八雲號」，目標攻克日本最高的現存天守山城。**JR Pass** 涵蓋。', cost: 'JR Pass'},
+                                { time: '09:40-13:30', type: '🏯', event: '挑戰日本最高的山城 <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJacUM4muyVjURZGTgH1Jqwt8" target="_blank" class="text-blue-600 hover:underline">備中松山城</a>。務必穿著防滑好走的鞋。', description: '從停車場到天守閣需徒步一段山路，這段「登山」是參拜的一部分。', stay: '約 4 小時'},
+                                { time: '13:30-15:00', type: '🍽️', event: '午餐: 備中高梁車站周邊或返回岡山。', description: '攻城成功後，用當地料理恢復體力。' },
+                                { time: '19:30', type: '🍽️', event: '晚餐: 返回岡山後，品嚐 <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ50K8C04GVDURxwB6M_p4nbw" target="_blank" class="text-blue-600 hover:underline">中華そば冨士屋</a> (拉麵)。', description: '用一碗傳統的日式中華拉麵結束一天的挑戰。'},
+                                { time: '21:00', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ7T_MCUwGVDUR00dIzm6mgEQ" target="_blank" class="text-blue-600 hover:underline">ダイワロイネットホテル岡山駅前</a>', description: '在岡山的最後一晚。'}
                             ]
                         },
                         optionC: {
                             label: '選項C: 雲海挑戰 (高強度)',
                             timeline: [
-                                { time: '04:45-05:15', type: '➡️', event: '起床、著裝、出發。' },
-                                { time: '05:25-06:17', type: '🚆', event: '搭乘JR伯備線 [普通] 首班車前往備中高梁。' },
-                                { time: '06:20-08:30', type: '🌅', event: '搭乘預約的「雲海計程車」前往展望台，鑑賞雲海絕景。', stay: '約 2 小時' },
-                                { time: '08:30-12:00', type: '🏯', event: '鑑賞完畢後，計程車送至登山口，徒步登城。', stay: '約 3.5 小時' },
-                                { time: '中午', type: '🍽️', event: '午餐: 返回備中高梁站後，於車站周邊用餐。' },
-                                { time: '下午', type: '🚆', event: '搭乘JR返回岡山，下午為自由休息時間。' },
-                                { time: '傍晚', type: '🍽️', event: '晚餐: 岡山車站周邊自選。' },
-                                { time: '晚上', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ7T_MCUwGVDUR00dIzm6mgEQ" target="_blank" class="text-blue-600 hover:underline">ダイワロイネットホテル岡山駅前</a>'}
+                                { time: '04:45-05:15', type: '➡️', event: '起床、著裝、出發。', description: '在拂曉前出發，這是一場與時間賽跑的任務，目標是傳說中的天空之城。' },
+                                { time: '05:25-06:17', type: '🚆', event: '搭乘JR伯備線 [普通] 首班車前往備中高梁 (岡山駅 05:25 → 備中高梁駅 06:17)。', description: '搭上寂靜的始發列車，內心充滿對雲海的期待。**JR Pass** 涵蓋。', cost: 'JR Pass'},
+                                { time: '06:20-08:30', type: '🌅', event: '搭乘預約的「雲海計程車」前往展望台，鑑賞雲海絕景。', description: '看見備中松山城漂浮在雲海之上時，你將會明白早起的價值。', stay: '約 2 小時' },
+                                { time: '08:30-12:00', type: '🏯', event: '鑑賞完畢後，計程車送至登山口，徒步登城。', description: '從遠眺的感動，到親臨城下的崇敬。完成一趟完美的攻城體驗。', stay: '約 3.5 小時' },
+                                { time: '12:00-14:00', type: '🍽️', event: '午餐: 備中高梁站周邊，或搭JR返回岡山後用餐。', description: '午餐後應返回岡山，讓下午成為休息緩衝時間。' },
+                                { time: '下午', type: '🚆', event: '搭乘JR返回岡山，下午為自由休息時間。', description: '建議下午回到飯店休息，儲備體力。' },
+                                { time: '19:30', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ50K8C04GVDURxwB6M_p4nbw" target="_blank" class="text-blue-600 hover:underline">中華そば冨士屋</a> (拉麵)。', description: '用一碗傳統的日式中華拉麵結束一天的挑戰。'},
+                                { time: '21:00', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ7T_MCUwGVDUR00dIzm6mgEQ" target="_blank" class="text-blue-600 hover:underline">ダイワロイネットホテル岡山駅前</a>', description: '在岡山的最後一晚。'}
                             ]
                         }
                     },
                     intel: {
+                        supply: { title: '周邊補給 (岡山站)', items: [
+                            '**大型電器行**：<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJURFlCUwGVDURegSIB8cZxxY" target="_blank" class="text-blue-600 hover:underline">ビックカメラ 岡山駅店 (BicCamera)</a> (車站內，大型)',
+                            '**唐吉軻德**：<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJsfBHgkwGVDUR6_wcGnpjrU4" target="_blank" class="text-blue-600 hover:underline">ドン・キホーテ 岡山駅前店</a> (步行約5分鐘)',
+                            '**藥妝店/超市**：車站周邊選擇眾多。'
+                        ]},
                         castle: { title: '百大名城', text: '<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJacUM4muyVjURZGTgH1Jqwt8" target="_blank" class="text-blue-600 hover:underline">備中松山城</a> 是選項B/C的參觀重點，也是珍貴的**日本現存12天守**之一。' },
                         sweets: { title: '人氣甜點', items: [
                             '倉敷的<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJjaYSejhWUTUR20HBP3TetO4" target="_blank" class="text-blue-600 hover:underline">くらしき桃子</a>以水果聖代聞名。',
-                            '岡山的<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJQxEnEA0HVDURM36F-Ras1EY" target="_blank" class="text-blue-600 hover:underline">Gowdy</a>同樣以高品質水果聖代聞名。'
                         ]},
                         notes: { title: '特別提醒', text: '選項C需極早出發，且**務必提前數日向「高梁市觀光協會」預約與首班車銜接的「雲海乘合計程車」**。'},
-                        night_supply: { title: '宵夜與補給', items: [ '<strong>便利商店:</strong> <a href="https://www.google.com/maps/search/?api=1&query=convenience+store+near+ダイワロイネットホテル岡山駅前" target="_blank" class="text-blue-600 hover:underline">岡山站前</a> 選擇眾多，包含 7-Eleven 及 FamilyMart。', '<strong>宵夜選項:</strong> 可考慮 <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJ50K8C04GVDURxwB6M_p4nbw" target="_blank" class="text-blue-600 hover:underline">中華そば冨士屋</a> 或其他車站周邊的深夜食堂。' ]}
-                    }
-                },
-                day9: {
-                    title: '從容歸途 & 廣島 Chill Day', date: '2/28 週六', location: '岡山 → 廣島', timeAnalysis: { travel: 1.0, activity: 8.0 },
-                    timeline: [
-                        { time: '上午', type: '🍽️', event: '早餐: 岡山站內解決。Check-out。'},
-                        { time: '09:00-10:45', type: '🚆', event: '歸途: 返回廣島<br><span class="text-sm text-gray-500">のぞみ 7号</span>', stay: '約 1.75 小時' },
-                        { time: '11:00之後', type: '🛍️', event: '完全的從容・廣島 Chill Day (購物或前往 <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJYQlrv9X_UDURMa-XPVvqfXs" target="_blank" class="text-blue-600 hover:underline">尾道</a>)', stay: '全日' },
-                        { time: '中午', type: '🍽️', event: '午餐: 完全自由，可考慮再次品嚐廣島燒。'},
-                        { time: '傍晚', type: '🍽️', event: '晚餐: 完全自由，可考慮於本通商店街尋找美食。'},
-                        { time: '晚上', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJY4bETyafWjURgAY7RAhVJMM" target="_blank" class="text-blue-600 hover:underline">ダイワロイネットホテル広島駅前</a>'}
-                    ],
-                    intel: {
-                        sweets: { title: '人氣甜點', text: '廣島市區的**「creer」**以其高品質的奶油泡芙聞名。'},
-                        souvenir: { title: '特色伴手禮', text: '<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJpdgHu1OfWjURlyjdaG1tY6E" target="_blank" class="text-blue-600 hover:underline">熊野筆セレクトショップ (KUMANOFUDE SELECT SHOP)</a>的化妝刷品質享譽全球。'},
-                        night_supply: { title: '宵夜與補給', items: [ '<strong>便利商店:</strong> 飯店樓下即有 <a href="https://www.google.com/maps/search/?api=1&query=FamilyMart+near+ダイワロイネットホテル広島駅前" target="_blank" class="text-blue-600 hover:underline">FamilyMart</a>。', '<strong>宵夜選項:</strong> 這是旅途最後一晚，可以在廣島站ekie商場或附近尋找一間心儀的居酒屋，回味旅程。' ]}
+                    },
+                    insights: {
+                        kurashiki: { title: '**專家見解：倉敷美觀地區深度遊**', text: '倉敷在江戶時代是幕府直轄的「天領」。白壁黑瓦的傳統建築，構成了一幅美麗的畫卷。**專家建議**：美觀地區建議安排2-3小時，可**搭乘人力車深度遊覽**，並尋找**丹寧布料**商品。' },
+                        bitchu_matsuyama: { title: '專家見解：征服天空之城與體力分配', text: '備中松山城是日本12座「現存天守」之一，也是唯一建在山頂的山城。旅遊專家建議將這段路程視為一場輕度登山的挑戰，務必穿著專業的徒步鞋。' },
+                        misokatsu_gourmet: { title: '在地美食：倉敷味噌豬排', text: '倉敷的豬排名店採用**煎烤方式非油炸**，吃起來更健康、更清爽，是不同於岡山醬汁豬排丼的另一種在地風味。' },
+                        trattoria: { title: '義式美食：トラットリア Pappa', text: '位於岡山站前，是評價極高的義式餐廳，提供**手作義大利麵**。在連續多天的日式料理後，是極佳的換口味選擇。' }
                     }
                 },
                 day10: {
-                    title: '歸鄉・帶著星鰻飯的回憶', date: '3/1 週日', location: '廣島 → 台灣', timeAnalysis: { travel: 2.5, activity: 0.5 },
+                    title: '從容歸途 & 廣島 Chill Day', date: '3/01 週日', location: '岡山 → 廣島', timeAnalysis: { travel: 1.0, activity: 8.0 },
+                    timeline: [
+                        { time: '上午', type: '🍽️', event: '早餐: 岡山站內解決。Check-out。', description: '享受最後一頓岡山風味的早餐，並將過夜包打包。'},
+                        { time: '10:11-10:46', type: '🚆', event: '歸途: 新幹線 のぞみ 7號 (岡山駅 10:11 → 廣島駅 10:46)', description: '搭乘新幹線快速回到廣島。**JR Pass已過期**，需自理此段交通費。', cost: '¥5,610 (自理)'},
+                        { time: '11:00-14:00', type: '🛍️', event: '購物日: 廣島本通商店街 & 藥妝補給。', description: '利用廣島市區的便利，進行最後的購物補給，特別是藥妝和伴手禮。'},
+                        { time: '14:00-15:30', type: '☕', event: '下午茶: <a href="https://www.google.com/maps/search/?api=1&query=廣島+creer+奶油泡芙" target="_blank" class="text-blue-600 hover:underline">creer 奶油泡芙</a>', description: '品嚐廣島人氣甜點，作為購物後的輕鬆下午茶。'},
+                        { time: '15:30-18:00', type: '🏛️', event: '文化巡禮: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJpdgHu1OfWjURlyjdaG1tY6E" target="_blank" class="text-blue-600 hover:underline">熊野筆セレクトショップ</a> 或 <a href="https://www.google.com/maps/search/?api=1&query=尾道+千光寺" target="_blank" class="text-blue-600 hover:underline">尾道</a> (備選)', description: '參觀廣島的**熊野筆**（名產）或前往**尾道**（文學之街）進行輕旅行。', stay: '全日' },
+                        { time: '19:30', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=かき小屋+廣島駅前店" target="_blank" class="text-blue-600 hover:underline">かき小屋 廣島駅前店 (烤牡蠣)</a>', description: '在廣島享受冬季特有的新鮮烤牡蠣海鮮餐。**當季海鮮：廣島牡蠣**。'},
+                        { time: '21:00', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJY4bETyafWjURgAY7RAhVJMM" target="_blank" class="text-blue-600 hover:underline">ダイワロイネットホテル広島駅前</a>', description: '最後一晚，將十一天的戰利品與回憶一同打包。'}
+                    ],
+                    intel: {
+                        supply: { title: '周邊補給 (廣島站)', items: [ 
+                            '**大型電器行**：<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJg1ZMX1SfWjURzaaH1iJiJ_U" target="_blank" class="text-blue-600 hover:underline">ビックカメラ 広島駅前店 (BicCamera)</a>', 
+                            '**唐吉軻德**：<a href="https://www.google.com/maps/search/?api=1&query=ドン・キホーテ+広島八丁堀店" target="_blank" class="text-blue-600 hover:underline">ドン・キホーテ 広島八丁堀店</a> (需搭路面電車)',
+                            '**藥妝店/超市**：<a href="https://www.google.com/maps/search/?api=1&query=成城石井+広島ekie店" target="_blank" class="text-blue-600 hover:underline">成城石井 広島ekie店</a> 等選擇眾多。'
+                        ]},
+                        sweets: { title: '人氣甜點', text: '廣島市區的**「creer」**以其高品質的奶油泡芙聞名。'},
+                        souvenir: { title: '特色伴手禮', text: '<a href="https://www.google.com/maps/search/?api=1&query=%20&query_place_id=ChIJpdgHu1OfWjURlyjdaG1tY6E" target="_blank" class="text-blue-600 hover:underline">熊野筆セレクトショップ (KUMANOFUDE SELECT SHOP)</a>的化妝刷品質享譽全球。'},
+                        night_supply: { title: '宵夜與補給', items: [ '<strong>宵夜選項</strong>: 廣島站ekie商場或附近尋找一間心儀的居酒屋，回味旅程。' ]}
+                    },
+                    insights: {
+                        last_day_strategy: { title: '**專家戰術：利用最後一日的緩衝**', text: '將最後一個整天安排為彈性日，是高明的行程規劃。這一天可以作為「緩衝」，處理旅途中未完成的事項，例如補買伴手禮、重遊特別喜歡的地點。' },
+                        onomichi: { title: '備選方案：坂道之城・尾道', text: '若選擇一日遊，從廣島搭乘JR約一小時可抵達「尾道」。這座山城以「坂道(坡道)」、「貓」和「文學」聞名。推薦搭乘纜車上至千光寺公園。' },
+                        okonomi_mura_location: { title: '美食筆記：廣島燒村巡禮', text: '廣島燒村適合作為旅程的最終美食饗宴，尋找一家有**冬季牡蠣**的店，完美收尾。' },
+                        hiroshima_lemon: { title: '廣島季節美食：檸檬', text: '廣島是日本檸檬產量第一的地區，10月到翌年4月是收穫季。廣島檸檬酸味溫和，糖度高，可連皮食用。' }
+                    }
+                },
+                day11: {
+                    title: '歸鄉・帶著星鰻飯的回憶', date: '3/02 週一', location: '廣島 → 台灣', timeAnalysis: { travel: 2.5, activity: 0.5 },
                         timeline: [
-                        { time: '上午', type: '🍽️', event: '早餐: 廣島車站內或飯店解決。'},
-                        { time: '~06:30', type: '🍱', event: '最終任務: 購買儀式感便當' },
-                        { time: '06:30-07:30', type: '🚌', event: '前往廣島機場 (HIJ)<br><span class="text-sm text-gray-500">交通花費: ¥1,450</span>' },
-                        { time: '10:00-12:00', type: '✈️', event: '航班飛行: CI113 HIJ → TPE' },
-                        { time: '中午', type: '🍽️', event: '午餐: うえの星鰻飯便當 + 飛機餐。'}
-                    ]
+                        { time: '上午', type: '🍽️', event: '早餐: 廣島車站內或飯店解決。', description: '享用簡便的早餐。'},
+                        { time: '~06:30', type: '🍱', event: '最終任務: 購買儀式感便當', description: '在廣島車站，購買一份宮島口名店「うえの」的星鰻飯便當，將這份美味作為旅程的完美句點。' },
+                        { time: '06:30-07:30', type: '🚌', event: '前往廣島機場 (HIJ)', description: '搭上熟悉的利木津巴士，準備告別這片土地。', cost: '¥1,450'},
+                        { time: '10:00-12:00', type: '✈️', event: '航班飛行: CI113 HIJ → TPE', description: '在萬呎高空上，回味著星鰻飯的滋味，以及這十天來的點點滴滴。' },
+                        { time: '中午', type: '🍽️', event: '午餐: うえの星鰻飯便當 + 飛機餐。', description: '用經典的車站便當，為旅程劃下句點。'}
+                    ],
+                    intel: {},
+                    insights: {
+                        ekiben: { title: '文化筆記：駅弁 (車站便當)的儀式感', text: '在車站選購一份「駅弁」是一種充滿儀式感的體驗。廣島車站販售的「あなごめしうえの」星鰻飯便當，即使冷掉也依舊美味，是將旅途回憶帶上飛機的最佳選擇。' }
+                    }
                 }
             }
         };
@@ -537,6 +854,7 @@
                     mainNav.querySelectorAll('button').forEach(btn => btn.classList.remove('main-nav-active'));
                     e.target.classList.add('main-nav-active');
                     sections.forEach(section => section.id === sectionId ? section.classList.remove('hidden') : section.classList.add('hidden'));
+                    window.scrollTo(0, 0); // Smooth scroll to top on section change
                     if (sectionId === 'overview') initOverview();
                     if (sectionId === 'transport') initTransport();
                     if (sectionId === 'daily') initDaily();
@@ -546,32 +864,76 @@
 
             function initOverview() {
                 if (overviewChartInstance) overviewChartInstance.destroy();
-                const labels = Object.keys(allData.dailyData).map(key => `Day ${key.replace('day', '')}`);
+                const labels = Object.keys(allData.dailyData).map(key => `D${key.replace('day', '')}`);
                 const activityData = Object.values(allData.dailyData).map(d => {
-                    if(d.options) { // For days with options, use Option A as default for chart
+                    if(d.options) { 
                         let totalStay = 0;
-                        d.options.optionA.timeline.forEach(item => {
-                            if (item.stay && typeof item.stay === 'string' && item.stay.includes('小時')) {
-                                totalStay += parseFloat(item.stay);
-                            }
-                        });
-                        return totalStay;
+                        // For Day 9, calculate activity based on Option A (Chill option)
+                        if (d.options.optionA && d.options.optionA.timeline) {
+                            d.options.optionA.timeline.forEach(item => {
+                                if (item.stay && typeof item.stay === 'string' && item.stay.includes('小時')) {
+                                    // Robustly calculate hours, ignoring possible fractional parts that may cause issues
+                                    totalStay += parseFloat(item.stay.replace(/[^0-9.]/g, ''));
+                                } else if (item.stay && typeof item.stay === 'string' && item.stay.includes('分鐘')) {
+                                    totalStay += parseFloat(item.stay.replace(/[^0-9.]/g, '')) / 60;
+                                }
+                            });
+                        }
+                        return totalStay || d.timeAnalysis.activity; 
                     }
                     return d.timeAnalysis.activity;
                 });
                 const travelData = Object.values(allData.dailyData).map(d => d.timeAnalysis.travel);
+                
                 overviewChartInstance = new Chart(overviewChartCtx, {
                     type: 'bar',
-                    data: { labels, datasets: [ { label: '活動時間 (h)', data: activityData, backgroundColor: 'rgba(75, 192, 192, 0.7)' }, { label: '移動時間 (h)', data: travelData, backgroundColor: 'rgba(255, 99, 132, 0.7)' } ] },
+                    data: { labels, datasets: [ 
+                        { label: '活動時間 (h)', data: activityData, backgroundColor: 'rgba(54, 162, 235, 0.7)' }, 
+                        { label: '移動時間 (h)', data: travelData, backgroundColor: 'rgba(255, 99, 132, 0.7)' } 
+                    ] },
                     options: { responsive: true, maintainAspectRatio: false, scales: { x: { stacked: true }, y: { stacked: true, beginAtZero: true, title: { display: true, text: '小時' } } }, plugins: { tooltip: { callbacks: { label: (context) => `${context.dataset.label}: ${context.raw.toFixed(1)} 小時` } } } }
                 });
 
                 const highlightsGrid = document.getElementById('highlights-grid');
-                highlightsGrid.innerHTML = allData.highlights.map(item => `
-                    <a href="${item.url}" target="_blank" class="block bg-gray-50 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                        <h4 class="font-bold text-lg text-gray-800">${item.name}</h4>
-                        <span class="inline-block ${item.type === '景點' ? 'bg-green-100 text-green-800' : 'bg-orange-100 text-orange-800'} text-xs font-semibold mt-2 px-2.5 py-0.5 rounded-full">${item.type}</span>
-                    </a>
+                
+                // --- NEW HIGHLIGHTS RENDERING ---
+                highlightsGrid.innerHTML = detailedHighlights.map(item => `
+                    <div class="highlight-card bg-white p-6 rounded-xl shadow-lg border border-gray-100 transition-shadow hover:shadow-2xl">
+                        <div class="md:grid md:grid-cols-3 gap-6">
+                            <!-- Column 1: Title, Map, Type -->
+                            <div class="md:col-span-1 border-b md:border-r md:border-b-0 pb-4 mb-4 md:pb-0 md:mb-0 md:pr-4">
+                                <!-- Title -->
+                                <h3 class="text-2xl font-bold text-gray-800">${item.name}</h3>
+                                <!-- Type Tag -->
+                                <span class="inline-block px-3 py-1 mt-2 text-sm font-semibold rounded-full ${item.type === '景點' ? 'bg-blue-100 text-blue-700' : 'bg-amber-100 text-amber-700'}">${item.type}</span>
+                                <!-- Map Link -->
+                                <div class="mt-4">
+                                    <a href="${item.mapUrl}" target="_blank" class="text-blue-500 hover:text-blue-700 font-medium flex items-center transition-colors">
+                                        <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                        Google 地圖導航
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <!-- Column 2 & 3: Details -->
+                            <div class="md:col-span-2 space-y-4 md:pl-4">
+                                <!-- Block 1: History/Expert -->
+                                <div>
+                                    <h4 class="text-xl font-semibold mb-1 text-gray-700 border-b border-gray-200 pb-1">${item.type === '景點' ? '歷史人文 & 達人見解' : '招牌料理 & 專家推薦'}</h4>
+                                    <p class="text-gray-600 italic mt-2 font-medium">${item.expertRec}</p>
+                                    <p class="text-sm text-gray-500 mt-2">${item.historyCulture}</p>
+                                </div>
+                                
+                                <!-- Block 2: Focus/Photography -->
+                                <div>
+                                    <h4 class="text-xl font-semibold mb-1 text-gray-700 border-b border-gray-200 pb-1">${item.type === '景點' ? '參拜重點 & 絕佳拍照點' : '人氣焦點 & 必拍美食照'}</h4>
+                                    <div class="text-sm text-gray-600 mt-2 space-y-1">
+                                        ${item.focusPoints}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 `).join('');
             }
 
@@ -582,24 +944,26 @@
                 
                 const transportSummaryTable = document.getElementById('transport-summary-table');
                 transportSummaryTable.innerHTML = allData.transportSummary.map(item => `
-                     <tr class="border-b">
-                         <td class="p-3">Day ${item.day}</td>
-                         <td class="p-3">${item.route}</td>
-                         <td class="p-3">${item.transport}</td>
-                         <td class="p-3">${item.time}</td>
-                         <td class="p-3">${item.cost}</td>
-                    </tr>
+                        <tr class="border-b">
+                            <td class="p-3">Day ${item.day}</td>
+                            <td class="p-3">${item.route}</td>
+                            <td class="p-3">${item.transport}</td>
+                            <td class="p-3">${item.time}</td>
+                            <td class="p-3">${item.cost}</td>
+                        </tr>
                 `).join('');
             }
 
             function initDaily() {
                 const dayNav = document.getElementById('day-nav');
                 if (!dayNav.innerHTML) {
-                    for (let i = 1; i <= 10; i++) {
+                    // Create 11 buttons (Day 1 to Day 11)
+                    for (let i = 1; i <= 11; i++) {
                         const btn = document.createElement('button');
-                        btn.className = "day-nav-item py-2 px-4 text-sm font-semibold rounded-md hover:bg-gray-200";
+                        // Use compact 'Di' label
+                        btn.className = "day-nav-item py-2 px-3 md:px-4 text-sm font-semibold rounded-md hover:bg-gray-200 transition-colors";
                         btn.dataset.day = i;
-                        btn.textContent = `Day ${i}`;
+                        btn.textContent = `D${i}`;
                         btn.addEventListener('click', () => {
                             renderDailyTimeline(i);
                             dayNav.querySelectorAll('button').forEach(b => b.classList.remove('day-nav-active'));
@@ -624,59 +988,68 @@
 
                 let timelineHtml = '';
                 if (data.options) {
-                    timelineHtml += `<div class="flex justify-center gap-2 mb-4" id="option-tabs-${day}">`;
+                    timelineHtml += `<div class="flex justify-center flex-wrap gap-2 mb-4" id="option-tabs-${day}">`;
                     Object.keys(data.options).forEach((key, index) => {
-                        timelineHtml += `<button data-option="${key}" class="option-tab py-2 px-4 text-sm font-semibold rounded-md hover:bg-gray-300 ${index === 0 ? 'option-tab-active' : ''}">${data.options[key].label}</button>`;
+                        timelineHtml += `<button data-option="${key}" class="option-tab py-2 px-4 text-sm font-semibold rounded-md hover:bg-gray-300 transition-colors ${index === 0 ? 'option-tab-active' : ''}">${data.options[key].label}</button>`;
                     });
                     timelineHtml += `</div><div id="timeline-container-${day}"></div>`;
                 } else {
                     timelineHtml = `<div id="timeline-container-${day}"></div>`;
                 }
-
-                let intelHtml = '<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">';
-                if (data.intel) {
-                    for (const key in data.intel) {
-                        const intelItem = data.intel[key];
-                        intelHtml += `
-                            <div class="bg-white p-4 rounded-lg shadow-md">
-                                <h4 class="font-bold text-lg mb-2 text-gray-800">${intelItem.title}</h4>
-                                ${intelItem.items ? `<ul class="list-disc list-inside space-y-1 text-gray-600">${intelItem.items.map(i => `<li>${i}</li>`).join('')}</ul>` : ''}
-                                ${intelItem.text ? `<p class="text-gray-600">${intelItem.text}</p>` : ''}
-                            </div>
-                        `;
+                
+                // 修正: 替換 Object.assign() 為傳統的物件合併，以確保最高的兼容性，解決 Invalid shorthand property initializer 的潛在問題。
+                let allIntel = {};
+                const intelSources = [(data.intel || {}), (data.insights || {})];
+                intelSources.forEach(source => {
+                    for (const key in source) {
+                        if (Object.prototype.hasOwnProperty.call(source, key)) {
+                            allIntel[key] = source[key];
+                        }
                     }
+                });
+                
+                let intelHtml = '<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">';
+                for (const key in allIntel) {
+                    const intelItem = allIntel[key];
+                    // Use p-5 and leading-relaxed for enhanced card readability
+                    intelHtml += `
+                        <div class="bg-white p-5 rounded-lg shadow-md">
+                            <h4 class="font-bold text-lg mb-2 text-gray-800">${intelItem.title}</h4>
+                            ${intelItem.items ? `<ul class="list-disc list-inside space-y-1 text-gray-600">${intelItem.items.map(i => `<li class="leading-relaxed">${i}</li>`).join('')}</ul>` : ''}
+                            ${intelItem.text ? `<p class="text-gray-600 leading-relaxed">${intelItem.text}</p>` : ''}
+                        </div>
+                    `;
                 }
                 intelHtml += '</div>';
 
                 dailyContent.innerHTML = `
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="bg-white p-4 md:p-6 rounded-lg shadow-lg">
                         <div class="text-center mb-6"><h3 class="text-2xl font-bold">${data.title}</h3><p class="text-md text-gray-500">${data.date} | ${data.location}</p></div>
                         ${timelineHtml}
                     </div>
                     ${intelHtml}
                 `;
                 
+                const renderTimeline = (timelineData) => {
+                    document.getElementById(`timeline-container-${day}`).innerHTML = `<div class="relative pl-8">${timelineData.map(item => `
+                        <div class="timeline-item relative pb-8"><div class="timeline-icon text-lg">${item.type}</div><div class="ml-8"><p class="font-bold text-gray-800">${item.time}</p><p class="text-gray-700">${item.event}</p><p class="text-sm text-gray-500 italic mt-1">${item.description || ''}</p>${item.cost ? `<p class="text-sm text-red-500 mt-1">花費: ${item.cost}</p>` : ''}${item.stay ? `<p class="text-sm text-blue-500 mt-1">建議停留: ${item.stay}</p>` : ''}</div></div>`).join('')}
+                    </div>`;
+                }
+
+
                 if (data.options) {
-                    const renderOptionTimeline = (optionKey) => {
-                        const optionData = data.options[optionKey];
-                        document.getElementById(`timeline-container-${day}`).innerHTML = `<div class="relative pl-8">${optionData.timeline.map(item => `
-                            <div class="timeline-item relative pb-8"><div class="timeline-icon text-lg">${item.type}</div><div class="ml-8"><p class="font-bold text-gray-800">${item.time}</p><p class="text-gray-600">${item.event}</p>${item.stay ? `<p class="text-sm text-blue-500 mt-1">建議停留: ${item.stay}</p>` : ''}</div></div>`).join('')}
-                        </div>`;
-                    }
                     const optionTabs = document.getElementById(`option-tabs-${day}`);
                     optionTabs.addEventListener('click', (e) => {
                         if(e.target.tagName === 'BUTTON') {
                             const optionKey = e.target.dataset.option;
-                            renderOptionTimeline(optionKey);
+                            renderTimeline(data.options[optionKey].timeline);
                             optionTabs.querySelectorAll('button').forEach(b => b.classList.remove('option-tab-active'));
                             e.target.classList.add('option-tab-active');
                         }
                     });
-                    renderOptionTimeline(Object.keys(data.options)[0]);
-                } else {
-                     document.getElementById(`timeline-container-${day}`).innerHTML = `<div class="relative pl-8">${data.timeline.map(item => `
-                        <div class="timeline-item relative pb-8"><div class="timeline-icon text-lg">${item.type}</div><div class="ml-8"><p class="font-bold text-gray-800">${item.time}</p><p class="text-gray-600">${item.event}</p>${item.stay ? `<p class="text-sm text-blue-500 mt-1">建議停留: ${item.stay}</p>` : ''}</div></div>`).join('')}
-                    </div>`;
+                    renderTimeline(data.options[Object.keys(data.options)[0]].timeline);
+                } else if (data.timeline) {
+                     renderTimeline(data.timeline);
                 }
             }
 
@@ -705,4 +1078,3 @@
     </script>
 </body>
 </html>
-
