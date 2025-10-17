@@ -1,5 +1,5 @@
 // --- TRIP DATA FILE ---
-// Version 8.8.6: Finalized meal plans and integrated all restaurants into detailedHighlights.
+// Version 8.8.8: Optimized Day 12 Option B with Kojima Jeans Street itinerary.
 
 const tripData = {
     // Meta information for the page
@@ -306,7 +306,7 @@ const tripData = {
             parkingInfo: "出雲大社與稻佐之濱均設有大型免費停車場。",
             expertRec: "專家見解：日本最古老神社之一，以結緣聞名。<span class=\"emphasis\">稻佐之濱</span>是傳說中八百萬神明登陸地，是日本夕陽百選名所。",
             historyCulture: "主祭神為<span class=\"emphasis\">大國主大神</span>，以<span class=\"emphasis\">結緣</span>聞名。神樂殿<span class=\"emphasis\">長13公尺、重5.2噸的注連繩</span>為日本最大。",
-            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">參拜重點</span>：遵循獨特的<span class=\"emphasis\">「二拜四拍手一拜」</span>方式參拜。</li><li><span class="emphasis">夕陽攻略</span>：<span class=\"emphasis\">稻佐之濱</span>是最佳觀賞點，拍攝巨型礁石上的<span class="emphasis">弁天神社</span>。</li><li><span class="emphasis">絕佳拍照點</span>：神樂殿巨大的注連繩、可愛<span class="emphasis">兔子雕像</span>、稻佐之濱的夕陽。</li></ul>`
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">參拜重點</span>：遵循獨特的<span class=\"emphasis\">「二拜四拍手一拜」</span>方式參拜。</li><li><span class="emphasis">夕陽攻略</span>：<span class="emphasis">稻佐之濱</span>是最佳觀賞點，拍攝巨型礁石上的<span class="emphasis">弁天神社</span>。</li><li><span class="emphasis">絕佳拍照點</span>：神樂殿巨大的注連繩、可愛<span class="emphasis">兔子雕像</span>、稻佐之濱的夕陽。</li></ul>`
         },
         {
             name: "羽根屋 本店 (割子蕎麥麵)",
@@ -502,6 +502,24 @@ const tripData = {
             expertRec: "保存完好的江戶時代街區，白壁建築、垂柳、小橋流水構成一幅美麗的圖畫。無論白天或夜晚點燈後都極具魅力，是岡山必訪景點。",
             historyCulture: "此地在江戶時代是幕府直轄的物資集散地，沿著倉敷川而建的白壁倉庫與商人宅邸，見證了當時的繁榮。",
             focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">體驗重點</span>：搭乘<span class=\"emphasis\">倉敷川遊船</span>、參觀<span class=\"emphasis\">大原美術館</span>、探索本町・東町的傳統街區。</li><li><span class="emphasis">美食推薦</span>：品嚐<span class=\"emphasis\">水果聖代</span>、牛仔布藍色的<span class=\"emphasis\">丹寧包子</span>。</li><li><span class="emphasis">絕佳拍照點</span>：中橋上拍攝川流與兩岸垂柳的經典畫面、夜間點燈後的靜謐景色。</li></ul>`
+        },
+        {
+            name: "兒島牛仔褲大道",
+            type: "景點",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=すし丸+ekie広島店9",
+            parkingInfo: "可利用『兒島車站西口停車場』等公共停車設施 (約¥100-200/小時)，部分店家消費可折抵停車費。",
+            expertRec: "日本國產牛仔褲的發源地與聖地。漫步在街道上，可以看到懸掛的牛仔褲、丹寧布製成的裝飾，是丹寧愛好者必訪之地。",
+            historyCulture: "兒島最初以製作學生制服起家，憑藉其厚實布料的縫紉技術，在60年代成功轉型，誕生了日本第一條國產牛仔褲。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">體驗重點</span>：探訪各具特色的丹寧品牌專賣店，許多店家提供客製化或修改服務。</li><li><span class="emphasis">特色美食</span>：尋找藍色的<span class=\"emphasis\">『丹寧冰淇淋』</span>或<span class=\"emphasis\">『丹寧包子』</span>等特色小吃。</li><li><span class="emphasis">絕佳拍照點</span>：懸掛在街道上空的牛仔褲裝置藝術、各店鋪獨特的門面設計。</li></ul>`
+        },
+        {
+            name: "RIVETS CAFE",
+            type: "美食",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=松江城0",
+            parkingInfo: "位於牛仔褲大道徒步區內，請使用『兒島車站西口停車場』等公共停車設施。",
+            expertRec: "位於牛仔褲大道上的主題咖啡館，是逛街途中完美的休憩點。店內充滿工業風與丹寧元素，提供特色輕食與飲品。",
+            historyCulture: "看板料理：<span class=\"emphasis\">丹寧漢堡</span>、<span class=\"emphasis\">丹寧藍檸檬水</span>。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">料理特色</span>：將丹寧的「藍色」元素融入餐點中，視覺效果獨特。</li><li><span class="emphasis">環境特色</span>：店內裝潢使用縫紉機、鉚釘等元素，充滿丹寧工藝氛圍。</li><li><span class="emphasis">拍照點</span>：藍色的特色飲品、充滿工業設計感的店內環境。</li></ul>`
         },
         {
             name: "くらしき桃子 (水果聖代)",
@@ -1015,11 +1033,14 @@ const tripData = {
                     ]
                 },
                 optionB: {
-                    label: '選項B: 瀨戶內海夕陽絕景 (鷲羽山)',
+                    label: '選項B: 丹寧聖地 & 鷲羽山夕陽',
                     timeline: [
-                        { time: '下午', type: '🚆', event: '從岡山搭乘JR至兒島站，轉乘巴士前往<a href="https://www.google.com/maps/search/?api=1&query=鷲羽山展望台" target="_blank" class="text-blue-600 hover:underline">鷲羽山展望台</a>', awardHighlight: "日本夕陽百選", cost: 'JR Pass + 巴士自理' },
-                        { time: '傍晚', type: '🌅', event: '欣賞瀨戶大橋與瀨戶內海群島的日落絕景。', stay: '約 2 小時', parkingInfo: "展望台設有免費停車場。" },
-                        { time: '晚上', type: '🚆', event: '返回岡山' },
+                        { time: '09:30-10:00', type: '🚆', event: '移動: 從岡山站搭乘JR瀨戶大橋線前往兒島站。', cost: 'JR Pass'},
+                        { time: '10:00-12:30', type: '👖', event: '<a href="https://www.google.com/maps/search/?api=1&query=すし丸+ekie広島店9" target="_blank" class="text-blue-600 hover:underline">兒島牛仔褲大道</a> 散策', description: '探索日本丹寧的發源地，尋找特色店家與商品。', stay: '約 2.5 小時', parkingInfo: "可利用『兒島車站西口停車場』等公共停車設施 (約¥100-200/小時)，部分店家消費可折抵停車費。" },
+                        { time: '12:30-13:30', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=松江城0" target="_blank" class="text-blue-600 hover:underline">RIVETS CAFE</a>', description: '在充滿丹寧工業風的咖啡館享用特色輕食。' },
+                        { time: '14:00-14:30', type: '🚌', event: '移動: 從兒島站搭乘下電巴士前往「鷲羽山第二展望台」。', cost: '自理'},
+                        { time: '14:30-17:30', type: '🌅', event: '在 <a href="https://www.google.com/maps/search/?api=1&query=鷲羽山展望台" target="_blank" class="text-blue-600 hover:underline">鷲羽山展望台</a> 等待日落', awardHighlight: "日本夕陽百選", description: '欣賞瀨戶大橋與瀨戶內海群島的壯麗夕陽絕景。', stay: '約 3 小時', parkingInfo: "展望台設有免費停車場。" },
+                        { time: '傍晚', type: '🚆', event: '搭乘巴士返回兒島站，轉乘JR返回岡山。'},
                     ]
                 },
                 optionC: {
@@ -1032,6 +1053,7 @@ const tripData = {
                 }
             },
             intel: {
+                denim_street_hack: { title: '兒島丹寧大道攻略', text: '許多店家提供免費的褲長修改服務，購買後可立即修改。此外，部分店家聯合提供停車優惠，購物時可詢問店員。' },
                 local_snacks: { title: '倉敷美觀地區特色小吃', items: [
                     "岡山是水果王國，必嚐<span class='emphasis'>『くらしき桃子』</span>的季節水果聖代。",
                     "可嘗試IG上熱門的牛仔布藍色<span class='emphasis'>『丹寧包子』</span>，造型特殊。"
@@ -1040,6 +1062,7 @@ const tripData = {
             },
             insights: {
                 washuzan: { title: '絕景攻略：鷲羽山夕陽', text: '被選為「日本夕陽百選」之一。看著太陽緩緩沉入瀨戶內海，將群島與宏偉的瀨戶大橋染成金黃色，是令人難忘的壯麗景色。' },
+                kojima_denim_story: { title: '文化見解：從制服到時尚聖地', text: '兒島最初以製作學生制服起家，憑藉其厚實布料的縫紉技術，在60年代成功轉型，成為日本第一條國產牛仔褲的誕生地，奠定了其「丹寧聖地」的地位。' },
                 photo_note: { title: "攝影師筆記：捕捉倉敷之美", text: "倉敷美觀地區的精髓在於光影。白天可在<span class='emphasis'>中橋</span>上拍攝川游船與垂柳的經典畫面；日落後，夜間點燈會亮至21:00，能拍出與白天截然不同的靜謐氛圍，建議攜帶腳架。" }
             }
         },
