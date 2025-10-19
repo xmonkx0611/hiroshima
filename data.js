@@ -1,14 +1,14 @@
 // --- TRIP DATA FILE ---
-// Version 9.1.1: Hakodate 7-Day In-Depth Itinerary (Added specialTags field for modular rendering)
+// Version 8.8.8: Optimized Day 12 Option B with Kojima Jeans Street itinerary.
 
 const tripData = {
     // Meta information for the page
     meta: {
-        title: "北海道函館7日紀行：互動式作戰儀表板 v9.1 (擴充指南版)",
-        mainTitle: "北海道函館7日紀行"
+        title: "山陰山陽15日紀行：互動式作戰儀表板 v8.8 (主題攻略版)",
+        mainTitle: "山陰山陽15日紀行"
     },
 
-    // Food Mission data
+    // Food Mission data is kept for logic
     missionSummary: {
         yakiniku: { completed: false, description: "燒肉" },
         kaitenSushi: { completed: false, description: "迴轉壽司" },
@@ -21,98 +21,37 @@ const tripData = {
         bGradeGourmet: { completed: false, description: "B級美食" }
     },
 
-    // --- NEW: Food Guide ---
-    foodGuide: {
-        ramen: [
-            { name: "函館麵厨房 味彩 (本店)", description: "函館鹽味拉麵代表，湯頭清爽。Tabelog 3.64分。 可用特級套票3點。", address: "函館市五稜郭町29-22", hours: "11:00～20:25", mapUrl: "https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E9%A4%A8%E9%BA%B5%E5%BB%9A%E6%88%BF%20%E5%91%B3%E5%BD%A9%20%E6%9C%AC%E5%BA%97", parkingInfo: "有專用停車場(7台)。" },
-            { name: "龍鳳拉麵", description: "函館朝市內人氣鹽味拉麵老店。", address: "函館朝市內", hours: "清晨至中午", mapUrl: "https://www.google.com/maps/search/?api=1&query=ドーミーインPREMIUM五稜郭?query=Dormy%20Inn%20Premium%20Goryokaku", parkingInfo: "使用朝市停車場。" },
-            { name: "一文字 (函館本店)", description: "與味彩齊名的鹽味拉麵名店，位於湯之川溫泉區。", address: "函館市湯川町2-1-3", hours: "11:00-凌晨1:00", mapUrl: "https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E9%A4%A8%E9%BA%B5%E5%BB%B3%20%E4%B8%80%E6%96%87%E5%AD%97%20%E6%B9%AF%E3%81%AE%E5%B7%9D", parkingInfo: "有專用停車場。" }
-        ],
-        burger: [
-            { name: "幸運小丑漢堡 (灣區本店)", description: "全日本最好吃在地漢堡，函館限定。 必點油淋炸雞漢堡。 可用特級套票4點。", address: "函館市末広町23-18", hours: "10:00-00:30", mapUrl: "https://www.google.com/maps/search/?api=1&query=%E5%B9%B8%E9%81%8B%E5%B0%8F%E4%B8%91%E6%BC%A2%E5%A0%A1%20%E7%81%A3%E5%8D%80%E6%9C%AC%E5%BA%97", parkingInfo: "無專用停車場，使用金森倉庫停車場。" },
-             { name: "幸運小丑漢堡 (峠下總本店)", description: "最具特色分店，有巨大紅椅子，適合自駕。", address: "亀田郡七飯町峠下337-11", hours: "10:00-00:30", mapUrl: "https://www.google.com/maps/search/?api=1&query=ドーミーインPREMIUM五稜郭", parkingInfo: "有大型免費停車場。" },
-            { name: "幸運小丑漢堡 (五稜郭公園前店)", description: "小天使裝潢主題。", address: "函館市五稜郭町30-14", hours: "10:00-00:30", mapUrl: "https://www.google.com/maps/search/?api=1&query=出雲大社8", parkingInfo: "無專用停車場，使用周邊停車場。" }
-        ],
-        sushi: [
-            { name: "函太郎 (宇賀浦總店)", description: "海景迴轉壽司，品質佳。 可用特級套票折抵。", address: "函館市宇賀浦町14-4", hours: "11:00-21:00", mapUrl: "https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E5%A4%AA%E9%83%8E%20%E5%AE%87%E8%B3%80%E6%B5%A6%E7%B8%BD%E5%BA%97", parkingInfo: "有大型免費停車場(60台)。" },
-            { name: "根室花丸 (キラリス函館店)", description: "北海道必吃迴轉壽司Top 5之一。 使用當日新鮮漁獲。", address: "函館市若松町20-1 キラリス函館 B1F", hours: "11:00-21:00", mapUrl: "googleusercontent.com/maps.google.com/NUMBER", parkingInfo: "位於商場內，有合作停車場。" }
-        ],
-        yakiniku: [
-            { name: "炭火燒肉 泉味亭", description: "熟成和牛專門店，在地人推薦，價格相對優惠。 推薦熟成和牛拼盤、石鍋拌飯。", address: "函館市鍛冶1-49-6", hours: "17:00-22:30", mapUrl: "https://www.google.com/maps/search/?api=1&query=%E7%82%AD%E7%81%AB%E7%87%92%E8%82%89%20%E6%B3%89%E5%91%B3%E4%BA%AD%20%E5%87%BD%E9%A4%A8", parkingInfo: "有專屬停車場。" },
-            { name: "炭火燒肉 JUU JUU", description: "高級黑毛和牛。 推薦辣牛肉湯。", address: "函館市富岡町3-25-13", hours: "17:00-23:00", mapUrl: "https://www.google.com/maps/search/?api=1&query=石見銀山2", parkingInfo: "有停車場。" },
-             { name: "成吉思汗 羊羊亭", description: "新鮮無腥羶味的生羊肉成吉思汗烤肉。", address: "函館市豊川町12-8 (金森倉庫旁)", hours: "11:30-14:30, 17:00-21:30", mapUrl: "https://www.google.com/maps/search/?api=1&query=石見銀山3", parkingInfo: "使用金森倉庫停車場。" }
-        ],
-        western: [
-            { name: "五島軒 (本店 雪河亭)", description: "創業1879年的百年洋食老店。 招牌燉牛肉、咖哩飯。 可用特級套票折抵。", address: "函館市末広町4-5", hours: "11:30-20:30", mapUrl: "https://www.google.com/maps/search/?api=1&query=石見銀山4", parkingInfo: "有停車場。" },
-            { name: "函館啤酒館 (函館ビヤホール)", description: "位於金森倉庫內，氣氛佳。 推薦Sapporo直送生啤、德國香腸。 可用特級套票折抵。", address: "函館市末広町14-12", hours: "11:30-21:30", mapUrl: "https://www.google.com/maps/search/?api=1&query=羽根屋+本店4", parkingInfo: "使用金森倉庫停車場。" }
-        ],
-        sweets: [
-             { name: "Pastry Snaffle's (金森洋物館店)", description: "招牌舒芙蕾起司蛋糕。 可用特級套票折抵。", address: "函館市末広町13-9 金森洋物館內", hours: "9:30-19:00", mapUrl: "https://www.google.com/maps/search/?api=1&query=石見銀山5", parkingInfo: "使用金森倉庫停車場。" },
-             { name: "Angelique Voyage", description: "Tabelog函館甜點店排名第一。 使用北海道頂級生奶油。", address: "函館市弥生町3-11", hours: "10:00-19:00", mapUrl: "https://www.google.com/maps/search/?api=1&query=羽根屋+本店5", parkingInfo: "有停車場。" },
-             { name: "六花亭 (五稜郭店)", description: "商品最齊全的六花亭分店，設有喫茶室。", address: "函館市五稜郭町27-6", hours: "商店9:30-17:30, 喫茶室11:00-16:00", mapUrl: "https://www.google.com/maps/search/?api=1&query=%E5%85%AD%E8%8A%B1%E4%BA%AD%20%E4%BA%94%E7%A8%9C%E9%83%AD%E5%BA%97", parkingInfo: "有免費停車場。" }
-        ],
-        b_gourmet: [
-            { name: "長谷川商店 (灣區店)", description: "便利商店烤肉便當，函館特色。 可用特級套票2點。", address: "函館市末広町23-5", hours: "7:00-22:00", mapUrl: "https://www.google.com/maps/search/?api=1&query=%E9%95%B7%E8%B0%B7%E5%B7%9D%E5%95%86%E5%BA%97%20%E7%81%A3%E5%8D%80%E5%BA%97", parkingInfo: "有少量免費車位(4台)。" }
-            // Lucky Pierrot already covered in burger
-        ]
-        // Other categories like pasta, tonkatsu not explicitly in guide, kept empty for now
-    },
-
-    // --- NEW: Shopping Guide ---
-    shoppingGuide: {
-        souvenirs: [
-            { name: "烏賊羊羹 (柳屋)", description: "烏賊造型咖啡味羊羹，每日限量50盒。", priceEstimate: "約¥1,200", purchaseLocations: "函館柳屋 (本店限定)", shelfLife: "常溫7天" },
-            { name: "烏賊蛋糕捲 (菓子司水野屋)", description: "墨魚汁製作的黑色蛋糕捲。", priceEstimate: "不明", purchaseLocations: "菓子司水野屋", shelfLife: "冷凍1個月/冷藏3天" },
-            { name: "函館RUSK (King Bake)", description: "多種口味法式麵包脆餅，奶油味最人氣。", priceEstimate: "依包裝", purchaseLocations: "King Bake本店、機場、車站", shelfLife: "依包裝" },
-            { name: "Trappist修道院奶油餅乾", description: "北海道三大餅乾之一，修女手作。", priceEstimate: "依包裝", purchaseLocations: "修道院、朝市、車站、機場", shelfLife: "依包裝" },
-            { name: "箱館鹽味蜂蜜蛋糕 (北島麵包)", description: "木盒裝，使用北海道原料。", priceEstimate: "約¥1,600", purchaseLocations: "車站、機場、五稜郭塔、函館山", shelfLife: "依包裝" },
-            { name: "函館散歩蜂蜜饅頭 (千秋庵)", description: "印有函館景點圖案。", priceEstimate: "約¥150/個", purchaseLocations: "車站、機場、五稜郭塔、函館山", shelfLife: "常溫12天" },
-            { name: "究極的函館咖哩 (五島軒)", description: "知名洋食店咖哩調理包。", priceEstimate: "依包裝", purchaseLocations: "五島軒、各大伴手禮店", shelfLife: "依包裝" },
-            { name: "函館蒟蒻しゃぼん", description: "天然蒟蒻香皂。", priceEstimate: "依款式", purchaseLocations: "專賣店、部分伴手禮店", shelfLife: "N/A" },
-            // Classic Hokkaido Souvenirs
-            { name: "白色戀人", description: "北海道代表性伴手禮。", priceEstimate: "依包裝", purchaseLocations: "各大伴手禮店、機場", shelfLife: "依包裝" },
-            { name: "六花亭草莓巧克力", description: "經典必買。", priceEstimate: "依包裝", purchaseLocations: "六花亭、各大伴手禮店、機場", shelfLife: "依包裝" },
-            { name: "ROYCE生巧克力/洋芋片", description: "人氣巧克力品牌。", priceEstimate: "依包裝", purchaseLocations: "各大伴手禮店、機場", shelfLife: "冷藏" },
-            { name: "薯條三兄弟", description: "北海道限定Calbee薯條。", priceEstimate: "依包裝", purchaseLocations: "各大伴手禮店、機場", shelfLife: "依包裝" },
-            { name: "LeTAO雙層起司蛋糕", description: "小樽名店，機場有售。", priceEstimate: "依包裝", purchaseLocations: "機場、部分百貨", shelfLife: "冷凍/冷藏" }
-        ],
-        locations: [
-            { name: "金森紅磚倉庫", description: "集結多家甜點、雜貨、伴手禮店，氣氛佳。 BAY函館、金森洋物館是重點。", mapUrl: "https://www.google.com/maps/search/?api=1&query=%E9%87%91%E6%A3%AE%E7%B4%85%E7%A3%9A%E5%80%89%E5%BA%AB" },
-            { name: "函館機場", description: "國內線航廈伴手禮店齊全，包含Snaffle's、六花亭、LeTAO等。 2025/8月後有新美食街。", mapUrl: "https://www.google.com/maps/search/?api=1&query=石見銀山6" },
-            { name: "JR函館站", description: "站內有伴手禮店及7-Eleven(可免稅)。", mapUrl: "https://www.google.com/maps/search/?api=1&query=石見銀山7" },
-            { name: "札幌藥妝 (金森倉庫店)", description: "連鎖藥妝店，可使用網路優惠券。", mapUrl: "https://www.google.com/maps/search/?api=1&query=石見銀山8" },
-            { name: "MEGA唐吉訶德 (函館店)", description: "大型綜合折扣店，適合最後補貨。", mapUrl: "https://googleusercontent.com/maps.google.com/113" }
-        ]
-    },
-
-    // Data for the Themed Guides section (Simplified Souvenirs)
+    // NEW in v8.8: Data for the Themed Guides section
     themedGuidesData: {
         amulets: {
-            title: "⛩️ 函館人氣御守攻略",
+            title: "⛩️ 神社人氣御守攻略",
             description: "根據最新攻略整理，本趟行程中不可錯過的人氣御守與特色神社。",
             items: [
-                { name: "湯倉神社", prefecture: "北海道函館市", popular: "溫泉守護神，必求『御神緣御守』（多種漢字可選）與『大丈夫御守』。", special: "可以釣『烏賊籤詩』(いかみくじ)，極具函館特色。" },
-                { name: "函館護國神社", prefecture: "北海道函館市", popular: "位於函館山纜車站旁，以可愛的『貓頭鷹御守』聞名，象徵智慧與守護。", special: "因戊辰戰爭歷史，也被視為祈求勝負運的能量景點。" },
-                { name: "船魂神社", prefecture: "北海道函館市", popular: "北海道最古老神社，主祀航海安全，必求獨特的『舵守』，庇佑交通平安、指引人生方向。", special: "據傳是源義經登陸之地。" },
-                { name: "函館八幡宮", prefecture: "北海道函館市", popular: "函館最大神社，地位崇高，御守種類齊全，適合祈求總合平安與家運昌隆。", special: "每年1月2日有騎馬參拜活動。" }
+                { name: "出雲大社", prefecture: "島根", popular: "最強緣結御守『緣結守』、情侶專用『緣結筷』、勾玉守。", special: "神在月（農曆10月）期間有年度限定御守。" },
+                { name: "嚴島神社", prefecture: "廣島", popular: "海上大鳥居造型的『交通安全守』、用神明衣料製作的『御神衣守』。", special: "配合潮汐變色的『潮汐守』是宮島限定。" },
+                { name: "吉備津神社", prefecture: "岡山", popular: "可愛的『桃太郎守』主打勝負運與消災。", special: "桃子形狀的籤詩『桃子籤』是IG打卡必備。" },
+                { name: "琴崎八幡宮", prefecture: "山口", popular: "（本次未排入）日本御守種類第一的神社，有880種以上，包含彩虹色的『七色御守』與牛仔布做的『丹寧御守』。" }
             ]
         },
         souvenirs: {
             title: "🛍️ 2025 最新伴手禮情報",
-            description: "結合在地人推薦與觀光客必買商品，整理出函館必買的代表性伴手禮清單。",
+            description: "結合部落客實測與IG爆紅商品，整理出各縣必買的代表性伴手禮清單。",
             items: [
-                { name: "經典甜點", items: ['<span class="emphasis">Snaffle\'s 輕乳酪蛋糕</span>: 入口即化的口感，可在金森倉庫店或機場購買。', '<span class="emphasis">六花亭系列</span>: 葡萄奶油夾心餅乾是定番，五稜郭店商品最齊全。', '<span class="emphasis">Trappist修道院奶油餅乾</span>: 北海道三大餅乾之一，修女手工製作。'] },
-                { name: "在地特色", items: ['<span class="emphasis">幸運小丑漢堡周邊</span>: T-Shirt、餅乾、咖哩調理包，灣區本店限定商品最多。', '<span class="emphasis">烏賊羊羹 (柳屋)</span>: 烏賊造型咖啡味羊羹，每日限量。', '<span class="emphasis">函館RUSK (King Bake)</span>: 多種口味的法式麵包脆餅。', '<span class="emphasis">烏賊相關</span>: 函館朝市的『烏賊飯』(いかめし)真空包、各式烏賊一夜干。'] }
+                { name: "岡山縣", items: ["<span class=\"emphasis\">吉備糰子</span>: 山方永壽堂是首選老舖。", "<span class=\"emphasis\">白桃系列</span>: 7-8月限定，整顆白桃製作的大福在IG上爆紅。", "<span class=\"emphasis\">晴王葡萄</span>: 9-10月產季，被譽為『葡萄界的勞斯萊斯』。"] },
+                { name: "廣島縣", items: ["<span class=\"emphasis\">紅葉饅頭</span>: 除了傳統口味，『炸紅葉饅頭』是宮島本店限定的現炸美食。", "<span class=\"emphasis\">八天堂奶油麵包</span>: 爆漿奶油內餡是其最大特色。", "<span class=\"emphasis\">廣島檸檬系列</span>: 檸檬蛋糕、檸檬鹽等都是人氣商品。"] },
+                { name: "鳥取縣", items: ["<span class=\"emphasis\">二十世紀梨系列</span>: 梨子果凍、梨子酒等都是代表。", "<span class=\"emphasis\">柯南/鬼太郎主題商品</span>: 在青山剛昌故鄉館與水木茂大道限定販售。", "<span class=\"emphasis\">松葉蟹相關</span>: 11-3月產季，蟹味噌罐頭是老饕最愛。"] },
+                { name: "島根縣", items: ["<span class=\"emphasis\">緣結筷</span>: 出雲大社的代表性伴手禮，適合情侶夫妻。", "<span class=\"emphasis\">泥鰍舞饅頭</span>: 造型可愛，極具地方特色。", "<span class=\"emphasis\">宍道湖蜆系列</span>: 蜆湯包、蜆醬油，濃縮湖泊精華。"] }
             ]
         },
         animePilgrimage: {
             title: "🎥 動漫與日劇聖地巡禮",
-            description: "函館的異國風情街景，使其成為眾多動漫與影視作品的舞台。",
+            description: "本趟旅程將行經多個知名動漫與日劇的取景地，聖地巡禮地圖如下。",
             items: [
-                { name: "《Love Live! Sunshine!!》", locations: ["八幡坂（Saint Snow 演唱會場景）", "函館西高等學校（Saint Snow 學校原型）", "幸運小丑漢堡 灣區本店", "金森紅磚倉庫"] },
-                { name: "《黃金神威》", locations: ["五稜郭（土方歲三的最終戰場）"] },
-                { name: "《Pucchimas!》", locations: ["五稜郭塔", "函館山夜景"] },
-                { name: "日劇《First Love 初戀》", locations: ["八幡坂", "元町公園周邊"] }
+                { name: "《名偵探柯南》", locations: ["鳥取站", "青山剛昌故鄉館", "米花商店街"] },
+                { name: "《鬼太郎》", locations: ["境港水木茂大道", "妖怪神社"] },
+                { name: "《玉響～tamayura～》", locations: ["竹原町並保存地區（主要舞台）"] },
+                { name: "電影《追憶》", locations: ["石見銀山（大森銀山遺跡）"] },
+                { name: "日劇《我們的存在》", locations: ["出雲大社前參道"] }
             ]
         }
     },
@@ -124,92 +63,108 @@ const tripData = {
                 title: "🌸 日本櫻花名所100選",
                 theme: "border-pink-300",
                 locations: [
-                    { name: "五稜郭公園", prefecture: "北海道函館市", details: "約1600株染井吉野櫻，星型護城河倒映櫻花美景，最佳觀賞期：4月下旬～5月上旬。" }
+                    { name: "津山城（鶴山公園）", prefecture: "岡山縣", details: "約1000株染井吉野櫻，最佳觀賞期：4月上旬～中旬。" },
+                    { name: "千光寺公園", prefecture: "廣島縣尾道市", details: "約1500株櫻花與瀨戶內海的絕景，最佳觀賞期：3月下旬～4月中旬，有夜間點燈。" }
                 ]
             },
             {
                 title: "🍁 日本紅葉名所100選",
                 theme: "border-orange-300",
                 locations: [
-                     { name: "大沼國定公園", prefecture: "北海道七飯町", details: "駒岳火山下的湖光山色，楓紅與湖中島嶼相映成趣，見頃：10月中旬～10月下旬。" }
+                    { name: "足立美術館", prefecture: "島根縣安來市", details: "日本庭園第一的紅葉美景，見頃：11月中旬～12月上旬。" },
+                    { name: "宮島紅葉谷公園", prefecture: "廣島縣廿日市市", details: "約700株楓樹與嚴島神社相映成趣，見頃：11月中旬～下旬。" },
+                    { name: "大山", prefecture: "鳥取縣西伯郡", details: "西日本最高峰的壯麗紅葉，見頃：10月下旬～11月上旬。" }
                 ]
             },
             {
-                title: "🏯 日本100名城 (續)",
-                theme: "border-gray-400",
+                title: "🌅 日本夕陽百選",
+                theme: "border-red-300",
                 locations: [
-                    { name: "五稜郭 (No.102)", prefecture: "北海道函館市", details: "日本第一座西洋式星形要塞，也是戊辰戰爭的最終舞台。" }
+                    { name: "宍道湖", prefecture: "島根縣松江市", details: "從島根縣立美術館觀賞湖面夕陽，冬季可見候鳥剪影。" },
+                    { name: "稻佐之濱", prefecture: "島根縣出雲市", details: "神話聖地與日本海的壯闊日落，弁天神社是經典構圖。" },
+                    { name: "鷲羽山", prefecture: "岡山縣倉敷市", details: "瀨戶大橋與瀨戶內海群島的剪影，是代表性的夕陽絕景。" }
                 ]
             },
-             {
-                title: "🔊 日本音風景100選",
-                theme: "border-teal-300",
+            {
+                title: "🏯 日本100名城",
+                theme: "border-gray-400",
                 locations: [
-                    { name: "函館正教會鐘聲", prefecture: "北海道函館市", details: "元町地區代表性教堂的鐘聲，音色悠揚。" }
+                    { name: "松江城 (No.64)", prefecture: "島根縣", details: "國寶五城與現存12天守之一，別名「千鳥城」。" },
+                    { name: "鳥取城 (No.61)", prefecture: "鳥取縣", details: "建於久松山上的石垣遺跡，見證了歷史的變遷。" },
+                    { name: "津山城 (No.67)", prefecture: "岡山縣", details: "擁有高達45公尺的宏偉石牆，也是櫻花名所。" },
+                    { name: "備中松山城 (No.68)", prefecture: "岡山縣高梁市", details: "日本最高的現存天守山城，有「天空之城」的美譽。" },
+                    { name: "岡山城 (No.70)", prefecture: "岡山縣", details: "黑色外觀被稱為「烏城」，與後樂園相望。" },
+                    { name: "廣島城 (No.73)", prefecture: "廣島縣", details: "別名「鯉城」，天守閣為戰後復原的樣式。" }
                 ]
             }
         ],
         greatThree: [
             {
-                title: "🌟 日本新三景",
+                title: "🌟 日本三景",
                 theme: "border-blue-300",
                 status: "入選",
                 location: {
-                    name: "大沼公園",
-                    prefecture: "北海道七飯町",
-                    description: "以其駒岳火山為背景的湖光山色，與九州「耶馬溪」、靜岡「三保松原」並列為日本新三景。"
+                    name: "宮島（嚴島）",
+                    prefecture: "廣島縣",
+                    description: "江戶時代儒學家林春齋認證，以世界遺產嚴島神社與海上大鳥居聞名於世。"
                 },
-                others: "耶馬溪（大分縣）、三保之松原（靜岡縣）"
+                others: "松島（宮城縣）、天橋立（京都府）"
             },
             {
-                title: "🌃 世界三大夜景 (米其林三星)",
+                title: "🌳 日本三大名園",
+                theme: "border-green-300",
+                status: "入選",
+                location: {
+                    name: "岡山後樂園",
+                    prefecture: "岡山縣",
+                    description: "擁有300年歷史的迴遊式庭園，巧妙地將岡山城作為「借景」，榮獲米其林三星評價。"
+                },
+                others: "兼六園（石川縣）、偕樂園（茨城縣）"
+            },
+            {
+                title: "🎆 日本三大祭典",
+                theme: "border-purple-300",
+                status: "地區精選",
+                description: "雖然未入選全國性的三大祭典，但本地區擁有極具魅力的傳統祭典。",
+                others: "祇園祭（京都）、天神祭（大阪）、神田祭（東京）",
+                alternative_title: "特色祭典",
+                alternatives: ["松江鼕祭 (10月)", "鳥取鏘鏘祭 (8月)", "宮島管絃祭 (7-8月)"]
+            },
+            {
+                title: "🌃 日本三大夜景",
                 theme: "border-indigo-300",
-                status: "入選",
-                location: {
-                    name: "函館山夜景",
-                    prefecture: "北海道函館市",
-                    description: "米其林綠色指南三星景點。由津輕海峽與函館港包夾的獨特「雙C」型海岸線，與那不勒斯、香港齊名。"
-                },
-                others: "那不勒斯（義大利）、香港"
-            },
-             {
-                title: "♨️ 北海道三大溫泉鄉",
-                theme: "border-cyan-300",
-                status: "入選",
-                location: {
-                    name: "湯之川溫泉",
-                    prefecture: "北海道函館市",
-                    description: "擁有約350年歷史，距離函館機場僅5分鐘車程，泉質為鹽化物泉，保溫效果佳。"
-                },
-                others: "登別溫泉、定山溪溫泉"
+                status: "地區精選",
+                description: "此地區雖無名列三大夜景，但仍有值得一看的特色夜景。",
+                others: "函館山（北海道）、摩耶山（兵庫縣）、稻佐山（長崎縣）",
+                alternative_title: "特色夜景",
+                alternatives: ["千光寺公園（尾道市）", "倉敷美觀地區夜間點燈", "宮島嚴島神社夜間點燈"]
             },
             {
-                 title: "🍜 北海道三大拉麵",
-                 theme: "border-yellow-300",
-                 status: "入選",
-                 location: {
-                     name: "函館鹽味拉麵",
-                     prefecture: "北海道函館市",
-                     description: "以清澈爽口的鹽味湯頭聞名，與札幌味噌、旭川醬油並列。"
-                 },
-                 others: "札幌味噌拉麵、旭川醬油拉麵"
-             }
+                title: "♨️ 日本三名泉",
+                theme: "border-cyan-300",
+                status: "地區精選",
+                description: "此地區未包含日本三大名泉，但卻是優質溫泉的寶庫。",
+                others: "有馬溫泉（兵庫縣）、草津溫泉（群馬縣）、下呂溫泉（岐阜縣）",
+                alternative_title: "特色溫泉",
+                alternatives: ["玉造溫泉（島根縣，美肌之湯）", "三朝溫泉（鳥取縣，療癒之湯）", "皆生溫泉（鳥取縣，面海溫泉）"]
+            }
         ]
     },
 
     // Data for the seasonal highlights section
     seasonalData: {
         spring: {
-            title: '春 (4-5月)',
+            title: '春 (3-5月)',
             theme_color: 'bg-pink-100',
             icon: '🌸',
             highlights: [
-                '<span class="emphasis">五稜郭賞櫻</span>: 「日本櫻花名所100選」，星型護城河邊的櫻花隧道是絕景。',
-                '<span class="emphasis">猴子下山</span>: 湯之川熱帶植物園的猴子溫泉約在5月初結束。'
+                '<span class="emphasis">櫻花盛宴</span>: 岡山後樂園、津山城都是「日本賞櫻名所100選」。',
+                '<span class="emphasis">牡丹祭</span>: 島根大根島牡丹節 (4月下旬-5月上旬)。',
+                '<span class="emphasis">廣島花卉節</span>: 5月3-5日在廣島和平紀念公園舉行。'
             ],
             foods: [
-                '<span class="emphasis">時令海鮮</span>: 扇貝、北寄貝、毛蟹。',
-                '<span class="emphasis">限定美食</span>: 櫻花季限定甜點。'
+                '<span class="emphasis">時令水果</span>: 草莓、德拉瓦葡萄 (4月下旬開始)。',
+                '<span class="emphasis">限定美食</span>: 春筍料理、櫻鯛。'
             ]
         },
         summer: {
@@ -217,26 +172,27 @@ const tripData = {
             theme_color: 'bg-blue-100',
             icon: '☀️',
             highlights: [
-                '<span class="emphasis">烏賊漁火</span>: 函館山的夜景中會點綴著海面上的捕烏賊漁火。',
-                '<span class="emphasis">函館港祭</span>: 8月初舉行，有盛大的花火大會(8/1)與「烏賊舞」遊行。',
-                '<span class="emphasis">國際民俗藝術節</span>: 8月上旬在元町公園舉行。'
+                '<span class="emphasis">祭典熱潮</span>: 鳥取鏘鏘祭 (8月)、玉造溫泉夏祭 (7-8月)。',
+                '<span class="emphasis">花火大會</span>: 宮島水中花火大會是代表性活動。',
+                '<span class="emphasis">海濱風情</span>: 浦富海岸水上活動、鳥取砂丘滑沙。'
             ],
             foods: [
-                '<span class="emphasis">烏賊 (いか)</span>: 函館的代表性漁獲，朝市的「活烏賊釣」是必體驗活動。',
-                '<span class="emphasis">海膽 (うに)</span>: 6-8月是海膽最肥美的季節。'
+                '<span class="emphasis">水果之王</span>: 岡山白桃 (7-8月)、鳥取二十世紀梨 (8月開始)。',
+                '<span class="emphasis">限定美食</span>: 香魚、素麵。'
             ]
         },
         autumn: {
-            title: '秋 (10-11月)',
+            title: '秋 (9-11月)',
             theme_color: 'bg-orange-100',
             icon: '🍁',
             highlights: [
-                '<span class="emphasis">大沼公園紅葉</span>: 「日本紅葉名所100選」，適合騎行或划船賞楓 (10月中下旬)。',
-                '<span class="emphasis">函館MOMI-G節</span>: 見晴公園（香雪園）夜楓點燈 (10月下旬至11月初)。'
+                '<span class="emphasis">紅葉絕景</span>: 廣島紅葉谷公園、岡山後樂園、足立美術館。',
+                '<span class="emphasis">神話季節</span>: 出雲大社「神在月」(農曆10月)。',
+                '<span class="emphasis">百年祭典</span>: 松江鼕祭 (10月)。'
             ],
             foods: [
-                '<span class="emphasis">時令海鮮</span>: 鮭魚、鮭魚卵、秋刀魚。',
-                '<span class="emphasis">在地美食</span>: 函館美食馬戲團 (9月)。'
+                '<span class="emphasis">時令水果</span>: 栗子、柿子、廣島檸檬 (10月開始)。',
+                '<span class="emphasis">限定美食</span>: 松茸、秋鮭、牡蠣季開始。'
             ]
         },
         winter: {
@@ -244,390 +200,590 @@ const tripData = {
             theme_color: 'bg-indigo-100',
             icon: '❄️',
             highlights: [
-                '<span class="emphasis">函館聖誕幻想</span>: 12月在金森紅磚倉庫前，海上的巨大聖誕樹與每日點燈煙火。',
-                '<span class="emphasis">五稜星之夢</span>: 五稜郭護城河點燈，星型要塞浮現於雪地 (12月至2月)。',
-                '<span class="emphasis">猴子泡湯</span>: 湯之川熱帶植物園的日本獼猴 (12月1日至5月上旬)。',
-                '<span class="emphasis">函館冬季煙火</span>: 2月每週六舉行。'
+                '<span class="emphasis">溫泉療癒</span>: 玉造溫泉 (神之湯)、三朝溫泉 (高濃度 radon 泉)。',
+                '<span class="emphasis">冬季燈飾</span>: 鳥取花迴廊冬季點燈 (11月-1月)。',
+                '<span class="emphasis">雪景</span>: 山陰地區冬季多雪，可欣賞雪化妝的松江城。'
             ],
             foods: [
-                '<span class="emphasis">時令海鮮</span>: 鱈魚、寒鰤、牡蠣。',
-                '<span class="emphasis">暖身美食</span>: 溫泉鄉的鹽拉麵。'
+                '<span class="emphasis">海鮮極品</span>: <span class="emphasis">松葉蟹</span> (11月解禁)、廣島牡蠣。',
+                '<span class="emphasis">時令水果</span>: 山口蜜柑、文旦柚。'
             ]
         }
     },
-     eventCalendar: [
-        { name: "函館聖誕幻想", dateRange: "11月底 - 12/25", location: "金森紅磚倉庫前", description: "海上巨大聖誕樹，每日18:00點燈+煙火。", type: "點燈/煙火" },
-        { name: "五稜星之夢", dateRange: "12月 - 2月底", location: "五稜郭公園護城河", description: "星形護城河點燈，從五稜郭塔俯瞰最佳。", type: "點燈" },
-        { name: "函館湯之川 冬之燈", dateRange: "12月 - 2月底", location: "湯之川溫泉街", description: "溫泉街燈飾，裝飾足湯設施。", type: "點燈" },
-        { name: "猴子泡溫泉", dateRange: "12/1 - 隔年5月上旬", location: "函館市熱帶植物園", description: "獼猴泡溫泉的療癒景象。", type: "季節景觀" },
-        { name: "函館冬季煙火", dateRange: "2月每週六", location: "函館灣綠島", description: "冬季夜空煙火，可與夜景同框。", type: "煙火" },
-        { name: "五稜郭櫻花祭", dateRange: "4月下旬 - 5月初", location: "五稜郭公園", description: "櫻花名所百選，夜櫻點燈。", type: "花季/點燈" },
-        { name: "函館港祭", dateRange: "8/1 - 8/5 (主要活動)", location: "函館港周邊", description: "大型花火大會(8/1)、Wassyoi函館烏賊舞遊行。", type: "祭典/煙火" },
-        { name: "國際民俗藝術節", dateRange: "8月上旬", location: "元町公園", description: "世界各國表演者齊聚。", type: "藝術節" },
-        { name: "函館MOMI-G楓葉節", dateRange: "10月下旬 - 11月初", location: "香雪園(見晴公園)", description: "北海道唯一國家指定文化財庭園夜楓點燈。", type: "點燈/市集" },
-        { name: "函館山纜車停運", dateRange: "約每年10月中旬 - 11月中旬 (2025: 10/9-11/9)", location: "函館山", description: "設備檢修，此期間無法搭乘纜車上山。", type: "維修公告"}
-    ],
 
-    // Detailed Highlights --- ADDED specialTags where applicable ---
+    // Data for the detailed highlights section in Overview
     detailedHighlights: [
         {
-            name: "函館朝市",
-            type: "景點",
-            mapUrl: "https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E9%A4%A8%E6%9C%9D%E5%B8%82",
-            ticketInfo: "免費入場",
-            parkingInfo: "有專用付費停車場『函館朝市駐車場』(30分鐘內免費，之後每30分鐘¥100)。",
-            expertRec: "函館的廚房，體驗在地活力的最佳起點。建議早晨7點至10點前往最為熱鬧，可品嚐最新鮮的海鮮丼。 清潔無魚腥味。",
-            historyCulture: "戰後初期形成的市集，是北海道最具代表性的早市之一。以「釣活烏賊」和「海鮮丼」聞名。",
-            focusPoints: '<ul><li class="list-disc list-inside space-y-1"><span class="emphasis">行動指令</span>：必體驗「元祖活いか釣堀」釣活烏賊，釣上後師傅會立刻做成生魚片。</li><li><span class="emphasis">美食焦點</span>：品嚐「きくよ食堂」的元祖海鮮丼，或「一花亭たびじ」的活烏賊跳舞丼飯(約1,890日圓)。</li><li><span class="emphasis">拍照點</span>：釣起烏賊的瞬間、色彩繽紛的海鮮丼飯特寫。</li></ul>',
-            specialTags: [ { type: 'ig_hotspot', text: '📸 IG 熱門打卡點' } ] // Added Tag
-        },
-        {
-            name: "Milkissimo (ミルキッシモ) 五稜郭タワー店",
+            name: "ばくだん屋 (辣味沾麵)",
             type: "美食",
-            mapUrl: "https://www.google.com/maps/search/?api=1&query=出雲大社5",
-            parkingInfo: "位於五稜郭塔內，請使用周邊付費停車場 (如『函館市藝術廳停車場』，1小時¥200)。五稜郭塔店無專用停車場。",
-            expertRec: "發源於函館的義式冰淇淋 (Gelato) 專賣店，使用北海道高品質牛奶製作，口味豐富多樣，是品嚐在地乳製品美味的好選擇。",
-            historyCulture: '看板料理：<span class="emphasis">各式義式冰淇淋 (ジェラート)</span>。推薦口味：<span class="emphasis">牛奶 (ミルキッシモミルク)</span>、<span class="emphasis">哈密瓜 (メロン)</span>、<span class="emphasis">當地季節限定口味</span>。',
-            focusPoints: '<ul><li class="list-disc list-inside space-y-1"><span class="emphasis">料理特色</span>：標榜低脂、低卡路里，口感綿密細緻。</li><li><span class="emphasis">IG/FB 人氣</span>：拍攝色彩繽紛的多球冰淇淋組合。</li><li><span class="emphasis">拍照點</span>：（若在五稜郭塔店）冰淇淋與窗外景色的合照、冰淇淋特寫。</li></ul>'
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=ばくだん屋+ekie店",
+            parkingInfo: "位於廣島站ekie內，可使用車站合作的『広島駅屋上駐車場』(費用約 ¥400/小時，當日最高 ¥1,500)。",
+            expertRec: "宵夜/特色美食：廣島獨有的 B 級美食。湯汁冰涼，可自選辣度，口感清爽，適合深夜挑戰。",
+            historyCulture: "看板料理：<span class=\"emphasis\">辛いつけ麺 (辣味沾麵)</span>。人氣搭配：<span class=\"emphasis\">辣味飯 (辛い飯)</span>、<span class=\"emphasis\">搭配水煮蛋</span>。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">料理特色</span>：冰鎮的拉麵條搭配冰涼的辣味湯汁，清爽解膩。</li><li><span class="emphasis">IG/FB 人氣</span>：拍攝挑戰極辣的表情。</li><li><span class="emphasis">拍照點</span>：拉麵的特寫。</li></ul>`
         },
         {
-            name: "金森紅磚倉庫",
+            name: "嚴島神社",
             type: "景點",
-            mapUrl: "https://www.google.com/maps/search/?api=1&query=%E9%87%91%E6%A3%AE%E7%B4%85%E7%A3%9A%E5%80%89%E5%BA%AB",
-            ticketInfo: "免費入場",
-            parkingInfo: "有合作的『TIMES24金森紅磚倉庫停車場』，1小時¥440，於設施內消費滿¥1,000可免費停車2小時。",
-            expertRec: "函館灣區的地標，白天適合逛街購物，傍晚的夕陽與夜間點燈氛圍極佳。冬季(11月底-12/25)的「聖誕幻想」是重頭戲，有海上聖誕樹與煙火。",
-            historyCulture: "1909年興建的國際貿易倉庫，現分為BAY函館、金森洋物館、函館歷史廣場、金森廳四大設施。",
-            focusPoints: '<ul><li class="list-disc list-inside space-y-1"><span class="emphasis">購物重點</span>：尋找Snaffle\'s、Petite Merveille起司蛋糕、北海道土產。 可使用札幌藥妝優惠券。</li><li><span class="emphasis">拍照點</span>：倉庫群與運河倒影、傍晚點燈後的浪漫氛圍、冬季的海上聖誕樹。</li></ul>',
-             specialTags: [
-                 { type: 'pilgrimage', text: '🎥 聖地巡禮: Love Live! Sunshine!! 場景' },
-                 { type: 'ig_hotspot', text: '📸 IG 熱門打卡點' },
-                 { type: 'event', text: '🎄 冬季活動: 函館聖誕幻想 (11月底-12/25)' }
-             ] // Added Tags
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=嚴島神社",
+            ticketInfo: "大人 300日圓",
+            parkingInfo: "車輛需停於「宮島口」渡輪站周邊停車場，費用約 ¥1000-1600/天。",
+            expertRec: "工頭堅建議：下午前往可拍攝背光夕陽，退潮時可走到鳥居下方。嚴島神社迴廊在漲潮時會倒映在海上，非常壯觀。<span class=\"emphasis\">賞月名所</span>。",
+            historyCulture: "世界遺產，創建於593年，為<span class=\"emphasis\">日本三景之一</span>。以其獨特的<span class=\"emphasis\">海上大鳥居</span>聞名。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">參拜重點</span>：務必查詢潮汐表！滿潮感受「漂浮感」，乾潮時可步行至鳥居下方。</li><li><span class="emphasis">御守/御朱印</span>：<span class=\"emphasis\">交通安全守</span> (海上鳥居造型) 極具人氣。</li><li><span class="emphasis">絕佳拍照點</span>：大鳥居、漲潮時的社殿迴廊倒影、彌山展望台。</li></ul>`
         },
         {
-            name: "幸運小丑漢堡 (灣區本店)",
+            name: "あなごめし うえの (星鰻飯)",
             type: "美食",
-            mapUrl: "https://www.google.com/maps/search/?api=1&query=%E5%B9%B8%E9%81%8B%E5%B0%8F%E4%B8%91%E6%BC%A2%E5%A0%A1%20%E7%81%A3%E5%8D%80%E6%9C%AC%E5%BA%97",
-            parkingInfo: "本店無專用停車場，請使用金森紅磚倉庫的『TIMES24』收費停車場。",
-            expertRec: "函館限定的靈魂美食，被譽為「全日本最好吃漢堡」。 每間分店裝潢主題不同，灣區本店人氣高。 可用函館特級套票(4點)。",
-            historyCulture: '看板料理：<span class="emphasis">油淋炸雞漢堡 (年銷50萬個)</span>。 人氣搭配：<span class="emphasis">起司薯條</span>。超值套餐約968日圓。',
-            focusPoints: '<ul><li class="list-disc list-inside space-y-1"><span class="emphasis">料理特色</span>：現點現做的炸雞腿裹上特製糖醋醬，風味獨特。</li><li><span class="emphasis">聖地巡禮</span>：這裡是《Love Live! Sunshine!!》的聖地之一。</li><li><span class="emphasis">拍照點</span>：店門口的華麗招牌、店內獨特的鞦韆座位。</li></ul>',
-             specialTags: [
-                 { type: 'pilgrimage', text: '🎥 聖地巡禮: Love Live! Sunshine!! 場景' },
-                 { type: 'ig_hotspot', text: '📸 IG 熱門餐廳' }
-             ] // Added Tags
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=あなごめし+うえの+宮島口本店",
+            parkingInfo: "店家後方有5個免費車位(極易客滿)，建議使用宮島口周邊收費停車場。",
+            expertRec: "百年老店：宮島口名物。其<span class=\"emphasis\">星鰻飯便當</span>即使冷掉也美味，是機場前必買的「儀式感便當」。",
+            historyCulture: "看板料理：<span class=\"emphasis\">星鰻飯 (あなごめし)</span>。使用宮島口特產的星鰻製作。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">料理特色</span>：星鰻肉質比鰻魚<span class="emphasis">更細緻清爽</span>，醬汁入味卻不搶戲。</li><li><span class="emphasis">IG/FB 人氣</span>：拍攝充滿儀式感的<span class="emphasis">木製便當盒</span>。</li><li><span class="emphasis">拍照點</span>：店門口的古樸日式建築、星鰻飯便當的特寫。</li></ul>`
         },
         {
-            name: "幸運小丑漢堡 (峠下總本店)",
+            name: "すし丸 (迴轉壽司)",
             type: "美食",
-            mapUrl: "https://www.google.com/maps/search/?api=1&query=ドーミーインPREMIUM五稜郭",
-            parkingInfo: "設有大型免費專用停車場。",
-            expertRec: "最具特色的幸運小丑分店，位於七飯町郊區，適合自駕前往大沼公園途中安排。以其巨大的紅色椅子和豐富的裝飾聞名。",
-            historyCulture: '看板料理：<span class="emphasis">油淋炸雞漢堡</span>。分店特色：<span class="emphasis">超巨大紅色椅子</span>、<span class="emphasis">豐富的紀念品販售區</span>。',
-            focusPoints: '<ul><li class="list-disc list-inside space-y-1"><span class="emphasis">料理特色</span>：與其他分店菜單大致相同，重點在於獨特的用餐環境。</li><li><span class="emphasis">行動指令</span>：務必和戶外的巨大紅色椅子合照。</li><li><span class="emphasis">拍照點</span>：巨大紅色椅子、店內充滿個性的裝潢、購買特色紀念品。</li></ul>',
-             specialTags: [ { type: 'recommendation', text: '🚗 自駕推薦特色分店' } ] // Added Tag
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=すし丸+ekie広島店",
+            parkingInfo: "位於廣島站ekie內，可使用車站合作的『広島駅屋上駐車場』(費用約 ¥400/小時)。",
+            expertRec: "位於廣島車站內的便利選擇，能輕鬆品嚐到瀨戶內海的新鮮漁獲，適合做為一日行程的完美收尾。",
+            historyCulture: "看板料理：<span class=\"emphasis\">地魚三貫</span> (當日推薦的本地漁獲)、<span class=\"emphasis\">炙燒壽司</span>。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">料理特色</span>：主打瀨戶內海直送的「地魚」，可以吃到其他地區少見的壽司種類。</li><li><span class="emphasis">IG/FB 人氣</span>：拍攝迴轉帶上琳瑯滿目的壽司盤，以及特寫當日限定的豪華壽司。</li><li><span class="emphasis">拍照點</span>：各種壽司的特寫照片。</li></ul>`
         },
         {
-            name: "長谷川商店 (灣區店)",
-            type: "美食",
-            mapUrl: "https://www.google.com/maps/search/?api=1&query=%E9%95%B7%E8%B0%B7%E5%B7%9D%E5%95%86%E5%BA%97%20%E7%81%A3%E5%8D%80%E5%BA%97",
-            parkingInfo: "店家門口有少量免費停車位 (約4台)。",
-            expertRec: "函館最強B級美食之一，以現點現烤的『烤肉便當』聞名。可用函館特級套票(2點)。",
-            historyCulture: '看板料理：<span class="emphasis">烤肉便當 (やきとり弁当)</span>。雖然叫烤雞(Yakitori)，但使用的是豬五花肉，是函館的飲食特色。',
-            focusPoints: '<ul><li class="list-disc list-inside space-y-1"><span class="emphasis">點餐技巧</span>：選擇便當大小、肉串數量，以及口味（推薦鹽味或獨門醬汁）。</li><li><span class="emphasis">IG/FB 人氣</span>：拍攝師傅在吧台後方現烤肉串的畫面。</li><li><span class="emphasis">拍照點</span>：打開便當盒，拍攝鋪滿肉串的瞬間。</li></ul>'
-        },
-        {
-            name: "函館山纜車 & 夜景",
+            name: "廣島和平紀念公園",
             type: "景點",
-            mapUrl: "https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E9%A4%A8%E5%B1%B1%E7%BA%9C%E8%BB%8A%20%E5%B1%B1%E9%BA%93%E7%AB%99",
-            ticketInfo: "觀景台免費。纜車來回票: 大人 1,800日圓。可用函館特級套票(7點)。",
-            parkingInfo: "山麓站設有免費停車場 (約85輛)，但車位極少易滿。建議搭乘市電至「十字街」站後步行10分鐘。",
-            expertRec: "米其林三星景點，世界三大夜景之一。 建議在日落前30分鐘抵達山頂，捕捉黃昏、魔幻時刻與夜景。注意：每年秋季約有一個月停運檢修(2025年為10/9-11/9)。",
-            historyCulture: "海拔334公尺，俯瞰被津輕海峽和函館港包夾的獨特「雙C」型海岸線。",
-            focusPoints: '<ul><li class="list-disc list-inside space-y-1"><span class="emphasis">行動指令</span>：務必提早上山卡位！最佳觀景點在展望台二樓戶外區的最右側。</li><li><span class="emphasis">裝備建議</span>：山上風大，即使是夏天也務必攜帶防風外套。</li><li><span class="emphasis">拍照點</span>：捕捉城市燈光剛點亮、天空尚有餘暉的「魔幻時刻」。</li></ul>',
-             specialTags: [ { type: 'ig_hotspot', text: '📸 IG 熱門打卡點' } ] // Added Tag
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=廣島和平紀念公園",
+            ticketInfo: "公園免費, 資料館: 大人 200日圓",
+            parkingInfo: "周邊停車場如「広島市中央駐車場」(¥180/30分)。",
+            expertRec: "世界文化遺產，是這座城市從灰燼中重生的象徵。建議放慢腳步，沉靜地感受此地傳達的和平訊息。",
+            historyCulture: "為紀念1945年原子彈爆炸而建，園區內的<span class=\"emphasis\">原爆圓頂館</span>是爆炸後僅存的建築之一，保留至今以警示後人。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">參觀重點</span>：原爆圓頂館、和平紀念資料館、和平之燈與和平鐘。</li><li><span class="emphasis">文化體驗</span>：資料館內展示了令人震撼的歷史文物與倖存者見證。</li><li><span class="emphasis">拍照點</span>：從和平池望向原爆圓頂館的軸線是經典構圖。</li></ul>`
         },
         {
-            name: "函太郎 (宇賀浦總店)",
+            name: "麗ちゃん (廣島燒)",
             type: "美食",
-            mapUrl: "https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E5%A4%AA%E9%83%8E%20%E5%AE%87%E8%B3%80%E6%B5%A6%E7%B8%BD%E5%BA%97",
-            parkingInfo: "設有大型免費專用停車場 (約60台)。",
-            expertRec: "函館人氣迴轉壽司，品質媲美高級壽司店。宇賀浦總店擁有絕佳海景，可眺望津輕海峽。可用函館特級套票折抵。",
-            historyCulture: '看板料理：<span class="emphasis">當日現撈地魚</span>、<span class="emphasis">烏賊</span>、<span class="emphasis">北寄貝</span>。',
-            focusPoints: '<ul><li class="list-disc list-inside space-y-1"><span class="emphasis">點餐技巧</span>：迴轉帶上的壽司以保鮮為主，強烈建議直接拿點菜單向師傅點餐，才能吃到現握的美味。</li><li><span class="emphasis">IG/FB 人氣</span>：拍攝窗外的海景與壽司的合照。</li><li><span class="emphasis">拍照點</span>：特寫當日限定的豪華壽司。</li></ul>',
-             specialTags: [ { type: 'ig_hotspot', text: '📸 IG 熱門餐廳' } ] // Added Tag
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=麗ちゃん+広島",
+            parkingInfo: "位於廣島站ASSE內，可使用車站合作的停車場。",
+            expertRec: "體驗廣島靈魂美食的代表性名店，位於車站內，交通極為方便，總是大排長龍，是遊客與在地人的共同選擇。",
+            historyCulture: "看板料理：<span class=\"emphasis\">廣島燒 (お好み焼き)</span>。特色是先鋪上一層麵糊，再堆疊大量高麗菜、豆芽菜、肉片，最後蓋上炒麵與雞蛋。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">料理特色</span>：與大阪燒的混合式作法不同，廣島燒層次分明，口感豐富。</li><li><span class="emphasis">人氣搭配</span>：可選擇加入牡蠣或起司等豪華配料。</li><li><span class="emphasis">拍照點</span>：拍攝師傅在鐵板上熟練製作的過程，以及剖開廣島燒的斷面。</li></ul>`
         },
         {
-            name: "元町教會群 & 八幡坂",
+            name: "松江城 & 宍道湖夕陽",
             type: "景點",
-            mapUrl: "https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E9%A4%A8%20%E5%85%83%E7%94%BA%20%E5%85%AB%E5%B9%A1%E5%9D%82",
-            ticketInfo: "戶外參觀免費。舊函館區公會堂: 300日圓(可用特級套票1點)。舊英國領事館可用特級套票(1點)。",
-            parkingInfo: "無專用停車場，請使用『函館市元町觀光停車場』(1小時內¥200，之後每30分鐘¥100)。",
-            expertRec: "函館異國風情的代表區域。石板路、教會與洋房，充滿浪漫氛圍，適合花半天時間悠閒散步。",
-            historyCulture: "函館作為日本最早開放的港口之一，遺留大量西洋建築。 函館正教會鐘聲入選「日本音風景100選」。",
-            focusPoints: '<ul><li class="list-disc list-inside space-y-1"><span class="emphasis">聖地巡禮</span>：<span class="emphasis">八幡坂</span>被票選為「觀光最想造訪坡道第一名」，也是多部影視作品取景地。</li><li><span class="emphasis">參觀重點</span>：舊函館區公會堂（可體驗歐洲禮服）、函館正教會、元町天主堂。</li><li><span class="emphasis">拍照點</span>：從八幡坂頂端，由上往下拍攝直通港口的道路。</li></ul>',
-             specialTags: [
-                 { type: 'pilgrimage', text: '🎥 聖地巡禮: Love Live! Sunshine!! / First Love 場景' },
-                 { type: 'ig_hotspot', text: '📸 IG 熱門打卡點 (八幡坂/正教會)' }
-             ] // Added Tags
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=松江城",
+            ticketInfo: "天守閣: 680日圓 (外國人340日圓)",
+            parkingInfo: "松江城大手前駐車場(¥300/首小時)。島根縣立美術館(觀夕陽點)有免費停車場。",
+            expertRec: "專家見解：國寶五城之一，因屋頂造型像<span class=\"emphasis\">千鳥展翅</span>而得名。<span class=\"emphasis\">宍道湖夕陽</span>被列入日本夕陽百選，同時也是<span class=\"emphasis\">絕佳賞月聖地</span>。",
+            historyCulture: "日本<span class=\"emphasis\">國寶五城之一</span>，山陰地區唯一現存天守。宍道湖是日本第七大湖，其夕陽景色聞名全國。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">城與園</span>：登上松江城天守，將宍道湖美景「借景」入園。推薦體驗<span class="emphasis">堀川遊覽船</span>。</li><li><span class="emphasis">夕陽攻略</span>：最佳觀賞點為<span class="emphasis">島根縣立美術館</span>面向宍道湖的玻璃帷幕大廳。</li><li><span class="emphasis">拍照點</span>：天守閣外觀、宍道湖夕陽下的嫁ヶ島剪影。</li></ul>`
         },
         {
-            name: "船魂神社",
-            type: "景點",
-            mapUrl: "https://www.google.com/maps/search/?api=1&query=%E8%88%B9%E9%AD%82%E7%A5%9E%E7%A4%BE",
-            ticketInfo: "免費參拜",
-            parkingInfo: "無專用停車場，請使用『函館市元町觀光停車場』後步行前往。",
-            expertRec: "北海道最古老神社之一，位於元町散步路線的起點。是祈求航海安全、事業順利的能量景點。",
-            historyCulture: "主祀潮汐之神與大海之神，據傳源義經也曾在此受庇佑而平安登陸。",
-            focusPoints: '<ul><li class="list-disc list-inside space-y-1"><span class="emphasis">御守/御朱印</span>：必買獨特的『舵守』，適合祈求交通安全或人生方向。</li><li><span class="emphasis">拍照點</span>：神社入口的石梯、古樸的拜殿。</li></ul>',
-             specialTags: [ { type: 'recommendation', text: '🎯 必買推薦: 舵守' } ] // Added Tag
-        },
-        {
-            name: "とん悦 (Tonetsu)",
+            name: "八雲庵 (鴨肉蕎麥麵)",
             type: "美食",
-            mapUrl: "https://www.google.com/maps/search/?api=1&query=%E3%81%A8%E3%82%93%E6%82%A6%20%E5%87%BD%E9%A4%A8",
-            parkingInfo: "店家設有專用停車場。",
-            expertRec: "函館在地的老字號炸豬排專門店，以其高品質的豬肉和酥脆的麵衣聞名，是在地人不想觀光客知道的隱藏名店。",
-            historyCulture: '看板料理：<span class="emphasis">炸里肌豬排套餐 (ロースかつ定食)</span>、<span class="emphasis">炸腰內肉豬排套餐 (ヒレかつ定食)</span>。',
-            focusPoints: '<ul><li class="list-disc list-inside space-y-1"><span class="emphasis">料理特色</span>：豬排麵衣酥脆不扎口，肉質多汁。高麗菜絲與白飯皆可免費續加。</li><li><span class="emphasis">IG/FB 人氣</span>：拍攝豬排金黃色的酥脆斷面。</li><li><span class="emphasis">拍照點</span>：豬排套餐全景、淋上醬汁的特寫。</li></ul>'
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=八雲庵",
+            parkingInfo: "無專用停車場，請使用松江城周邊的『大手前駐車場』後步行前往。",
+            expertRec: "文化體驗：位於松江城旁的古老武家屋敷建築中，品嚐<span class=\"emphasis\">鴨肉蕎麥麵</span>，是富有松江氛圍的用餐選擇。",
+            historyCulture: "看板料理：<span class=\"emphasis\">鴨肉蕎麥麵 (鴨なんばそば)</span>。餐廳本身是古老的武家屋敷建築。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">料理特色</span>：鴨肉湯頭濃郁，搭配松江特有的出雲蕎麥麵。</li><li><span class="emphasis">環境特色</span>：院子裡有小橋流水，用餐環境極佳。</li><li><span class="emphasis">拍照點</span>：古色古香的用餐環境、鴨肉蕎麥麵熱氣騰騰的特寫。</li></ul>`
         },
         {
-            name: "五稜郭塔 & 五稜郭公園",
+            name: "島根縣立古代出雲歴史博物館",
             type: "景點",
-            mapUrl: "https://www.google.com/maps/search/?api=1&query=%E4%BA%94%E7%A8%9C%E9%83%AD%E5%A1%94",
-            ticketInfo: "公園免費。五稜郭塔展望台: 大人 900日圓 (可用特級套票4點)。 箱館奉行所: 500日圓 (可用特級套票2點)。",
-            parkingInfo: "塔樓無專用停車場，請使用周邊付費停車場 (如『函館市藝術廳停車場』，1小時¥200)。",
-            expertRec: "函館地標，必登塔俯瞰完整星形要塞。 春櫻、秋楓、冬燈(五稜星之夢, 12月-2月)各有風情。",
-            historyCulture: "日本百名城，江戶末期西式堡壘，戊辰戰爭最終戰場。 土方歲三在此戰死。",
-            focusPoints: '<ul><li class="list-disc list-inside space-y-1"><span class="emphasis">聖地巡禮</span>：這裡是《黃金神威》粉絲必訪的聖地。</li><li><span class="emphasis">歷史探索</span>：參觀「箱館奉行所」了解幕末歷史。</li><li><span class="emphasis">拍照點</span>：從塔頂俯瞰完整的星型要塞、櫻花季時的粉色星型、冬季點燈時的星芒。</li></ul>',
-             specialTags: [
-                 { type: 'pilgrimage', text: '🎥 聖地巡禮: 黃金神威 場景' },
-                 { type: 'ig_hotspot', text: '📸 IG 熱門打卡點' },
-                 { type: 'event', text: '✨ 冬季活動: 五稜星之夢 (12月-2月)' }
-             ] // Added Tags
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=島根県立古代出雲歴史博物館",
+            ticketInfo: "常設展: 620日圓 (外國人310日圓)",
+            parkingInfo: "設有免費停車場 (可與出雲大社共用)。",
+            expertRec: "參拜出雲大社前的最佳『預習』地點。館內收藏了大量國寶級的出土文物，能讓您對出雲的神話與歷史有更深刻的理解。",
+            historyCulture: "博物館的設計靈感來自於出雲大社，主要展出從<span class=\"emphasis\">加茂岩倉遺跡</span>和<span class=\"emphasis\">荒神谷遺跡</span>出土的大量銅劍、銅鐸和銅矛。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">參觀重點</span>：國寶展區的銅劍與銅鐸、平安時代出雲大社本殿的巨大『宇豆柱』復原模型。</li><li><span class="emphasis">建築之美</span>：博物館採用耐候鋼與玻璃帷幕，設計現代而莊重。</li><li><span class="emphasis">拍照點</span>：從中央大廳的玻璃帷幕拍攝出雲大社的景色。</li></ul>`
         },
         {
-            name: "函館麵厨房 味彩 (本店)",
+            name: "出雲大社 & 稻佐之濱夕陽",
+            type: "景點",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=出雲大社",
+            ticketInfo: "境內免費, 寶物殿 300日圓",
+            parkingInfo: "出雲大社與稻佐之濱均設有大型免費停車場。",
+            expertRec: "專家見解：日本最古老神社之一，以結緣聞名。<span class=\"emphasis\">稻佐之濱</span>是傳說中八百萬神明登陸地，是日本夕陽百選名所。",
+            historyCulture: "主祭神為<span class=\"emphasis\">大國主大神</span>，以<span class=\"emphasis\">結緣</span>聞名。神樂殿<span class=\"emphasis\">長13公尺、重5.2噸的注連繩</span>為日本最大。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">參拜重點</span>：遵循獨特的<span class=\"emphasis\">「二拜四拍手一拜」</span>方式參拜。</li><li><span class="emphasis">夕陽攻略</span>：<span class="emphasis">稻佐之濱</span>是最佳觀賞點，拍攝巨型礁石上的<span class="emphasis">弁天神社</span>。</li><li><span class="emphasis">絕佳拍照點</span>：神樂殿巨大的注連繩、可愛<span class="emphasis">兔子雕像</span>、稻佐之濱的夕陽。</li></ul>`
+        },
+        {
+            name: "羽根屋 本店 (割子蕎麥麵)",
             type: "美食",
-            mapUrl: "https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E9%A4%A8%E9%BA%B5%E5%BB%9A%E6%88%BF%20%E5%91%B3%E5%BD%A9%20%E6%9C%AC%E5%BA%97",
-            parkingInfo: "店家設有專用停車場 (約7台)，若客滿請使用五稜郭塔周邊的收費停車場。",
-            expertRec: "函館鹽味拉麵的代表，Tabelog 3.64分名店。 本店位於五稜郭塔對面。可用函館特級套票(3點)。",
-            historyCulture: '看板料理：<span class="emphasis">味彩鹽拉麵 (味彩塩拉麺, 750日圓)</span>。 湯頭以雞骨、豬骨、海帶熬製，清爽不油膩。',
-            focusPoints: '<ul><li class="list-disc list-inside space-y-1"><span class="emphasis">料理特色</span>：湯頭透明澄澈，是函館鹽味拉麵的王道代表，北海道三大拉麵之一。</li><li><span class="emphasis">IG/FB 人氣</span>：拍攝拉麵清澈的湯頭與麵條的特寫。</li><li><span class="emphasis">拍照點</span>：從店內窗邊座位拍攝五稜郭塔。</li></ul>',
-             specialTags: [ { type: 'ig_hotspot', text: '📸 IG 熱門餐廳' } ] // Added Tag
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=羽根屋+本店",
+            parkingInfo: "店家無專用停車場，請使用JR出雲市站周邊的收費停車場 (約 ¥110/30分鐘)。",
+            expertRec: "文化體驗：出雲的靈魂美食，以獨特的<span class=\"emphasis\">「三段式割子」</span>盛裝。參拜大社後必吃。",
+            historyCulture: "看板料理：<span class=\"emphasis\">出雲割子蕎麥麵</span>。出雲蕎麥麵是日本三大蕎麥麵之一。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">料理特色</span>：連殼磨粉，顏色較深，香氣濃郁。</li><li><span class="emphasis">IG/FB 人氣</span>：拍攝三層堆疊的漆器碗，以及淋上醬汁的儀式感。</li><li><span class="emphasis">拍照點</span>：食物本身即是藝術品。</li></ul>`
         },
         {
-            name: "Colz (コルツ)",
+            name: "石見銀山",
+            type: "景點",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=石見銀山",
+            ticketInfo: "龍源寺間步: 410日圓 (外國人200日圓)",
+            parkingInfo: "世界遺產中心設有大型收費停車場，需轉乘巴士進入景區。",
+            expertRec: "世界文化遺產，不僅是礦坑遺跡，更是一個完整的『山城』聚落。建議租借電動自行車，以更輕鬆的方式探索廣大的園區。",
+            historyCulture: "從16世紀至20世紀，石見銀山是日本最大的銀礦，其產量曾佔全球的三分之一。遺跡範圍包含礦山、港口與溫泉小鎮。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">探索重點</span>：唯一對外開放的礦坑<span class="emphasis">龍源寺間步</span>、保留江戶風情的<span class="emphasis">大森地區</span>街道。</li><li><span class="emphasis">聖地巡禮</span>：這裡是電影《追憶》的取景地。</li><li><span class="emphasis">絕佳拍照點</span>：大森地區的古老街道、羅漢寺五百羅漢石像群。</li></ul>`
+        },
+        {
+            name: "古民家カフェ&宿 晄 (AKARI)",
             type: "美食",
-            mapUrl: "https://www.google.com/maps/search/?api=1&query=Colz%20%E3%82%B3%E3%83%AB%E3%83%84%20%E5%87%BD%E9%A4%A8",
-            parkingInfo: "店家後方設有專用停車場。",
-            expertRec: "Tabelog高分名店，位於五稜郭附近，以使用北海道在地食材製作的義大利麵聞名，是在地人約會聚餐的口袋名單。",
-            historyCulture: '看板料理：<span class="emphasis">當季食材義大利麵套餐 (パスタランチ)</span>。',
-            focusPoints: '<ul><li class="list-disc list-inside space-y-1"><span class="emphasis">料理特色</span>：午間套餐CP值極高，能品嚐到使用當地海鮮與蔬菜的精緻義麵。</li><li><span class="emphasis">IG/FB 人氣</span>：拍攝擺盤精緻的義大利麵。</li><li><span class="emphasis">拍照點</span>：店內時尚沉靜的氛圍、餐點特寫。</li></ul>'
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=すし丸+ekie広島店6",
+            parkingInfo: "無專用停車場，請使用大森地區的公共停車場後步行前往。",
+            expertRec: "在世界遺產的古街中，這家由百年古民家改建的咖啡廳提供了絕佳的休憩場所，能深刻體驗石見銀山的懷舊氛圍。",
+            historyCulture: "看板料理：<span class=\"emphasis\">午間套餐 (週替わりランチ)</span>、<span class=\"emphasis\">手作蛋糕與咖啡</span>。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">料理特色</span>：使用當地食材製作的健康簡餐，菜色精緻。</li><li><span class="emphasis">環境特色</span>：保留了古民家的梁柱與格局，氣氛靜謐優雅。</li><li><span class="emphasis">拍照點</span>：從窗邊座位拍攝古街景色、精緻的餐點擺盤。</li></ul>`
         },
         {
-            name: "大沼國定公園",
+            name: "足立美術館",
             type: "景點",
-            mapUrl: "https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E6%B2%BC%E5%9C%8B%E5%AE%9A%E5%85%AC%E5%9C%92",
-            ticketInfo: "公園免費。遊覽船: 1,200日圓。租腳踏車: 約200日圓/小時。",
-            parkingInfo: "JR大沼公園站對面有大型收費停車場 (約¥400/次)。",
-            expertRec: "名列「新日本三景」的國家公園，函館近郊最佳自然景點。 湖光山色映襯著駒岳火山，景緻壯麗。秋季為紅葉名所。",
-            historyCulture: "由駒岳火山噴發形成的湖泊，湖中有126個小島，由18座橋梁連接。",
-            focusPoints: '<ul><li class="list-disc list-inside space-y-1"><span class="emphasis">行動指令</span>：建議租借<span class="emphasis">腳踏車</span>環湖一圈（約14公里，需1.5小時），或搭乘<span class="emphasis">遊覽船</span>穿梭於島嶼間。</li><li><span class="emphasis">美食推薦</span>：必吃「沼之家」的醬油與芝麻雙色糰子。</li><li><span class="emphasis">拍照點</span>：湖畔木棧道、駒岳火山與湖面的倒影。</li></ul>'
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=足立美術館",
+            ticketInfo: "大人 2,300日圓 (外國人 1,150日圓)",
+            parkingInfo: "設有大型免費停車場 (約400車位)。另有從JR安來站出發的免費接駁車。",
+            expertRec: "專家見解：庭園被譽為<span class=\"emphasis\">「活畫作」</span>，從室內各處的窗框望出去，每一景都像裱框的畫作。",
+            historyCulture: "以近代日本畫家<span class=\"emphasis\">橫山大觀</span>的作品收藏聞名，但最著名的還是<span class=\"emphasis\">連續多年蟬聯日本庭園第一</span>的日式庭園。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">參觀重點</span>：欣賞「枯山水庭」、「白砂青松庭」等六座庭園，以及「生之掛軸」。</li><li><span class="emphasis">藝術焦點</span>：橫山大觀的收藏是館內鎮館之寶。</li><li><span class="emphasis">絕佳拍照點</span>：館內各處的觀景窗框。</li></ul>`
         },
         {
-            name: "炭火燒肉 泉味亭",
+            name: "満洲味 (牛骨拉麵)",
             type: "美食",
-            mapUrl: "https://www.google.com/maps/search/?api=1&query=%E7%82%AD%E7%81%AB%E7%87%92%E8%82%89%20%E6%B3%89%E5%91%B3%E4%BA%AD%20%E5%87%BD%E9%A4%A8",
-            parkingInfo: "店家設有專屬停車場。",
-            expertRec: "位於五稜郭區域的熟成和牛專門店，在地人推薦的高品質燒肉店。 價格相對優惠。",
-            historyCulture: '看板料理：<span class="emphasis">熟成和牛3部位拼盤</span>。 特色：<span class="emphasis">石鍋拌飯</span> (多種口味)。',
-            focusPoints: '<ul><li class="list-disc list-inside space-y-1"><span class="emphasis">料理特色</span>：提供高品質的熟成肉品，油花分布均勻，入口即化。</li><li><span class="emphasis">IG/FB 人氣</span>：拍攝和牛美麗的油花紋路。</li><li><span class="emphasis">拍照點</span>：爐火上燒烤和牛的特寫。</li></ul>',
-             specialTags: [ { type: 'ig_hotspot', text: '📸 IG 熱門餐廳' } ] // Added Tag
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=満洲味+米子",
+            parkingInfo: "店家有專用停車場，價格不明。",
+            expertRec: "米子地區牛骨拉麵的代表名店之一，以其清澈而濃郁的牛肉湯頭聞名，是體驗鳥取在地風味的絕佳選擇。",
+            historyCulture: "看板料理：<span class=\"emphasis\">牛骨拉麵 (牛骨ラーメン)</span>。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">料理特色</span>：湯頭使用牛大骨長時間熬製，清爽不油膩，帶有獨特的甘甜味。</li><li><span class="emphasis">IG/FB 人氣</span>：拍攝清澈的琥珀色湯頭以及鋪在上面的叉燒。</li><li><span class="emphasis">拍照點</span>：熱騰騰的拉麵特寫。</li></ul>`
         },
         {
-            name: "湯倉神社",
+            name: "境港/水木茂大道",
             type: "景點",
-            mapUrl: "https://www.google.com/maps/search/?api=1&query=%E6%B9%AF%E5%80%89%E7%A5%9E%E7%A4%BE",
-            ticketInfo: "免費參拜",
-            parkingInfo: "設有大型免費專用停車場 (約80台)。",
-            expertRec: "湯之川溫泉的守護神與發源地。 神社雖小但充滿特色，是溫泉區必訪的能量景點。",
-            historyCulture: '1653年重建。 主祀溫泉之神與醫藥之神，神社內的「神兔」據說撫摸後可以治癒疾病。',
-            focusPoints: '<ul><li class="list-disc list-inside space-y-1"><span class="emphasis">御守/御朱印</span>：必求『御神緣御守』（可選『健』、『愛』、『美』等漢字）與『大丈夫御守』。</li><li><span class="emphasis">趣味體驗</span>：挑戰函館限定的<span class="emphasis">『釣烏賊籤詩』(いかみくじ)</span>。</li><li><span class="emphasis">拍照點</span>：釣起烏賊籤詩的瞬間、可愛的神兔雕像。</li></ul>',
-             specialTags: [ { type: 'recommendation', text: '🎯 必買推薦: 御神緣御守 / 釣烏賊籤詩' } ] // Added Tag
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=すし丸+ekie広島店7",
+            parkingInfo: "周邊有多個收費停車場，當日最高約 ¥500-700。",
+            expertRec: "動漫迷必訪聖地！整條街道充滿了《鬼太郎》中的妖怪們，從雕像、路燈到人孔蓋，處處都是驚喜，非常適合親子同樂。",
+            historyCulture: "為紀念《鬼太郎》作者<span class=\"emphasis\">水木茂</span>而建的主題街道，全長約800公尺，沿途有超過170座妖怪青銅像。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">體驗重點</span>：在觀光案內所購買「妖怪導覽手冊」進行集章活動、尋找自己喜愛的妖怪銅像。</li><li><span class="emphasis">聖地巡禮</span>：參拜<span class=\"emphasis\">妖怪神社</span>、參觀<span class=\"emphasis\">水木茂紀念館</span>。</li><li><span class="emphasis">絕佳拍照點</span>：與各種妖怪銅像合照、搭乘鬼太郎列車。</li></ul>`
         },
         {
-            name: "函館市熱帶植物園",
+            name: "境港水産物直売センター",
+            type: "美食",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=境港水産物直売センター",
+            parkingInfo: "直賣中心設有大型免費停車場。",
+            expertRec: "品嚐山陰新鮮海產的最佳地點，可以在此以實惠的價格享用最新鮮的海鮮丼，感受港口直送的美味。",
+            historyCulture: "看板料理：<span class=\"emphasis\">海鮮丼</span>。境港以捕獲量日本第一的<span class=\"emphasis\">「紅楚蟹」</span>聞名，11-3月還有松葉蟹。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">料理特色</span>：依季節提供當令最新鮮的漁獲，價格非常實惠。</li><li><span class="emphasis">IG/FB 人氣</span>：拍攝鋪滿各種生魚片、色彩繽紛的海鮮丼。</li><li><span class="emphasis">環境特色</span>：充滿活力的魚市場氛圍。</li></ul>`
+        },
+        {
+            name: "ガスト (家庭餐廳)",
+            type: "美食",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=ガスト+米子駅前店",
+            parkingInfo: "有合作停車場，於店家消費可折抵停車時數。",
+            expertRec: "日本最普及的連鎖家庭餐廳之一，提供從日式、西式到中式的多樣化餐點，價格親民，是體驗在地日常飲食文化的好地方。",
+            historyCulture: "看板料理：<span class=\"emphasis\">起司IN漢堡排 (チーズINハンバーグ)</span>、<span class=\"emphasis\">山盛りポテトフライ (堆成山的薯條)</span>。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">料理特色</span>：菜單豐富，滿足不同人的口味需求，並有飲料吧可以無限暢飲。</li><li><span class="emphasis">IG/FB 人氣</span>：拍攝切開漢堡排後流出起司的瞬間。</li><li><span class="emphasis">拍照點</span>：豐盛的餐點組合。</li></ul>`
+        },
+        {
+            name: "倉吉白壁土藏群",
             type: "景點",
-            mapUrl: "https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E9%A4%A8%E5%B8%82%E7%86%B1%E5%B9%B6%E6%A4%8D%E7%89%A9%E5%9C%92",
-            ticketInfo: "大人 300日圓。",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=倉吉白壁土藏群",
+            parkingInfo: "觀光案內所旁有免費停車場。",
+            expertRec: "彷彿走進江戶時代的古樸街道，紅色石州瓦與白色牆壁的對比非常上鏡，適合悠閒漫步，感受懷舊氛圍。",
+            historyCulture: "沿著玉川而建的傳統建築群，在江戶、明治時期曾是商業中心。白壁土藏是當時的倉庫，現在多已改造成商店或咖啡館。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">體驗重點</span>：漫步於古街、欣賞玉川中的錦鯉、參觀赤瓦一號館至十六號館的特色小店。</li><li><span class="emphasis">美食推薦</span>：品嚐當地的<span class=\"emphasis\">打吹公園糰子</span>與<span class=\"emphasis\">梨子霜淇淋</span>。</li><li><span class="emphasis">絕佳拍照點</span>：石橋與白壁土藏的倒影是經典畫面。</li></ul>`
+        },
+        {
+            name: "赤瓦五號館 久樂",
+            type: "美食",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=すし丸+ekie広島店7",
+            parkingInfo: "位於白壁土藏群徒步區，請使用觀光案內所旁的免費停車場。",
+            expertRec: "在充滿歷史感的赤瓦建築中，品嚐鳥取特有的鄉土料理，是用餐與文化體驗的完美結合。",
+            historyCulture: "看板料理：<span class=\"emphasis\">年糕涮涮鍋 (もちしゃぶ)</span>。將薄切的年糕片放入高湯中輕涮數秒即可食用，口感獨特。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">料理特色</span>：年糕涮涮鍋是鳥取中部的地方特色菜，值得一試。</li><li><span class="emphasis">環境特色</span>：餐廳本身就是景點的一部分，位於改建的古老倉庫「赤瓦」建築群中。</li><li><span class="emphasis">拍照點</span>：拍攝年糕在鍋中涮煮的過程、古色古香的用餐環境。</li></ul>`
+        },
+        {
+            name: "青山剛昌故鄉館",
+            type: "景點",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=青山剛昌ふるさと館",
+            ticketInfo: "大人 700日圓",
             parkingInfo: "設有免費停車場。",
-            expertRec: "冬季限定（12月1日至5月上旬）的「猴子泡湯」是最大亮點。 非常療癒，還可買飼料餵食。",
-            historyCulture: "除了猴子山，園區內也有大型溫室與免費足湯（與猴子同泉源）。",
-            focusPoints: '<ul><li class="list-disc list-inside space-y-1"><span class="emphasis">參觀重點</span>：冬季限定的猴子泡湯 (9:30開園)。</li><li><span class="emphasis">拍照點</span>：拍攝猴子泡湯時的各種逗趣表情。</li></ul>',
-             specialTags: [
-                 { type: 'ig_hotspot', text: '📸 IG 熱門打卡點 (冬季)' },
-                 { type: 'event', text: '🐒 冬季活動: 猴子泡湯 (12/1-5月上旬)' }
-             ] // Added Tags
+            expertRec: "柯南迷的終極聖地！從由良站（又稱柯南站）開始，整個小鎮都充滿了柯南元素，而故鄉館更是集大成之處。",
+            historyCulture: "為紀念《名偵探柯南》作者<span class=\"emphasis\">青山剛昌</span>而設的博物館，展示了他的原畫手稿、創作歷程與各種偵探道具。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">館內體驗</span>：阿笠博士的黃色金龜車、少年偵探團銅像、可實際操作的<span class=\"emphasis\">變聲蝴蝶結</span>與<span class=\"emphasis\">渦輪滑板</span>。</li><li><span class="emphasis">周邊探索</span>：尋找「柯南大橋」與「米花商店街」上的各種角色銅像。</li><li><span class="emphasis">絕佳拍照點</span>：與館外的金龜車合照、在館內的工作室模擬區拍照。</li></ul>`
         },
         {
-            name: "ガスト (Gusto) 函館鍛治店",
-            type: "美食",
-            mapUrl: "https://www.google.com/maps/search/?api=1&query=%E3%82%AC%E3%82%B9%E3%83%88%20%E5%87%BD%E9%A4%A8%E9%8D%9B%E5%86%B6%E5%BA%97",
-            parkingInfo: "設有專用停車場。",
-            expertRec: "日本連鎖家庭餐廳的代表，提供平價多樣的日式、西式餐點，是體驗在地日常飲食文化的好地方。",
-            historyCulture: '看板料理：<span class="emphasis">起司IN漢堡排 (チーズINハンバーグ)</span>、<span class="emphasis">飲料吧 (ドリンクバー)</span>。',
-            focusPoints: '<ul><li class="list-disc list-inside space-y-1"><span class="emphasis">料理特色</span>：菜單豐富，價格實惠，飲料吧可無限暢飲。</li><li><span class="emphasis">IG/FB 人氣</span>：拍攝切開漢堡排後流出起司的瞬間。</li><li><span class="emphasis">拍照點</span>：豐盛的餐點組合。</li></ul>'
-        },
-        {
-            name: "特拉普派女子修道院",
+            name: "鳥取砂丘 & 砂之美術館",
             type: "景點",
-            mapUrl: "https://www.google.com/maps/search/?api=1&query=%E7%89%B9%E6%8B%89%E6%99%AE%E6%B4%BE%E5%A5%B3%E5%AD%90%E4%BF%AE%E9%81%93%E9%99%A2",
-            ticketInfo: "庭園免費參觀。資料館: 200日圓。",
-            parkingInfo: "修道院對面的「市民之森」設有收費停車場 (一般小客車 ¥200/次)。",
-            expertRec: "日本第一座女子修道院，建築風格莊嚴美麗。 院內販售的修女手作甜點與冰淇淋非常有名。",
-            historyCulture: '明治31年（1898年）由法國派遣的八位修女所創立，至今仍有修女在此過著祈禱與勞動的生活。',
-            focusPoints: '<ul><li class="list-disc list-inside space-y-1"><span class="emphasis">必買伴手禮</span>：修女手作的『法式奶油蛋糕捲』(Madalena) 與白巧克力。</li><li><span class="emphasis">美食推薦</span>：務必品嚐停車場旁「市民之森」販賣的<span class="emphasis">『牛奶霜淇淋』</span>，號稱函館第一。</li><li><span class="emphasis">拍照點</span>：修道院本館的紅磚建築、聖米迦勒像、聖母瑪利亞像。</li></ul>',
-             specialTags: [ { type: 'recommendation', text: '🎯 必買推薦: Madalena 蛋糕捲 / 牛奶霜淇淋' } ] // Added Tag
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=鳥取砂丘",
+            ticketInfo: "砂丘免費, 砂之美術館: 大人 800日圓",
+            parkingInfo: "砂丘市營停車場收費為 ¥500/次。砂之美術館有獨立免費停車場。",
+            expertRec: "專家見解：建議帶<span class=\"emphasis\">防風眼鏡</span>。登上<span class=\"emphasis\">馬之背</span>，可眺望沙與海的交界線。砂之美術館的沙雕精緻度驚人，絕對值得一看。",
+            historyCulture: "日本最大的海岸砂丘，歷經超過十萬年形成。以強風吹出的<span class=\"emphasis\">「風紋」</span>聞名。砂之美術館是世界唯一專門展示沙雕的室內美術館。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">體驗重點</span>：滑砂、滑翔傘或駱駝騎乘。</li><li><span class="emphasis">裝備建議</span>：穿防風外套並攜帶護目鏡，可租借「長靴」。</li><li><span class="emphasis">絕佳拍照點</span>：登上「馬之背」，拍攝風紋與遠方的日本海；美術館內精緻的沙雕作品。</li></ul>`
+        },
+        {
+            name: "炭火焼肉 福ふく",
+            type: "美食",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=炭火焼肉+福ふく+鳥取",
+            parkingInfo: "店家有少量免費車位，若客滿請使用周邊收費停車場 (約 ¥100/30分鐘)。",
+            expertRec: "專家推薦：品嚐鳥取和牛的頂級名店，<span class=\"emphasis\">油酸含量高</span>，脂肪熔點低，入口即化。",
+            historyCulture: "看板料理：<span class=\"emphasis\">鳥取和牛燒肉</span>。人氣搭配：<span class=\"emphasis\">鳥取和牛油酸55特級部位</span>。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">料理特色</span>：<span class=\"emphasis\">高油酸</span>帶來入口即化的柔滑口感。</li><li><span class="emphasis">IG/FB 人氣</span>：拍攝和牛美麗的油花紋路。</li><li><span class="emphasis">拍照點</span>：特級肉品的近景、爐火上的燒烤特寫。</li></ul>`
+        },
+        {
+            name: "すなば珈琲 (砂場咖啡)",
+            type: "美食",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=すなば珈琲+鳥取駅前店",
+            expertRec: "鳥取最知名的在地咖啡連鎖店，源自於當年星巴克尚未進駐鳥取時，當地知事一句「鳥取雖然沒有星巴克，但我們有日本第一的砂場」的玩笑話。",
+            historyCulture: "招牌餐點：<span class=\"emphasis\">砂場特調咖啡</span>、<span class=\"emphasis\">各式鬆餅與聖代</span>。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">文化體驗</span>：感受鳥取人自豪的在地品牌精神。</li><li><span class="emphasis">IG/FB 人氣</span>：拍攝印有駱駝Logo的咖啡杯。</li><li><span class="emphasis">美食推薦</span>：早餐時段的套餐CP值很高。</li></ul>`
+        },
+        {
+            name: "岡山城",
+            type: "景點",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=岡山城",
+            ticketInfo: "天守閣 400日圓，與後樂園共通券 640日圓",
+            parkingInfo: "後樂園設有收費停車場 (¥100/小時)。",
+            expertRec: "與雪白的「姬路城」形成鮮明對比，岡山城因其黑色的外觀而聞名。建議購買與後樂園的共通券，一同遊覽這兩個岡山地標。",
+            historyCulture: "日本100名城之一，因其黑色外觀被稱為<span class=\"emphasis\">「烏城」</span>。天守閣曾於二戰中燒毀，現為戰後復原的樣式，內部設有博物館。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">體驗重點</span>：在天守閣內體驗<span class=\"emphasis\">城主或公主的服裝</span>（免費）、了解宇喜多秀家的歷史。</li><li><span class="emphasis">參觀重點</span>：天守閣頂層可360度眺望岡山市區與後樂園。</li><li><span class="emphasis">絕佳拍照點</span>：從後樂園隔著旭川拍攝岡山城的全景。</li></ul>`
+        },
+        {
+            name: "後樂園",
+            type: "景點",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=岡山後樂園",
+            ticketInfo: "大人 410日圓，與岡山城共通券 640日圓",
+            parkingInfo: "設有收費停車場 (¥100/小時)。",
+            expertRec: "米其林三星評價的頂級庭園，無論何時來訪都有不同的美景。園區非常廣闊，建議至少安排1.5小時以上悠閒漫步。",
+            historyCulture: "<span class=\"emphasis\">日本三大名園之一</span>，擁有超過300年歷史的迴遊式庭園。其設計巧妙地將遠方的岡山城作為<span class=\"emphasis\">「借景」</span>，融為庭園的一部分。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">庭園焦點</span>：唯心山、流店、寬闊的草皮與水路。</li><li><span class="emphasis">季節限定</span>：春季夜間點燈賞櫻、夏季的「幻想庭園」。</li><li><span class="emphasis">絕佳拍照點</span>：登上唯心山，俯瞰庭園全景與遠方的岡山城。</li></ul>`
+        },
+        {
+            name: "味司 野村 (醬汁豬排丼)",
+            type: "美食",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=味司+野村",
+            parkingInfo: "無專用停車場，最近的為「錦町駐車場」，費用約 ¥100/30分鐘。",
+            expertRec: "專家推薦：岡山的靈魂美食，作為<span class=\"emphasis\">醬汁豬排丼的創始店</span>，必訪！",
+            historyCulture: "看板料理：<span class=\"emphasis\">醬汁豬排丼 (デミカツ丼)</span>。將炸豬排浸泡在特調的<span class=\"emphasis\">多明格拉斯醬</span>中。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">料理特色</span>：濃郁的洋食風味與豬排完美結合。</li><li><span class="emphasis">IG/FB 人氣</span>：拍攝豬排被濃郁深色醬汁覆蓋的特寫。</li><li><span class="emphasis">拍照點</span>：店內充滿歷史感的氛圍。</li></ul>`
+        },
+        {
+            name: "吉備津神社",
+            type: "景點",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=吉備津神社",
+            ticketInfo: "免費",
+            parkingInfo: "設有免費停車場。",
+            expertRec: "桃太郎傳說的原型地，神社本身充滿神話色彩。最引人注目的是長達360公尺的木造大迴廊，非常壯觀，是IG打卡的熱門地點。",
+            historyCulture: "主祭神為<span class=\"emphasis\">大吉備津彥大神</span>，據信是桃太郎的原型人物。神社的「鳴釜神事」也十分有名，可透過釜的鳴叫聲占卜吉凶。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">建築之美</span>：獨特的<span class=\"emphasis\">「比翼入母屋造」</span>屋頂結構被指定為國寶。</li><li><span class="emphasis">御守/御朱印</span>：必買可愛的<span class=\"emphasis\">桃太郎御守</span>，以及桃子形狀的<span class=\"emphasis\">桃子籤</span>。</li><li><span class="emphasis">絕佳拍照點</span>：沿著地勢起伏而建的宏偉大迴廊。</li></ul>`
+        },
+        {
+            name: "いんでいら (蝦飯)",
+            type: "美食",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=すし丸+ekie広島店4",
+            parkingInfo: "店家通常有合作停車場或位於商場內，建議使用周邊收費停車場。",
+            expertRec: "想體驗岡山最道地的B級美食，『蝦飯』絕對是首選。創始店『いんでいら』是品嚐這道黑色炒飯的最佳地點。",
+            historyCulture: "看板料理：<span class=\"emphasis\">蝦飯 (えびめし)</span>。特色是用多明格拉斯醬、番茄醬、焦糖醬等混合的醬汁拌炒，呈現獨特的黑色外觀與甜辣風味。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">料理特色</span>：外觀雖深，但味道並非醬油味，而是濃郁的洋食風味。</li><li><span class="emphasis">人氣搭配</span>：通常會搭配生菜沙拉或一顆荷包蛋。</li><li><span class="emphasis">拍照點</span>：拍攝黑色炒飯與鮮豔配菜的強烈顏色對比。</li></ul>`
+        },
+        {
+            name: "魚河岸 晴じゃ (岡山居酒屋)",
+            type: "美食",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=すし丸+ekie広島店8",
+            parkingInfo: "無專用停車場，請使用岡山車站周邊的收費停車場。",
+            expertRec: "想品嚐瀨戶內海的新鮮海產，這家位於車站附近的居酒屋是絕佳選擇。氣氛熱鬧，能體驗在地人下班後小酌的氛圍。",
+            historyCulture: "看板料理：<span class=\"emphasis\">當日鮮魚生魚片拼盤</span>、<span class=\"emphasis\">ままかり寿司 (沙丁魚壽司)</span>。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">料理特色</span>：主打從下津井、日生等港口直送的鮮魚，可以吃到岡山獨有的海產。</li><li><span class="emphasis">在地搭配</span>：務必搭配岡山本地產的「獨步(Doppo)」啤酒或在地清酒。</li><li><span class="emphasis">點餐技巧</span>：可以直接請店家推薦當天最新鮮的「おすすめ(Osusume)」。</li></ul>`
+        },
+        {
+            name: "倉敷美觀地區",
+            type: "景點",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=松江城8",
+            parkingInfo: "請使用周邊停車場，如「倉敷市中央駐車場」(¥100/30分鐘)。",
+            expertRec: "保存完好的江戶時代街區，白壁建築、垂柳、小橋流水構成一幅美麗的圖畫。無論白天或夜晚點燈後都極具魅力，是岡山必訪景點。",
+            historyCulture: "此地在江戶時代是幕府直轄的物資集散地，沿著倉敷川而建的白壁倉庫與商人宅邸，見證了當時的繁榮。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">體驗重點</span>：搭乘<span class=\"emphasis\">倉敷川遊船</span>、參觀<span class=\"emphasis\">大原美術館</span>、探索本町・東町的傳統街區。</li><li><span class="emphasis">美食推薦</span>：品嚐<span class=\"emphasis\">水果聖代</span>、牛仔布藍色的<span class=\"emphasis\">丹寧包子</span>。</li><li><span class="emphasis">絕佳拍照點</span>：中橋上拍攝川流與兩岸垂柳的經典畫面、夜間點燈後的靜謐景色。</li></ul>`
+        },
+        {
+            name: "兒島牛仔褲大道",
+            type: "景點",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=すし丸+ekie広島店9",
+            parkingInfo: "可利用『兒島車站西口停車場』等公共停車設施 (約¥100-200/小時)，部分店家消費可折抵停車費。",
+            expertRec: "日本國產牛仔褲的發源地與聖地。漫步在街道上，可以看到懸掛的牛仔褲、丹寧布製成的裝飾，是丹寧愛好者必訪之地。",
+            historyCulture: "兒島最初以製作學生制服起家，憑藉其厚實布料的縫紉技術，在60年代成功轉型，誕生了日本第一條國產牛仔褲。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">體驗重點</span>：探訪各具特色的丹寧品牌專賣店，許多店家提供客製化或修改服務。</li><li><span class="emphasis">特色美食</span>：尋找藍色的<span class=\"emphasis\">『丹寧冰淇淋』</span>或<span class=\"emphasis\">『丹寧包子』</span>等特色小吃。</li><li><span class="emphasis">絕佳拍照點</span>：懸掛在街道上空的牛仔褲裝置藝術、各店鋪獨特的門面設計。</li></ul>`
+        },
+        {
+            name: "RIVETS CAFE",
+            type: "美食",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=松江城0",
+            parkingInfo: "位於牛仔褲大道徒步區內，請使用『兒島車站西口停車場』等公共停車設施。",
+            expertRec: "位於牛仔褲大道上的主題咖啡館，是逛街途中完美的休憩點。店內充滿工業風與丹寧元素，提供特色輕食與飲品。",
+            historyCulture: "看板料理：<span class=\"emphasis\">丹寧漢堡</span>、<span class=\"emphasis\">丹寧藍檸檬水</span>。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">料理特色</span>：將丹寧的「藍色」元素融入餐點中，視覺效果獨特。</li><li><span class="emphasis">環境特色</span>：店內裝潢使用縫紉機、鉚釘等元素，充滿丹寧工藝氛圍。</li><li><span class="emphasis">拍照點</span>：藍色的特色飲品、充滿工業設計感的店內環境。</li></ul>`
+        },
+        {
+            name: "くらしき桃子 (水果聖代)",
+            type: "美食",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=くらしき桃子+倉敷中央店",
+            parkingInfo: "位於倉敷美觀地區內，請使用「倉敷市中央駐車場」(¥100/30分鐘)等周邊停車場。",
+            expertRec: "專家推薦：岡山<span class=\"emphasis\">水果王國</span>代表。聖代以當季新鮮水果為主。是倉敷美觀地區必訪的下午茶。",
+            historyCulture: "看板料理：<span class=\"emphasis\">季節限定水果聖代</span>。如<span class=\"emphasis\">白桃聖代 (夏季)</span>、<span class=\"emphasis\">草莓聖代 (冬季/春季)</span>。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">料理特色</span>：使用當地高品質水果，如晴王葡萄、白桃、草莓等。</li><li><span class="emphasis">IG/FB 人氣</span>：拍攝聖代頂端堆疊著滿滿水果的特寫。</li><li><span class="emphasis">拍照點</span>：美觀地區的白壁建築與色彩鮮豔的聖代合影。</li></ul>`
+        },
+        {
+            name: "鷲羽山展望台",
+            type: "景點",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=鷲羽山展望台",
+            parkingInfo: "展望台設有免費停車場。",
+            expertRec: "瀨戶內海的代表性夕陽絕景。看著太陽緩緩沉入海平面，將宏偉的瀨戶大橋與海面上的群島染成一片金黃，是令人永生難忘的畫面。",
+            historyCulture: "<span class=\"emphasis\">日本夕陽百選</span>之一，是眺望橫跨本州與四國的<span class=\"emphasis\">瀨戶大橋</span>的最佳地點。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">觀景重點</span>：展望台分為數個觀景點，可以從不同角度欣賞大橋。</li><li><span class="emphasis">交通提醒</span>：前往展望台的巴士班次較少，務必事先查好時刻表，特別是日落後的回程班次。</li><li><span class="emphasis">絕佳拍照點</span>：第二展望台是拍攝瀨戶大橋與夕陽同框的經典位置。</li></ul>`
+        },
+        {
+            name: "備中松山城",
+            type: "景點",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=備中松山城",
+            ticketInfo: "天守: 大人 500日圓",
+            parkingInfo: "計程車會送至登山口，「ふいご峠駐車場」免費。",
+            expertRec: "挑戰性高的景點，但回報也極高。不僅是日本最高的現存天守，秋冬季節的清晨更有機會見到傳說中的『雲海』，是攝影愛好者的夢幻目標。",
+            historyCulture: "<span class=\"emphasis\">日本100名城</span>之一，是日本最高的山城，也是十二座現存天守之一，有<span class=\"emphasis\">「天空之城」</span>的美譽。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">雲海攻略</span>：雲海最佳觀賞期為9月下旬至4月上旬的清晨。必須搭乘<span class=\"emphasis\">雲海計程車（需預約）</span>才能在日出前抵達展望台。</li><li><span class="emphasis">攻城提醒</span>：從停車場到天守閣需徒步約20分鐘的山路，請穿著好走的鞋子。</li><li><span class="emphasis">拍照點</span>：備中松山城展望台拍攝雲海中的城堡、天守閣本身古樸的樣貌。</li></ul>`
+        },
+        {
+            name: "竹原町並み保存地区",
+            type: "景點",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=竹原町並み保存地区",
+            parkingInfo: "保存地區周邊設有收費停車場，價格不明。",
+            expertRec: "工頭堅哲學實踐地：這裡是實踐『慢遊』的最佳地點。不需追趕行程，靜心感受古街氛圍、光影變化，才能真正體驗其魅力。",
+            historyCulture: "因其優雅的江戶時代街景，而有<span class=\"emphasis\">「安藝的小京都」</span>之稱。此地在江戶後期因製鹽及釀酒業而繁榮。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">聖地巡禮</span>：這裡是動畫<span class=\"emphasis\">《玉響～tamayura～》</span>的主要舞台，可以尋找動畫中出現的場景，如「普明閣」。</li><li><span class="emphasis">文化體驗</span>：參觀「松阪邸」、「光本邸」等當時富商的宅邸。</li><li><span class="emphasis">絕佳拍照點</span>：從普明閣的舞台俯瞰古鎮的屋瓦、歷史悠久的「西方寺」。</li></ul>`
+        },
+        {
+            name: "ほり川 (竹原御好燒)",
+            type: "美食",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=すし丸+ekie広島店5",
+            parkingInfo: "位於町並み保存地區內，請使用周邊的收費停車場。",
+            expertRec: "在動畫《玉響》中也曾登場的聖地名店，其最大特色是在麵糊中加入了竹原當地釀酒的『酒粕』，風味獨特。",
+            historyCulture: "看板料理：<span class=\"emphasis\">純米吟釀竹鶴燒</span>。這道御好燒(お好み焼き)加入了當地名酒『竹鶴』的酒粕，帶有淡淡酒香。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">料理特色</span>：酒粕的加入讓麵糊更為鬆軟，風味層次更豐富。</li><li><span class="emphasis">聖地巡禮</span>：這裡是動畫粉絲必訪的餐廳之一。</li><li><span class="emphasis">拍照點</span>：拍攝店家充滿懷舊感的招牌與內部裝潢。</li></ul>`
+        },
+        {
+            name: "雑草庵 (廣島鄉土料理)",
+            type: "美食",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=すし丸+ekie広島店9",
+            parkingInfo: "無專用停車場，請使用本通商店街周邊的收費停車場。",
+            expertRec: "位於廣島市中心的隱密名店，以其高品質的瀨戶內海鮮魚和廣島鄉土料理聞名，是在地饕客的愛店。",
+            historyCulture: "看板料理：<span class=\"emphasis\">穴子白燒</span>、<span class=\"emphasis\">當季生魚片拼盤</span>、<span class=\"emphasis\">小魚干飯 (小いわし飯)</span>。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">料理特色</span>：『穴子白燒』不使用醬汁，直接火烤，更能品嚐星鰻本身的鮮美。</li><li><span class="emphasis">在地搭配</span>：提供豐富的廣島在地清酒，如『雨後之月』、『賀茂鶴』等，可請店家推薦。</li><li><span class="emphasis">點餐技巧</span>：預算足夠的話，可以選擇主廚搭配的套餐 (おまかせコース)。</li></ul>`
+        },
+        {
+            name: "Italian Bar CENA",
+            type: "美食",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=Italian+Bar+CENA+広島",
+            parkingInfo: "位於廣島本通商店街徒步區，請使用「広島市中央駐車場」(¥180/30分)等周邊停車場。",
+            expertRec: "在熱鬧的商店街中，提供一個能品嚐道地義大利麵的舒適空間，午間套餐特別受歡迎。",
+            historyCulture: "看板料理：<span class=\"emphasis\">週替りパスタランチ (每週更換的義大利麵午間套餐)</span>。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">料理特色</span>：提供多種經典與創意義大利麵，午間套餐CP值高。</li><li><span class="emphasis">IG/FB 人氣</span>：拍攝擺盤精緻的義大利麵與豐富的套餐組合。</li><li><span class="emphasis">拍照點</span>：餐點特寫、店內時尚的氛圍。</li></ul>`
+        },
+        {
+            name: "熊野筆セレクトショップ",
+            type: "景點",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=熊野筆セレクトショップ+広島",
+            parkingInfo: "廣島品牌本店有少量免費車位。",
+            expertRec: "不只是伴手禮，更是值得投資的工藝品。熊野筆的化妝刷品質享譽全球，觸感極為柔軟，是送禮或自用的絕佳選擇。",
+            historyCulture: "<span class=\"emphasis\">熊野筆</span>是廣島縣熊野町生產的毛筆、畫筆與化妝刷的總稱，為日本指定的傳統工藝品。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">選購重點</span>：依據需求選擇不同動物毛（如松鼠毛、山羊毛）製成的刷具。</li><li><span class="emphasis">特色商品</span>：部分店家提供在刷柄上<span class=\"emphasis\">刻印姓名</span>的服務。</li><li><span class="emphasis">體驗活動</span>：部分工房提供毛筆或化妝刷的製作體驗（需預約）。</li></ul>`
+        },
+        {
+            name: "かき小屋 廣島駅前店 (烤牡蠣)",
+            type: "美食",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=かき小屋+広島駅前店",
+            parkingInfo: "店家無專用停車場，可使用廣島車站周邊的收費停車場。",
+            expertRec: "在旅程的尾聲，用廣島最引以為傲的牡蠣畫下完美句點。這裡提供豪邁的『牡蠣吃到飽』方案，氣氛熱鬧，適合三五好友小酌。",
+            historyCulture: "看板料理：<span class=\"emphasis\">烤牡蠣 (焼き牡蠣)</span>。廣島是日本產量第一的牡蠣王國，每年11月至2月是品質最佳的季節。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">料理特色</span>：自己動手在炭火上烤牡蠣，充滿樂趣。</li><li><span class="emphasis">人氣搭配</span>：除了原味，也可嘗試加入檸檬、醬油或起司等不同調味。</li><li><span class="emphasis">拍照點</span>：拍攝堆積如山的牡蠣殼、炭火上滋滋作響的牡蠣。</li></ul>`
+        },
+        {
+            name: "麥當勞 (速食店)",
+            type: "美食",
+            mapUrl: "https://www.google.com/maps/search/?api=1&query=マクドナルド+広島駅店",
+            parkingInfo: "位於廣島站內，無專用停車場，需使用車站合作的『広島駅屋上駐車場』。",
+            expertRec: "全球連鎖的速食龍頭，是在旅途最後一天，需要快速解決早餐時最方便可靠的選擇。",
+            historyCulture: "看板料理：<span class=\"emphasis\">大麥克 (ビッグマック)</span>、<span class=\"emphasis\">薯條 (マックフライポテト)</span>。",
+            focusPoints: `<ul class="list-disc list-inside space-y-1"><li><span class="emphasis">料理特色</span>：提供標準化的快速餐點，品質穩定。</li><li><span class="emphasis">IG/FB 人氣</span>：拍攝日本限定或季節限定的特殊漢堡。</li><li><span class="emphasis">拍照點</span>：經典的M字招牌。</li></ul>`
         }
     ],
 
     // Data for Accommodation section
     accommodation: [
         {
-            day: "1-6",
-            city: "函館 (灣區)",
-            name: "ラビスタ函館ベイ (La Vista Hakodate Bay)",
-            url: "https://www.google.com/maps/search/?api=1&query=La%20Vista%20%E5%87%BD%E9%A4%A8%E7%81%A3",
-            parking: "有 (飯店專用停車場，¥1,000/晚，採先到先停制)。",
+            day: "1-2, 14",
+            city: "廣島",
+            name: "ダイワロイネットホテル広島駅前",
+            url: "https://www.google.com/maps/search/?api=1&query=Daiwa+Roynet+Hotel+Hiroshima-Ekimae",
+            parking: "無飯店專用停車場。可停合作的『広島駅屋上駐車場』，經飯店蓋章優惠價為 ¥1,500/24小時。",
             convenienceStores: [
-                { brand: "FamilyMart", name: "ファミリーマート ラビスタ函館ベイ店 (位於飯店1樓)" } //
+                { brand: "7-Eleven", name: "セブン-イレブン 広島新幹線口店" },
+                { brand: "FamilyMart", name: "ファミリーマート 広島駅前店" },
+                { brand: "Lawson", name: "ローソン 広島光町店" }
             ]
-        }
+        },
+        {
+            day: "3-4",
+            city: "松江",
+            name: "天然温泉だんだんの湯 ドーミーインEXPRESS松江",
+            url: "https://www.google.com/maps/search/?api=1&query=Dormy+Inn+Express+Matsue",
+            parking: "有 (立體式，¥1,100/晚，採先到先停制)。若客滿會引導至鄰近合作停車場 (費用可能不同)。",
+            convenienceStores: [
+                { brand: "Lawson", name: "ローソン 松江伊勢宮町店" },
+                { brand: "FamilyMart", name: "ファミリーマート 松江伊勢宮店" },
+                { brand: "7-Eleven", name: "セブン-イレブン 松江寺町店" }
+            ]
+        },
+        {
+            day: "5",
+            city: "玉造溫泉",
+            name: "佳翠苑皆美",
+            url: "https://www.google.com/maps/search/?api=1&query=佳翠苑皆美",
+            parking: "提供免費專用停車場。",
+            convenienceStores: [
+                 { brand: "Lawson", name: "ローソン 玉造温泉店" },
+            ]
+        },
+        {
+            day: "6-7",
+            city: "米子",
+            name: "米子ワシントンホテルプラザ",
+            url: "https://www.google.com/maps/search/?api=1&query=Yonago+Washington+Hotel+Plaza",
+            parking: "無飯店專用停車場。合作停車場『米子駅前パーキング』，費用為 ¥800/24小時。",
+            convenienceStores: [
+                { brand: "Lawson", name: "ローソン 米子駅前店" },
+                { brand: "7-Eleven", name: "セブン-イレブン ハートインJR米子駅店" },
+                { brand: "FamilyMart", name: "ファミリーマート 米子駅前店" }
+            ]
+        },
+        {
+            day: "8-9",
+            city: "鳥取/三朝溫泉",
+            name: "三朝館",
+            url: "https://www.google.com/maps/search/?api=1&query=三朝館",
+            parking: "提供免費專用停車場。",
+            convenienceStores: [
+                 { brand: "Lawson", name: "ローソン 三朝温泉南店" },
+            ]
+        },
+        {
+            day: "10-12",
+            city: "岡山",
+            name: "ダイワロイネットホテル岡山駅前",
+            url: "https://www.google.com/maps/search/?api=1&query=Daiwa+Roynet+Hotel+Okayama-Ekimae",
+            parking: "無飯店專用停車場。合作停車場『岡山駅西口パーキング』，費用為 ¥1,200/24小時。",
+            convenienceStores: [
+                { brand: "7-Eleven", name: "セブン-イレブン 岡山駅西口店" },
+                { brand: "FamilyMart", name: "ファミリーマート 岡山リットシティビル店" },
+                { brand: "Lawson", name: "ローソン 岡山駅西口店" }
+            ]
+        },
+         {
+            day: "13",
+            city: "廣島",
+            name: "広島ワシントンホテル",
+            url: "https://www.google.com/maps/search/?api=1&query=広島ワシントンホテル",
+            parking: "有合作停車場，費用約 ¥1,400/晚。",
+            convenienceStores: [
+                 { brand: "7-Eleven", name: "セブン-イレブン 広島八丁堀店" },
+            ]
+        },
     ],
-
-    // --- NEW: Recommended Accommodations (for reference) ---
-    recommendedAccommodations: [
-        { name: "La Vista函館灣", area: "灣區", features: "早餐第一名、頂樓海景溫泉、復古風。", priceEstimate: "¥¥¥", rating: "高", url: "https://www.google.com/maps/search/?api=1&query=La%20Vista%20%E5%87%BD%E9%A4%A8%E7%81%A3" },
-        { name: "函館JR旅館", area: "站前", features: "直通車站、朝市對面、山景房、大浴場。", priceEstimate: "¥¥", rating: "高", url: "https://www.google.com/maps/search/?api=1&query=JR%20Inn%20%E5%87%BD%E9%A4%A8" },
-        { name: "東急STAY函館早市 燈之湯", area: "站前", features: "2022開幕、近朝市、天然溫泉、時尚。", priceEstimate: "¥¥¥", rating: "高", url: "https://www.google.com/maps/search/?api=1&query=石見銀山9" },
-        { name: "平成館潮騷亭", area: "湯之川", features: "海景觀景浴場、露天浴池客房、自助餐豐富。", priceEstimate: "¥¥¥", rating: "中高", url: "https://www.google.com/maps/search/?api=1&query=%E6%B9%AF%E4%B9%8B%E5%B7%9D%E6%BA%AB%E6%B3%89%20%E5%B9%B3%E6%88%90%E9%A4%A8%E6%BD%AE%E9%A8%B7%E4%BA%AD" },
-        { name: "湯之川海與燈休伊特度假村", area: "湯之川", features: "頂樓露天風呂、海景、空中酒吧免費飲品。", priceEstimate: "¥¥", rating: "8.8/10", url: "https://www.google.com/maps/search/?api=1&query=すし丸+ekie広島店60" },
-        { name: "割烹旅館若松", area: "湯之川", features: "米其林一星、百年老字號、全室海景、露天浴池。", priceEstimate: "¥¥¥¥", rating: "極高", url: "https://www.google.com/maps/search/?api=1&query=すし丸+ekie広島店61" },
-        { name: "東橫INN 函館站前朝市", area: "站前", features: "高CP值、近朝市。", priceEstimate: "¥", rating: "中", url: "https://www.google.com/maps/search/?api=1&query=すし丸+ekie広島店62" }
-        // Add more from guide if needed
-    ],
-
-    // --- UPDATED: Transport Passes ---
-    transportPasses: {
-         specialTicket: {
-             name: "函館特級套票 (はこだてスペシャルチケット)",
-             price: "¥3,500",
-             validity: "2025/4/1 - 2025/11/24 (每年更新，需確認)",
-             includes: "交通1日券(市電或巴士擇一) + 11點設施點數",
-             exchangeLocation: "JR函館站觀光案內所",
-             purchase: "KKDAY, KLOOK, e路東瀛, 現場",
-             valueAnalysis: "總價值遠超售價，含交通券(¥600-1000) + 11點(¥2750)，極划算。",
-             pointUsage: [
-                 { facility: "函館山纜車 (來回)", points: 7 },
-                 { facility: "五稜郭塔", points: 4 },
-                 { facility: "箱館奉行所", points: 2 },
-                 { facility: "舊函館區公會堂", points: 1 },
-                 { facility: "舊英國領事館", points: 1 },
-                 { facility: "青函渡輪記念館摩周丸", points: 1 },
-                 { facility: "北方民族資料館", points: 1 },
-                 { facility: "文學館", points: 2 },
-                 { facility: "繩文文化交流中心", points: 1 },
-                 { facility: "味彩拉麵 (本店/紅店)", points: 3 },
-                 { facility: "幸運小丑漢堡", points: 4 },
-                 { facility: "長谷川商店", points: 2 }
-                 // List more point usage from guide
-             ],
-             discountFacilities: [
-                 "五島軒", "Snaffle's (金森店)", "函太郎壽司", "大門橫丁", "千秋庵總本家", "函館啤酒館", "函館機場商店/餐廳"
-                 // List more discount usage from guide
-             ]
-         },
-         otherPasses: [
-             { name: "函館市電一日券", price: "¥600", description: "當日無限次搭乘函館市電。" },
-             { name: "函館市電/巴士共通一日券", price: "¥1,000", description: "當日無限次搭乘函館市電與指定範圍內函館巴士。" },
-             { name: "函館巴士一日券", price: "¥800", description: "當日無限次搭乘指定範圍內函館巴士。" }
-             // Mention JR Pass if relevant for wider Hokkaido travel
-         ]
+    
+    // Data for Transport Pass section
+    transportPass: {
+        title: "核心交通票券：山陽&山陰地區鐵路周遊券",
+        details: {
+            "類型": "7日券 x 2張 (或 7日券+地區券組合)",
+            "啟用日期": "Day 3 (第一張) & Day 10 (第二張)",
+            "有效期限": "Day 3-9 & Day 10-16 (因行程為15天，需彈性調整)",
+        },
+        description: `<p><span class="emphasis">票券價值解析：</span>由於行程擴展為15天，單張7日券已不足以涵蓋所有長途移動。建議採用**兩張7日券**或**「7日券 + 地區性Pass」**的組合策略。這能最大化交通效益，涵蓋昂貴的新幹線與特急列車路段。</p>
+                      <p class="text-sm text-red-600 mt-2"><span class="emphasis">重要提醒:</span> 需重新規劃Pass的啟用與結束日期，以對應15日的行程節點。</p>`
     },
-    // Remove old transportPass structure
 
-    transportPassAnalysis: null,
+    transportPassAnalysis: null, // Removed as the old analysis is no longer valid for a 15-day trip
 
     // Data for Transport Summary table
     transportSummary: [
-        { day: 1, route: "機場→函館站→灣區", transport: "機場接駁巴士+市電/計程車/步行", time: "下午", cost: "約 ¥700+" },
-        { day: 2, route: "灣區↔朝市/元町", transport: "步行/函館市電", time: "全日", cost: "市電一日券 ¥600 / 步行" }, // Adjusted ticket suggestion
-        { day: 3, route: "灣區↔元町", transport: "步行/函館市電", time: "全日", cost: "市電一日券 ¥600 / 步行" }, // Adjusted ticket suggestion
-        { day: 4, route: "灣區↔五稜郭/函館站", transport: "函館市電", time: "全日", cost: "特級套票交通券 / 市電一日券 ¥600" }, // Recommend ticket use here
-        { day: 5, route: "灣區↔函館站↔大沼公園", transport: "函館市電+JR / 租車", time: "全日", cost: "市電+JR 約 ¥1,600+ / 租車" },
-        { day: 6, route: "灣區↔湯之川/修道院", transport: "函館市電+巴士 / 租車", time: "全日", cost: "市電巴士共通一日券 ¥1000 / 租車" },
-        { day: 7, route: "灣區→函館站→機場", transport: "市電/計程車+機場接駁巴士", time: "上午", cost: "約 ¥700+" }
+        // This will need a full update for a 15-day trip. Placeholder for now.
+        { day: 1, route: "機場→廣島站", transport: "機場利木津巴士", time: "21:10→21:58", cost: "¥1,450" },
+        { day: 2, route: "廣島↔宮島口", transport: "JR山陽本線", time: "全日", cost: "¥1,200 (自理)" },
+        { day: 3, route: "廣島→岡山→松江", transport: "新幹線/特急", time: "下午", cost: "JR Pass" },
+        { day: 4, route: "松江↔出雲市", transport: "JR/一畑電車", time: "全日", cost: "JR Pass + 自理" },
+        { day: 5, route: "出雲市→大田市→玉造溫泉", transport: "JR/巴士", time: "全日", cost: "JR Pass" },
+        { day: 6, route: "玉造溫泉→安來→米子", transport: "JR山陰本線", time: "全日", cost: "JR Pass" },
+        { day: 7, route: "米子↔境港", transport: "JR境線", time: "全日", cost: "JR Pass" },
+        { day: 8, route: "米子→倉吉→三朝溫泉", transport: "JR/巴士", time: "全日", cost: "JR Pass" },
+        { day: 9, route: "三朝溫泉→鳥取", transport: "巴士/JR", time: "全日", cost: "JR Pass" },
+        { day: 10, route: "鳥取→岡山", transport: "特急", time: "上午", cost: "JR Pass (第二張)" },
+        { day: 11, route: "岡山市區/吉備津", transport: "JR吉備線", time: "全日", cost: "JR Pass" },
+        { day: 12, route: "岡山↔倉敷/鷲羽山", transport: "JR/巴士", time: "全日", cost: "JR Pass" },
+        { day: 13, route: "岡山→竹原→廣島", transport: "新幹線/JR", time: "全日", cost: "JR Pass" },
+        { day: 14, route: "廣島市區", transport: "路面電車", time: "全日", cost: "自理" },
+        { day: 15, route: "廣島站→機場", transport: "機場利木津巴士", time: "上午", cost: "¥1,450" }
     ],
 
     // Data for Transport Tactics list
     transportTactics: [
-        '<span class="emphasis">函館特級套票最大化:</span> 抵達後於JR函館站觀光案內所兌換。 將交通一日券用在市電/巴士搭乘最頻繁的一天(如Day 4或Day 6)。點數優先用於高價項目如函館山纜車(7點)和五稜郭塔(4點)。',
-        '<span class="emphasis">租車策略:</span> Day 5(大沼公園/峠下總本店) & Day 6(湯之川/修道院)最適合租車。市區內(Day 1-4)建議依靠市電/步行。La Vista有付費停車場但車位有限。',
-        '<span class="emphasis">IC卡準備:</span> 準備 SUICA/ICOCA 支付特級套票不含的交通，或單次市電/巴士費用。',
-        '<span class="emphasis">函館山交通:</span> 從La Vista步行至纜車站約15-20分鐘。或搭市電至「十字街」站。纜車停車場極易客滿。 注意秋季停運時間。'
+        '<span class="emphasis">JR Pass 劃位:</span> 抵達日本後，盡早一次性在綠色售票機劃好所有長途特急列車座位。',
+        '<span class="emphasis">行李轉送 (宅急便):</span> 善用飯店或便利商店的行李寄送服務，讓城市間移動時能輕裝上陣。15天行程中至少需要3-4次轉送。',
+        '<span class="emphasis">IC卡準備:</span> 準備一張 ICOCA 或 SUICA 卡，用於支付JR Pass不包含的市區交通。',
+        '<span class="emphasis">巴士搭配:</span> 攻略中提到的循環巴士(Lake Line, 麒麟獅子)及前往溫泉區的路線巴士將是重要輔助。'
     ],
 
     // Data for Preparation section
     prepList: {
-        description: "這份清單已根據函館7天6夜、住宿La Vista函館灣的行程，並參考2025年指南更新。請在出發前逐一確認。",
+        description: "這份清單已根據擴展後的15天行程重新彙整，並加入了新景點的注意事項。請在出發前逐一確認。",
         categories: [
             {
                 category: '重要文件與預訂',
                 items: [
                     '<span class="emphasis">護照與簽證</span>: 確認護照效期超過6個月。',
                     '<span class="emphasis">電子機票 & 住宿憑證</span>: 儲存所有預訂確認信。',
-                    '<span class="emphasis">租車預訂 (若有)</span>: 務必攜帶「護照」、「駕照正本」、「駕照日文譯本」。'
+                    '<span class="emphasis">旅遊保險</span>: 投保旅遊平安險與不便險。'
                 ]
             },
             {
                 category: '交通與票券',
                 items: [
-                    '<span class="emphasis">函館特級套票</span>: 建議事先於 KKDAY/KLOOK 等平台購買兌換券，抵達後在JR函館站觀光案內所兌換實體票。',
-                    '<span class="emphasis">IC卡 (SUICA/ICOCA)</span>: 準備或儲值。',
-                    '<span class="emphasis">[關鍵任務] 函館山纜車</span>: 確認運行狀況 (避開秋季檢修期)。 天氣好務必提早排隊。規劃兩天機會觀賞。'
+                    '<span class="emphasis">JR Pass</span>: 根據新行程，需重新規劃Pass組合(如兩張7日券)，並在出發前購買兌換券。',
+                    '<span class="emphasis">[關鍵任務] 雲海計程車 (Day 12 選項C)</span>: <span class="font-bold text-red-600">必須提前數日</span>向「高梁市觀光協會」預約。',
+                    '<span class="emphasis">IC卡 (ICOCA/SUICA)</span>: 準備或儲值一張IC卡。',
                 ]
             },
             {
-                category: '行李策略 (單一飯店版)',
+                category: '行李策略 (15日版)',
                 items: [
-                    '<span class="emphasis">無需轉送</span>：本次行程固定住宿，無需使用行李轉送服務。',
-                    '<span class="emphasis">輕便日用包</span>：準備一個適合每日行程攜帶隨身物品的背包或提袋。',
+                    '<span class="emphasis">行李轉送是關鍵</span>：長達15天的行程，善用宅急便能大幅提升旅遊品質。',
+                    ' • <span class="emphasis">Day 3 (廣島→玉造溫泉)</span>: 將大行李寄送至 Day 5 的玉造溫泉旅館。',
+                    ' • <span class="emphasis">Day 5 (玉造溫泉→米子)</span>: 將大行李寄送至 Day 6 的米子飯店。',
+                    ' • <span class="emphasis">Day 8 (米子→岡山)</span>: 將大行李寄送至 Day 10 的岡山飯店。',
+                    ' • <span class="emphasis">Day 13 (岡山→廣島)</span>: 將大行李寄送至 Day 13 的廣島飯店。',
+                    '<span class="emphasis">過夜包</span>：準備一個能容納2-3天換洗衣物的輕便背包。',
                 ]
             },
             {
                 category: '衣物與裝備',
                 items: [
-                    '<span class="emphasis">舒適的鞋子</span>: 行程包含大量步行（元町、大沼公園），務必穿著防滑好走的鞋子。',
-                    '<span class="emphasis">洋蔥式穿搭</span>: 函館日夜溫差大，海風強勁。即使是夏天，函館山頂也需要防風外套。',
-                    '<span class="emphasis">防滑保暖 (冬季)</span>: 若為12月來訪，務必穿著雪靴/防水防滑鞋，備妥帽子、圍巾、手套。考慮加裝簡易冰爪。'
+                    '<span class="emphasis">舒適的鞋子</span>: 行程包含大量步行，務必穿著防滑好走的鞋子。',
+                    '<span class="emphasis">洋蔥式穿搭</span>: 2月底至3月初山陰地區仍濕冷，務必注意保暖與防風。',
+                    '<span class="emphasis">雨具 & 個人藥品</span>: 準備輕便雨具與常備藥品。'
                 ]
             },
-             {
-                 category: '活動與預約確認',
-                 items: [
-                     '<span class="emphasis">季節活動時間</span>: 出發前再次確認聖誕幻想、五稜星之夢等活動的確切點燈時間與細節。',
-                     '<span class="emphasis">餐廳預約</span>: 熱門餐廳如 Colz、泉味亭 建議考慮預約。La Vista早餐非常熱門，建議提早去排隊。'
-                 ]
-             },
         ]
     },
 
     prepMemos: [
         {
-            title: "★ 函館旅行哲學：坂道與夜景",
-            content: "函館的魅力在於「慢」。慢慢地走過元町的每一條坂道（斜坡），感受異國風情。保留充足的時間等待函館山的百萬夜景，從黃昏到入夜的魔幻時刻是精華所在。天氣不好就啟動備案，享受其他室內行程或冬季燈飾。"
+            title: "★ 工頭堅旅行哲學：深度與文化",
+            content: "工頭堅強調「不給別人添麻煩」是日本旅行的核心原則。建議採取「沉浸式體驗」而非走馬看花，給予自己足夠的時間慢慢品味當地文化。"
         },
         {
             title: "溫泉禮儀",
@@ -635,258 +791,328 @@ const tripData = {
         },
         {
             title: "神社參拜",
-            content: '進入鳥居前先鞠躬。在「手水舍」洗手漱口。參拜時遵循「二拜二拍手一拜」為基本。'
+            content: "進入鳥居前先鞠躬。在「手水舍」洗手漱口。參拜時遵循「二拜二拍手一拜」為基本，但<span class=\"emphasis\">出雲大社</span>為獨特的<span class=\"emphasis\">「二拜四拍手一拜」</span>。"
         }
     ],
 
     prepExpertTips: [
         {
             title: "通訊建議",
-            content: "建議購買吃到飽流量的SIM卡或租借Pocket WiFi。函館市區訊號良好。"
+            content: "建議購買吃到飽流量的SIM卡或租借Pocket WiFi。山陰地區部分路段訊號可能較弱。"
         },
         {
             title: "貨幣與支付",
-            content: "函館朝市的許多小店可能只收現金，建議準備足夠的日圓。"
+            content: "主要城市多數接受信用卡，但在山陰小鎮或市場，建議準備足夠的日圓現金。"
         },
         {
-            title: "便利商店攻略",
-            content: "別錯過北海道限定的便利商店 Seicomart，試試他們的 Hot Chef 熱食便當和自有品牌乳製品。 LAWSON 也有許多北海道限定商品，如起司口味炸雞君。"
+            title: "打包策略",
+            content: "2月底至3月初仍屬冬季，山陰地區體感更冷。建議採用「洋蔥式」穿搭法：內層排汗、中層保暖、外層防風防水。"
         }
     ],
 
-
-    // --- NEW: Local Tips ---
-    localTips: {
-        convenienceStores: [
-            { brand: "LAWSON", highlights: ["北海道限定炸雞君(起司味)", "Uchi Cafe'瑞士捲(每月22號草莓)", "限定飲料/泡麵", "常溫水", "FANCL保養品", "低卡餅乾"] }, //
-            { brand: "7-ELEVEN", highlights: ["迷你冷拉麵", "北海道限定零食"] }, //
-            { brand: "Seicomart", highlights: ["北海道限定便利店", "自有品牌Hot Chef便當/麵包/乳製品", "哈密瓜冰淇淋", "大福"] } //
-        ],
-        igHotspots: { // From guide
-            locations: ["HAKODATE地名立牌", "八幡坂", "函館山夜景", "五稜郭塔", "金森紅磚倉庫", "舊函館區公會堂", "函館正教會", "元町建築群", "函館朝市釣烏賊", "猴子泡溫泉(冬季)"],
-            accommodations: ["La Vista函館灣", "海峽之風", "平成館潮騷亭", "海與燈休伊特", "函館國際", "世紀濱海", "OMO5函館", "啄木亭", "Imagine Hotel", "函館JR Inn"],
-            restaurants: ["幸運小丑漢堡", "味彩拉麵", "根室花丸", "五島軒", "函館朝市海鮮丼", "泉味亭", "Snaffle's", "函館啤酒館", "函太郎", "龍鳳拉麵"]
-        },
-        bloggerRecs: [ // From guide
-            { blogger: "林氏璧", recommendations: "函館國際飯店, 函館朝市, 函館山夜景, 元町建築群" },
-            { blogger: "工頭堅", recommendations: "函館異國風情散步路線" },
-            { blogger: "哲青", recommendations: "函館歷史文化深度遊" }
-        ],
-        practicalInfo: { // From guide
-            network: ["日本4G上網SIM卡", "日本4G虛擬eSIM卡"],
-            coupons: ["唐吉軻德", "BIC CAMERA", "札幌藥妝", "日本百貨藥妝"],
-            emergency: ["函館市觀光資訊官方網站: https://www.hakodate.travel/cht/", "函館車站觀光案內所"]
-        }
-    },
-
-    // Daily Data --- ADDED specialTags where applicable ---
+    // Main data for the daily itinerary
     dailyData: {
-        day1: { // Dec 1st (Fri)
-            title: '序章・北國之港・灣區初探', date: 'Day 1 (12/01 週五)', location: '函館機場 → 灣區', timeAnalysis: { travel: 1.5, activity: 4.0 },
+        day1: {
+            title: '序章・廣島之夜', date: '2/20 週五', location: '台灣 → 廣島', timeAnalysis: { travel: 4.5, activity: 1.5 },
             timeline: [
-                { time: '14:00', type: '✈️', event: '抵達 函館機場 (HKD)' },
-                { time: '14:30-15:00', type: '🚌', event: '機場交通: 搭乘機場接駁巴士 →「JR函館站」', cost: '約 ¥700'},
-                { time: '15:00-15:30', type: '🚕', event: '從JR函館站搭乘計程車或市電(函館駅前→魚市場通)前往飯店'},
-                { time: '15:30-16:00', type: '🏨', event: '飯店Check-in: <a href="https://www.google.com/maps/search/?api=1&query=La%20Vista%20%E5%87%BD%E9%A4%A8%E7%81%A3" target="_blank" class="text-blue-600 hover:underline">ラビスタ函館ベイ</a>'},
-                { time: '16:00', type: '☕', event: '午餐: (視班機時間決定)'},
-                { time: '16:00-17:30', type: '🚶', event: '飯店周邊熟悉 & <a href="https://www.google.com/maps/search/?api=1&query=%E9%87%91%E6%A3%AE%E7%B4%85%E7%A3%9A%E5%80%89%E5%BA%AB" target="_blank" class="text-blue-600 hover:underline">金森紅磚倉庫</a> 初步探索', description: '飯店就在倉庫旁，先熟悉環境。', parkingInfo: "『TIMES24』停車場。", specialTags: [ { type: 'ig_hotspot', text: '📸 IG 熱門打卡點' } ] },
-                { time: '17:30-18:00', type: '☕', event: '下午茶: 飯店內或附近咖啡廳 (飯店提供手沖咖啡設備)' },
-                { time: '18:00', type: '🎄', event: '冬季限定: 觀賞 <a href="https://www.google.com/maps/search/?api=1&query=%E9%87%91%E6%A3%AE%E7%B4%85%E7%A3%9A%E5%80%89%E5%BA%AB" target="_blank" class="text-blue-600 hover:underline">金森倉庫</a> 聖誕幻想點燈/煙火 (18:00開始)', stay: '約 1 小時', specialTags: [ { type: 'event', text: '🎄 冬季活動: 函館聖誕幻想' } ] },
-                { time: '19:30', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=%E5%B9%B8%E9%81%8B%E5%B0%8F%E4%B8%91%E6%BC%A2%E5%A0%A1%20%E7%81%A3%E5%8D%80%E6%9C%AC%E5%BA%97" target="_blank" class="text-blue-600 hover:underline">幸運小丑漢堡 (灣區本店)</a>', description: '體驗函館限定漢堡。(可用特級套票4點)', specialTags: [ { type: 'pilgrimage', text: '🎥 聖地巡禮: Love Live! Sunshine!! 場景' }, { type: 'ig_hotspot', text: '📸 IG 熱門餐廳' } ] },
-                { time: '21:00', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=La%20Vista%20%E5%87%BD%E9%A4%A8%E7%81%A3" target="_blank" class="text-blue-600 hover:underline">ラビスタ函館ベイ</a>', description: '享受飯店頂樓天然溫泉，遠眺函館山。 泡湯後有免費冰棒。'}
+                { time: '16:50-20:20', type: '✈️', event: '航班飛行: CI112 TPE → HIJ' },
+                { time: '21:10-22:00', type: '🚌', event: '機場交通: 廣島機場利木津巴士 →「JR廣島站新幹線口」', cost: '¥1,450'},
+                { time: '22:00-22:30', type: '🏨', event: '關鍵任務: 於 <a href="https://www.google.com/maps/search/?api=1&query=JR広島駅みどりの窓口" target="_blank" class="text-blue-600 hover:underline">JR廣島站 綠色售票機</a> 兌換JR Pass & 飯店Check-in'},
+                { time: '22:30', type: '🍽️', event: '宵夜/晚餐: <a href="https://www.google.com/maps/search/?api=1&query=ばくだん屋+ekie広島店" target="_blank" class="text-blue-600 hover:underline">ばくだん屋 ekie店</a>', description: '品嚐廣島特有辣味沾麵 (辛いつけ麺)。', parkingInfo: "位於廣島站ekie內，可使用車站合作的『広島駅屋上駐車場』(費用約 ¥400/小時，當日最高 ¥1,500)。" },
+                { time: '23:00', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=ダイワロイネットホテル広島駅前" target="_blank" class="text-blue-600 hover:underline">ダイワロイネットホテル広島駅前</a>'}
             ],
-             intel: {
-                 la_vista_tip: { title: 'La Vista 住宿TIPS', text: '飯店以「全日本第一早餐」聞名，務必體驗(需另付費或含於方案)。 頂樓溫泉視野絕佳，男女湯會交換。泡湯後有免費冰棒/飲品。' },
-                  special_ticket_plan: { title: '特級套票規劃', text: '今日可先熟悉環境，明日開始使用特級套票的交通券與點數。可在JR函館站觀光案內所購買或兌換。'}
-             },
-             insights: {
-                 location_strategy: { title: '<span class="emphasis">住宿策略：灣區核心</span>', text: '入住La Vista，位於灣區核心，金森倉庫、多數B級美食皆在步行範圍內。前往元町、函館山也相對方便。' },
-                 winter_lights: { title: '冬季亮點', text: '今日(12/1)起，金森倉庫「聖誕幻想」、五稜郭「五稜星之夢」、湯之川「冬之燈」等冬季點燈活動陸續開始。'}
-             }
+            intel: {
+                supply: { title: '周邊補給 (廣島站)', items: [ 
+                    '<span class="emphasis">大型電器行</span>：<a href="https://www.google.com/maps/search/?api=1&query=ビックカメラ+広島駅前店" target="_blank" class="text-blue-600 hover:underline">ビックカメラ 広島駅前店 (BicCamera)</a>', 
+                    '<span class="emphasis">藥妝店</span>：<a href="https://www.google.com/maps/search/?api=1&query=マツモトキヨシ+ekie広島店" target="_blank" class="text-blue-600 hover:underline">マツモトキヨシ (松本清) ekie店</a>',
+                    '<span class="emphasis">超市</span>：<a href="https://www.google.com/maps/search/?api=1&query=成城石井+広島ekie店" target="_blank" class="text-blue-600 hover:underline">成城石井 広島ekie店</a>'
+                ]},
+                 jr_pass_hack: { title: 'JR Pass 兌換TIPS', text: '綠色售票機(みどりの券売機)通常開放至23:00，比綠色窗口(みどりの窓口)的服務時間更長，是深夜抵達時兌換Pass的首選。' }
+            },
+            insights: {
+                expert_strategy: { title: '<span class="emphasis">專家策略：山陽山陰高效率規劃</span>', text: '工頭堅等旅遊達人建議，選擇JR站周邊的商務酒店，能確保交通與生活機能的最佳連動性。廣島車站本身就是一個巨大的複合商城(ekie)，集結了美食、伴手禮與各式商店，是開啟旅程的絕佳據點。' },
+            }
         },
-        day2: { // Dec 2nd (Sat)
-            title: '朝市活力・百萬夜景 (含雨備)', date: 'Day 2 (12/02 週六)', location: '灣區 ↔ 朝市・元町', timeAnalysis: { travel: 1.0, activity: 8.0 },
-            options: {
+        day2: {
+            title: '神之島・嚴島神社深度一日', date: '2/21 週六', location: '廣島 ↔ 宮島', timeAnalysis: { travel: 1.5, activity: 7.5 },
+            timeline: [
+                 { time: '08:00', type: '☕', event: '早餐: 飯店或車站咖啡廳 <a href="https://www.google.com/maps/search/?api=1&query=Tully%27s+Coffee+広島駅店" target="_blank" class="text-blue-600 hover:underline">Tully\'s Coffee</a>' },
+                 { time: '08:32-09:20', type: '🚆', event: '搭乘 JR山陽本線 及 JR渡輪 前往宮島。', cost: '¥1,200 (來回, 自理)', parkingInfo: "需停在「宮島口」渡輪站周邊停車場，平日當日最高約 ¥1,200。" },
+                 { time: '09:20-12:00', type: '⛩️', event: '嚴島神社參拜 & 宮島表參道商店街。', ticketInfo: "大人 300日圓", stay: '約 2.5 小時', awardHighlight: "日本三景" },
+                 { time: '12:00-13:30', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=あなごめし+うえの+宮島口本店" target="_blank" class="text-blue-600 hover:underline">あなごめし うえの</a> 或 <a href="https://www.google.com/maps/search/?api=1&query=牡蠣屋+宮島" target="_blank" class="text-blue-600 hover:underline">牡蠣屋</a>', description: '品嚐宮島名物星鰻飯或當季烤牡蠣。', parkingInfo: "うえの有5個免費車位(易滿)，建議使用宮島口收費停車場。" },
+                 { time: '13:30-16:00', type: '🚶', event: '宮島深度探索 (彌山纜車/紅葉谷公園)', stay: '約 2.5 小時'},
+                 { time: '18:00-19:00', type: '🚆', event: '返回廣島站，回飯店稍作休息。'},
+                 { time: '19:30', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=すし丸+ekie広島店" target="_blank" class="text-blue-600 hover:underline">すし丸 (迴轉壽司)</a>', description: '品嚐瀨戶內海地魚。<span class="emphasis">【美食任務：迴轉壽司已達成】</span>', parkingInfo: "位於廣島站ekie內，可使用車站合作的停車場。" },
+                 { time: '21:00', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=ダイワロイネットホテル広島駅前" target="_blank" class="text-blue-600 hover:underline">ダイワロイネットホテル広島駅前</a>'}
+            ],
+            intel: {
+                tide: { title: '本日關鍵：潮汐攻略', text: '出發前務必查詢<a href="https://www.tide-forecast.com/locations/Miyajima-Japan/tides/latest" target="_blank" class="text-blue-600 hover:underline">宮島潮汐表</a>。滿潮前後2小時最適合拍攝海上鳥居，乾潮前後2小時則可步行至鳥居下方。' },
+                local_snacks: { title: '宮島表參道必吃小吃', items: [
+                    '除了烤牡蠣與星鰻飯，必嚐宮島本店限定的<span class="emphasis">『炸紅葉饅頭 (揚げもみじ)』</span>，口感獨特。',
+                    "可以嘗試當地特色的<span class='emphasis'>『廣島檸檬汽水』</span>，解渴又好拍照。"
+                ]}
+            },
+            insights: {
+                itsukushima: { title: '<span class="emphasis">專家見解：嚴島神社的二元之美</span>', text: '嚴島神社的精髓在於掌握潮汐。滿潮時，社殿與迴廊彷彿漂浮於海上；乾潮時，則能親近鳥居的宏偉。宮島纜車可登頂獅子岩展望台，俯瞰瀨戶內海群島，景色壮麗。' },
+                local_legend: { title: '文化見解：神之使者「鹿」', text: '宮島上的鹿被視為神的使者，因此受到保護並能自由漫步。與奈良的鹿相比，宮島的鹿較為溫馴，但仍請勿主動餵食。' }
+            }
+        },
+        day3: {
+            title: '沉思與轉進・國寶松江城與夕陽絕景', date: '2/22 週日', location: '廣島 → 松江', timeAnalysis: { travel: 4.5, activity: 3.5 },
+            timeline: [
+                { time: '08:00', type: '☕', event: '早餐 & 行李轉送 (至Day 5 玉造溫泉)' },
+                { time: '09:00-12:00', type: '🏛️', event: '歷史巡禮: <a href="https://www.google.com/maps/search/?api=1&query=廣島和平紀念公園" target="_blank" class="text-blue-600 hover:underline">廣島和平紀念公園</a>', ticketInfo: "公園免費, 資料館: 大人 200日圓", stay: '3 小時', parkingInfo: "周邊停車場如「広島市中央駐車場」(¥180/30分)。" },
+                { time: '12:00-13:30', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=麗ちゃん+広島" target="_blank" class="text-blue-600 hover:underline">麗ちゃん</a> 品嚐廣島燒', description: '品嚐道地的廣島靈魂美食。<span class="emphasis">【美食任務：B級美食已達成】</span>', parkingInfo: "位於廣島站ASSE內，可使用車站合作的停車場。" },
+                { time: '13:59-18:10', type: '🚆', event: '長途移動: 新幹線 (廣島→岡山) & 特急やくも (岡山→松江)', cost: 'JR Pass (第一張)'},
+                { time: '18:30-19:30', type: '🌅', event: '絕景鑑賞: <a href="https://www.google.com/maps/search/?api=1&query=宍道湖夕陽" target="_blank" class="text-blue-600 hover:underline">宍道湖夕陽</a>', description: '在<span class="emphasis">島根縣立美術館</span>前欣賞夢幻景色。', awardHighlight: "日本夕陽百選", ticketInfo: "觀景大廳免費", stay: '約 1 小時', parkingInfo: "島根縣立美術館設有免費停車場。" },
+                { time: '19:30', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=根っこや+松江" target="_blank" class="text-blue-600 hover:underline">根っこや</a>', description: '品嚐宍道湖七珍等鄉土料理。', parkingInfo: "無專用停車場，請使用附近收費停車場。" },
+                { time: '21:30', type: '🏨', event: '宵夜/住宿: <a href="https://www.google.com/maps/search/?api=1&query=ドーミーインEXPRESS松江" target="_blank" class="text-blue-600 hover:underline">ドーミーインEXPRESS松江</a>'}
+            ],
+            intel: {
+                matsue_food_culture: { title: '美食筆記：宍道湖七珍', text: '晚餐提到的「宍道湖七珍」是指宍道湖的七種代表性漁產：鱸魚、銀魚、鰻魚、公魚、鯉魚、蝦和蜆。能品嚐到其中幾樣，便是體驗了松江的精華。' }
+            },
+            insights: {
+                yakumo: { title: '交通筆記：特急列車「八雲號 (やくも)」', text: '連接岡山與山陰的重要列車，因路線多彎，是日本少數的「擺式列車」。車上無販售，務必事先購買糧食飲料。' },
+                peace_park: { title: '文化見解：千紙鶴的祈願', text: '在和平公園的「原爆之子像」周圍，您會看到來自世界各地的數百萬隻千紙鶴。這源於因核爆輻射罹患白血病的女孩佐佐木禎子的故事，千紙鶴已成為世界和平的象徵。' }
+            }
+        },
+        day4: {
+            title: '國寶與神話・出雲大社與絕美夕陽', date: '2/23 週一', location: '松江 ↔ 出雲', timeAnalysis: { travel: 3.0, activity: 7.0 },
+            timeline: [
+                 { time: '08:00', type: '☕', event: '早餐: 飯店或松江站周邊' },
+                 { time: '09:00-12:00', type: '🏯', event: '國寶巡禮: <a href="https://www.google.com/maps/search/?api=1&query=松江城" target="_blank" class="text-blue-600 hover:underline">松江城</a>', awardHighlight: "日本100名城 (No.64)", ticketInfo: "天守閣: 680日圓 (外國人340日圓)", stay: '約 3 小時', parkingInfo: "大手前停車場: ¥300/首小時, 之後¥100/30分鐘。" },
+                 { time: '12:00-13:30', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=八雲庵" target="_blank" class="text-blue-600 hover:underline">八雲庵</a> (鴨肉蕎麥麵)', parkingInfo: "無專用停車場，可使用松江城的停車場後步行前往。" },
+                 { time: '13:35-14:45', type: '🚆', event: '移動: JR山陰本線 (松江→出雲市) & 一畑電車 (出雲市→大社前)', cost: 'JR Pass (JR段) + ¥500 (自理)'},
+                 { time: '14:45-16:00', type: '🏛️', event: '深度歷史: <a href="https://www.google.com/maps/search/?api=1&query=島根県立古代出雲歴史博物館" target="_blank" class="text-blue-600 hover:underline">島根縣立古代出雲歴史博物館</a>', ticketInfo: "常設展: 620日圓 (外國人310日圓)", stay: '約 1.25 小時', parkingInfo: "設有免費停車場 (可與出雲大社共用)。" },
+                 { time: '16:45-18:00', type: '⛩️', event: '參拜: <a href="https://www.google.com/maps/search/?api=1&query=出雲大社" target="_blank" class="text-blue-600 hover:underline">出雲大社</a>', description: '體驗獨特的「二拜四拍手一拜」。', ticketInfo: "境內免費, 寶物殿 300日圓", stay: '約 1.25 小時', parkingInfo: "設有大型免費停車場。" },
+                 { time: '18:00-19:30', type: '🌅', event: '絕景鑑賞: <a href="https://www.google.com/maps/search/?api=1&query=稲佐の浜" target="_blank" class="text-blue-600 hover:underline">稻佐之濱</a>夕陽', awardHighlight: "日本夕陽百選", stay: '約 1.5 小時', parkingInfo: "海灘旁設有免費公共停車場。" },
+                 { time: '20:00', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=羽根屋+本店" target="_blank" class="text-blue-600 hover:underline">羽根屋 本店</a> (出雲割子蕎麥麵)', parkingInfo: "本店無專用停車場，請使用附近的收費停車場。" },
+            ],
+            intel: {
+                transport_hack: { title: '松江市內交通TIPS', text: '松江的「ぐるっと松江レイクラインバス (Lake Line Bus)」觀光循環巴士非常方便，一日券(520日圓)幾乎涵蓋所有市區景點，持護照外國人可享折扣。' },
+                matsue_castle: { title: '松江城遊覽TIPS', text: '推薦搭乘「堀川遊覽船」環繞護城河，從水上欣賞松江城。持護照外國人船票有優惠。' }
+            },
+            insights: {
+                izumo_worship: { title: '文化見解：為何是「四拍手」？', text: '出雲大社獨特的「二拜四拍手一拜」據說是為了讓遠方的神明也能聽見，表達最崇高的敬意。這也體現了出雲在日本神話中至高無上的地位。' }
+            }
+        },
+        day5: {
+            title: '世界遺產與美肌之湯', date: '2/24 週二', location: '出雲 → 石見銀山 → 玉造溫泉', timeAnalysis: { travel: 3.5, activity: 5.0 },
+            timeline: [
+                { time: '上午', type: '🚆', event: '移動: 從出雲市搭乘JR至大田市站，轉乘巴士前往石見銀山。', description: '將大行李寄送至米子(Day 6)飯店，攜帶過夜包。' },
+                { time: '10:00-15:00', type: '🏛️', event: '世界遺產探訪: <a href="https://www.google.com/maps/search/?api=1&query=石見銀山" target="_blank" class="text-blue-600 hover:underline">石見銀山</a>', description: '探索龍源寺間步礦坑與大森地區的古老街道。', ticketInfo: "龍源寺間步: 410日圓 (外國人200日圓)", stay: '約 5 小時', parkingInfo: "世界遺產中心設有大型收費停車場，需轉乘巴士進入景區。" },
+                { time: '15:00-16:00', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=すし丸+ekie広島店6" target="_blank" class="text-blue-600 hover:underline">古民家カフェ&宿 晄 (AKARI)</a>', description: '在古街中享受由老屋改造的咖啡廳簡餐。' },
+                { time: '16:00-18:00', type: '🚆', event: '移動: 從大田市站搭乘JR至玉造溫泉站。' },
+                { time: '18:30', type: '🏨', event: '住宿 & 晚餐: <a href="https://www.google.com/maps/search/?api=1&query=佳翠苑皆美" target="_blank" class="text-blue-600 hover:underline">佳翠苑皆美</a>', description: '享受旅館提供的精緻會席料理 (已含於一泊二食方案)。' },
+            ],
+            intel: {
+                iwami_ginzan: { title: '石見銀山攻略', text: '景區範圍廣大，從世界遺產中心到核心的龍源寺間步需步行約45分鐘。強烈建議在「大森代官所跡」站租借<span class="emphasis">電動自行車</span>以節省體力。' }
+            },
+            insights: {
+                tamatsukuri_onsen: { title: '美肌之湯：玉造溫泉', text: '日本最古老的溫泉之一，以其讓肌膚變得光滑細緻的泉質聞名。溫泉街上有免費的足湯和可以裝溫泉水的美肌瓶，是完美的放鬆體驗。' }
+            }
+        },
+        day6: {
+            title: '藝術庭園與妖怪國度', date: '2/25 週三', location: '玉造溫泉 → 安來 → 米子', timeAnalysis: { travel: 2.0, activity: 5.0 },
+            timeline: [
+                { time: '上午', type: '🏨', event: '早餐: 於溫泉旅館內享用日式早餐 (已含於一泊二食方案)' },
+                { time: '09:00-12:30', type: '🎨', event: '藝術巡禮: <a href="https://www.google.com/maps/search/?api=1&query=足立美術館" target="_blank" class="text-blue-600 hover:underline">足立美術館</a>', description: '從安來站搭乘免費接駁車，欣賞「活畫作」庭園。', awardHighlight: "日本紅葉名所100選", ticketInfo: "大人 2,300日圓 (外國人 1,150日圓)", stay: '約 3.5 小時', parkingInfo: "設有大型免費停車場 (400車位)。" },
+                { time: '12:30-13:30', type: '🍽️', event: '午餐: 足立美術館內餐廳' },
+                { time: '14:02-14:25', type: '🚆', event: '移動：JR山陰本線 (安來駅 → 米子駅)', cost: 'JR Pass'},
+                { time: '19:00', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=満洲味+米子" target="_blank" class="text-blue-600 hover:underline">満洲味</a> 品嚐鳥取牛骨拉麵', description: '體驗與豚骨拉麵截然不同的清甜湯頭。<span class="emphasis">【美食任務：拉麵已達成】</span>', parkingInfo: "店家有專用停車場，價格不明。" },
+                { time: '21:00', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=米子ワシントンホテルプラザ" target="_blank" class="text-blue-600 hover:underline">米子ワシントンホテルプラザ</a>'}
+            ],
+            intel: {
+                adachi_bus: { title: '交通TIPS：前往足立美術館', text: '美術館提供 JR 安來站到美術館的<span class="emphasis">免費接駁巴士</span>，每小時一班，務必提前確認時刻表。' }
+            },
+            insights: {
+                adachi_museum: { title: '<span class="emphasis">專家見解：足立美術館的「活畫作」</span>', text: '足立美術館的庭園被譽為<span class="emphasis">「活畫作」</span>，設計成從室內窗框望出去，每一景都像裱框的畫作。' }
+            }
+        },
+        day7: {
+            title: '妖怪國度深度一日', date: '2/26 週四', location: '米子 ↔ 境港', timeAnalysis: { travel: 1.5, activity: 7.0 },
+            timeline: [
+                { time: '08:30', type: '☕', event: '早餐: 飯店或米子市區' },
+                { time: '09:18-10:02', type: '🚆', event: '搭乘JR境線(鬼太郎列車)前往境港。', cost: 'JR Pass'},
+                { time: '10:02-12:30', type: '🚶', event: '境港/水木茂大道 深度一日遊', stay: '約 2.5 小時', parkingInfo: "周邊有多個收費停車場，當日最高約 ¥500-700。" },
+                { time: '12:30-14:00', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=境港水産物直売センター" target="_blank" class="text-blue-600 hover:underline">境港水産物直売センター</a> 品嚐海鮮丼', parkingInfo: "直賣中心設有大型免費停車場。" },
+                { time: '19:00', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=ガスト+米子駅前店" target="_blank" class="text-blue-600 hover:underline">ガスト 米子駅前店</a> (家庭餐廳)', description: '體驗日本的家庭餐廳文化。<span class="emphasis">【美食任務：家庭餐廳已達成】</span>', parkingInfo: "有合作停車場，消費可折抵時數。" },
+            ],
+            intel: {
+                seafood: { title: '美食筆記：境港的海之幸', text: '境港以捕獲量日本第一的「紅楚蟹」聞名。在「境港水産物直売センター」可以找到最新鮮的漁獲。' }
+            },
+            insights: {
+                mizuki_road: { title: '專家見解：水木茂大道的遊玩攻略', text: '核心樂趣在於「集章拉力」。在觀光案內所購買「妖怪導覽手冊」，沿途集章可換取「完走證」。' }
+            }
+        },
+        day8: {
+            title: '古街與療癒之湯', date: '2/27 週五', location: '米子 → 倉吉 → 三朝溫泉', timeAnalysis: { travel: 2.0, activity: 5.5 },
+            timeline: [
+                { time: '上午', type: '🚆', event: '移動: 從米子搭乘JR至倉吉站。', description: '將大行李寄送至岡山(Day 10)飯店，攜帶過夜包。' },
+                { time: '10:00-14:00', type: '🚶', event: '<a href="https://www.google.com/maps/search/?api=1&query=倉吉白壁土藏群" target="_blank" class="text-blue-600 hover:underline">倉吉白壁土藏群</a> 散策', description: '漫步於江戶時代的古街。', stay: '約 4 小時', parkingInfo: "觀光案內所旁有免費停車場。" },
+                { time: '中午', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=すし丸+ekie広島店7" target="_blank" class="text-blue-600 hover:underline">赤瓦五號館 久樂</a>', description: '在古老倉庫中品嚐鳥取特有的「年糕涮涮鍋」。' },
+                { time: '14:30', type: '🚌', event: '移動: 從倉吉站搭乘路線巴士前往三朝溫泉。' },
+                { time: '15:30', type: '🏨', event: '住宿 & 晚餐: <a href="https://www.google.com/maps/search/?api=1&query=三朝館" target="_blank" class="text-blue-600 hover:underline">三朝館</a>', description: '享受旅館提供的溫泉會席料理 (已含於一泊二食方案)。' },
+            ],
+            intel: {
+                kurayoshi: { title: '倉吉白壁土藏群', text: '以玉川沿岸的白壁倉庫建築聞名，紅色石州瓦與白色牆壁形成鮮明對比，是絕佳的拍照地點。' }
+            },
+            insights: {
+                misasa_onsen: { title: '療癒之湯：三朝溫泉', text: '這裡是世界少有的高濃度氡泉，據信有提高新陳代謝、增強免疫力的效果。溫泉街上的「河原風呂」是可免費體驗的露天混浴溫泉(需勇氣！)。' }
+            }
+        },
+        day9: {
+            title: '動漫巡禮 & 挑戰鳥取砂丘', date: '2/28 週六', location: '三朝溫泉 → 由良 → 鳥取', timeAnalysis: { travel: 2.5, activity: 6.0 },
+            timeline: [
+                { time: '上午', type: '🏨', event: '早餐: 於溫泉旅館內享用日式早餐 (已含於一泊二食方案)' },
+                { time: '上午', type: '🚌', event: '移動: 從三朝溫泉搭乘巴士至倉吉站，轉乘JR至由良站。' },
+                { time: '10:00-12:30', type: '🏛️', event: '由良/柯南小鎮 體驗 <a href="https://www.google.com/maps/search/?api=1&query=青山剛昌ふるさと館" target="_blank" class="text-blue-600 hover:underline">青山剛昌故鄉館</a>', ticketInfo: "大人 700日圓", stay: '約 2.5 小時', parkingInfo: "設有免費停車場。" },
+                { time: '12:30-13:30', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=喫茶ポアロ+鳥取" target="_blank" class="text-blue-600 hover:underline">喫茶ポアロ (白羅咖啡廳)</a>', parkingInfo: "位於「道の駅 大栄」內，設有大型免費停車場。" },
+                { time: '14:00-15:00', type: '🚆', event: '移動：JR (由良駅 → 鳥取駅)', cost: 'JR Pass'},
+                { time: '15:30-18:00', type: '🏜️', event:'<a href="https://www.google.com/maps/search/?api=1&query=鳥取砂丘" target="_blank" class="text-blue-600 hover:underline">鳥取砂丘</a> & <a href="https://www.google.com/maps/search/?api=1&query=砂の美術館" target="_blank" class="text-blue-600 hover:underline">砂之美術館</a>', ticketInfo: "砂之美術館: 大人 800日圓", stay: '2.5 小時', parkingInfo: "砂丘停車場 ¥500/次, 砂之美術館有獨立免費停車場。" },
+                { time: '19:00', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=炭火焼肉+福ふく+鳥取" target="_blank" class="text-blue-600 hover:underline">炭火焼肉 福ふく</a> 品嚐鳥取和牛', description: '品嚐入口即化的鳥取和牛。<span class="emphasis">【美食任務：燒肉已達成】</span>', parkingInfo: "店家有少量免費車位，若客滿請使用周邊的收費停車場。" },
+            ],
+            intel: {
+                tottori_bus: { title: '交通情報：麒麟獅子巴士', text: '僅在週末假日和暑假期間運行，是串連鳥取市區、鳥取城跡、砂丘等景點的便利巴士。持JR Pass可免費搭乘。' },
+                sand_dunes_hack: { title: '砂丘攻略TIPS', text: '砂丘旁的遊客中心提供<span class="emphasis">免費租借長靴</span>的服務，可以避免沙子跑進自己的鞋子裡，非常推薦利用。' }
+            },
+            insights: {
+                tottori_wagyu: { title: '美食筆記：鳥取和牛的奧秘', text: '鳥取和牛的特點在於油酸含量高，使得脂肪熔點較低，造就了入口即化的柔滑口感。' },
+                sand_museum: { title: '藝術見解：砂之美術館的剎那之美', text: '砂之美術館的沙雕作品每年都會更換主題，展期結束後便會回歸塵土。這種「僅限當下」的剎那之美，正是其最獨特的魅力所在。' }
+            }
+        },
+        day10: {
+            title: '國寶與名園・返回山陽核心', date: '3/01 週日', location: '鳥取 → 岡山', timeAnalysis: { travel: 2.0, activity: 5.0 },
+            timeline: [
+                { time: '09:00', type: '☕', event: '早餐: <a href="https://www.google.com/maps/search/?api=1&query=すなば珈琲+鳥取駅前店" target="_blank" class="text-blue-600 hover:underline">すなば珈琲</a>' },
+                { time: '10:00-11:49', type: '🚆', event: '移動: 特急スーパーいなば (鳥取駅 → 岡山駅)', cost: 'JR Pass (第二張啟用)' },
+                { time: '中午', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=吾妻寿司+岡山" target="_blank" class="text-blue-600 hover:underline">吾妻寿司</a> 品嚐岡山散壽司', parkingInfo: "無專用停車場，請使用岡山車站周邊的收費停車場。" },
+                { time: '14:00-17:00', type: '🏯', event: '<a href="https://www.google.com/maps/search/?api=1&query=岡山城" target="_blank" class="text-blue-600 hover:underline">岡山城</a> & <a href="https://www.google.com/maps/search/?api=1&query=岡山後樂園" target="_blank" class="text-blue-600 hover:underline">後樂園</a>', awardHighlight: "日本三大名園 & 日本100名城 (No.70)", ticketInfo: "共通券 640日圓 (推薦)", stay: '3 小時', parkingInfo: "後樂園設有收費停車場 (¥100/小時)。" },
+                { time: '17:30', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=味司+野村" target="_blank" class="text-blue-600 hover:underline">味司 野村</a> 品嚐醬汁豬排丼', description: '品嚐岡山道地的靈魂美食。<span class="emphasis">【美食任務：豬排飯已達成】</span>', parkingInfo: "無專用停車場，請使用周邊收費停車場。" },
+                { time: '20:00', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=ダイワロイネットホテル岡山駅前" target="_blank" class="text-blue-600 hover:underline">ダイワロイネットホテル岡山駅前</a>' },
+            ],
+            intel: {
+                efficiency_hack: { title: '岡山城/後樂園 效率攻略', items: [
+                    "務必購買640日圓的<span class='emphasis'>共通券</span>，比分開買票節省170日圓。",
+                    "建議遊覽順序：先逛<span class='emphasis'>後樂園</span>，從庭園拍攝岡山城的全景，再過月見橋參觀城堡內部。"
+                ]}
+            },
+            insights: {
+                demi_katsudon: { title: '美食筆記：醬汁豬排丼 (デミカツ丼)', text: '岡山的「醬汁豬排丼」是將炸豬排浸泡在特調的<span class="emphasis">多明格拉斯醬</span>中，結合了洋食風格。' }
+            }
+        },
+        day11: {
+            title: '岡山神話與歷史', date: '3/02 週一', location: '岡山市區', timeAnalysis: { travel: 1.5, activity: 6.0 },
+            timeline: [
+                { time: '上午', type: '☕', event: '早餐: 飯店或市區咖啡廳' },
+                { time: '10:00-13:00', type: '⛩️', event: '桃太郎傳說探源: <a href="https://www.google.com/maps/search/?api=1&query=吉備津神社" target="_blank" class="text-blue-600 hover:underline">吉備津神社</a>', description: '搭乘JR吉備線(桃太郎線)前往，欣賞壯觀的木造大迴廊。', ticketInfo: "免費", stay: '約 3 小時', parkingInfo: "設有免費停車場。" },
+                { time: '中午', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=すし丸+ekie広島店4" target="_blank" class="text-blue-600 hover:underline">いんでいら</a> (蝦飯創始店)', description: '品嚐岡山B級美食代表、外觀黑色的炒飯「えびめし」。' },
+                { time: '下午', type: '🛍️', event: '岡山市區散策與購物' },
+                { time: '18:30', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=すし丸+ekie広島店8" target="_blank" class="text-blue-600 hover:underline">魚河岸 晴じゃ</a>', description: '在車站附近的居酒屋，品嚐岡山特產「ままかり寿司」與瀨戶內海鮮魚。' },
+                { time: '傍晚', type: '🏨', event: '返回飯店休息' },
+            ],
+            intel: {
+                kibitsu_shrine: { title: '吉備津神社情報', text: '這裡是桃太郎傳說的原型地。除了壯觀的迴廊，神社的「鳴釜神事」也非常有名，據說可以透過釜的鳴叫聲來占卜吉凶。' }
+            },
+            insights: {
+                momotaro: { title: '文化見解：桃太郎與岡山', text: '岡山處處可見桃太郎的蹤跡，從JR吉備線的暱稱到伴手禮「吉備糰子」。了解桃太郎的故事能讓您的岡山之旅更添趣味。' }
+            }
+        },
+        day12: {
+            title: '倉敷美學 & 瀨戶內海絕景', date: '3/03 週二', location: '岡山 ↔ 倉敷 / 兒島', timeAnalysis: { travel: 2.5, activity: 6.5 },
+             options: {
                 optionA: {
-                    label: '選項A: 晴天衝夜景 & 聖誕',
+                    label: '選項A: 倉敷美學漫遊',
                     timeline: [
-                         { time: '08:00', type: '☕', event: '早餐: <a href="https://www.google.com/maps/search/?api=1&query=La%20Vista%20%E5%87%BD%E9%A4%A8%E7%81%A3" target="_blank" class="text-blue-600 hover:underline">La Vista 函館灣</a> 傳說中的第一名早餐'},
-                         { time: '10:00-12:00', type: '🚶', event: '步行前往 <a href="https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E9%A4%A8%E6%9C%9D%E5%B8%82" target="_blank" class="text-blue-600 hover:underline">函館朝市</a> 體驗', description: '釣烏賊(現釣現吃)、逛乾貨。', stay: '2 小時', specialTags: [ { type: 'ig_hotspot', text: '📸 IG 熱門打卡點' } ] },
-                         { time: '12:00-14:00', type: '🚶', event: '灣區探索: <a href="https://www.google.com/maps/search/?api=1&query=%E9%87%91%E6%A3%AE%E7%B4%85%E7%A3%9A%E5%80%89%E5%BA%AB" target="_blank" class="text-blue-600 hover:underline">金森紅磚倉庫</a> & <a href="https://www.google.com/maps/search/?api=1&query=羽根屋+本店3" target="_blank" class="text-blue-600 hover:underline">HAKODATE地名立牌</a>', description: '逛街購物，尋找IG打卡點。', ticketInfo: "免費入場", stay: '2 小時', parkingInfo: "『TIMES24』停車場。", specialTags: [ { type: 'pilgrimage', text: '🎥 聖地巡禮: Love Live! Sunshine!! 場景' }, { type: 'ig_hotspot', text: '📸 IG 熱門打卡點' } ] },
-                         { time: '14:00-15:00', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=%E5%B9%B8%E9%81%8B%E5%B0%8F%E4%B8%91%E6%BC%A2%E5%A0%A1%20%E7%81%A3%E5%8D%80%E6%9C%AC%E5%BA%97" target="_blank" class="text-blue-600 hover:underline">幸運小丑漢堡 (灣區本店)</a>', description: '品嚐油淋炸雞漢堡。 (可用特級套票4點)<span class="emphasis">【美食任務：速食店已達成】</span><span class="emphasis">【美食任務：B級美食已達成】</span>', parkingInfo: "使用金森倉庫停車場。", specialTags: [ { type: 'pilgrimage', text: '🎥 聖地巡禮: Love Live! Sunshine!! 場景' }, { type: 'ig_hotspot', text: '📸 IG 熱門餐廳' } ] },
-                         { time: '15:00-16:00', type: '🚶', event: '點心: <a href="https://www.google.com/maps/search/?api=1&query=%E9%95%B7%E8%B0%B7%E5%B7%9D%E5%95%86%E5%BA%97%20%E7%81%A3%E5%8D%80%E5%BA%97" target="_blank" class="text-blue-600 hover:underline">長谷川商店 (灣區店)</a>', description: '嚐嚐看烤肉便當。(可用特級套票2點)', parkingInfo: "店家門口有少量免費停車位 (約4台)。" },
-                         { time: '16:30', type: '🚠', event: '關鍵任務: 步行或搭市電至「十字街」前往 <a href="https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E9%A4%A8%E5%B1%B1%E7%BA%9C%E8%BB%8A%20%E5%B1%B1%E9%BA%93%E7%AB%99" target="_blank" class="text-blue-600 hover:underline">函館山纜車</a>', description: '搭乘纜車上山。(使用特級套票7點)', ticketInfo: "來回 ¥1,800", parkingInfo: "山麓站免費停車場 (車位極少)。" },
-                         { time: '17:00-18:00', type: '🌃', event: '絕景鑑賞: <a href="https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E9%A4%A8%E5%B1%B1%E7%BA%9C%E8%BB%8A%20%E5%B1%B1%E9%BA%93%E7%AB%99" target="_blank" class="text-blue-600 hover:underline">函館山夜景</a>', description: '欣賞百萬夜景。', awardHighlight: "世界三大夜景 (米其林三星)", ticketInfo: "觀景台免費", stay: '約 1 小時', specialTags: [ { type: 'ig_hotspot', text: '📸 IG 熱門打卡點' } ] },
-                         { time: '18:15', type: '🎄', event: '下山後步行返回 <a href="https://www.google.com/maps/search/?api=1&query=%E9%87%91%E6%A3%AE%E7%B4%85%E7%A3%9A%E5%80%89%E5%BA%AB" target="_blank" class="text-blue-600 hover:underline">金森倉庫</a> 觀賞聖誕幻想點燈/煙火 (18:00開始)', stay: '約 1 小時', specialTags: [ { type: 'event', text: '🎄 冬季活動: 函館聖誕幻想' } ] },
-                         { time: '19:30', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E5%A4%AA%E9%83%8E%20%E5%AE%87%E8%B3%80%E6%B5%A6%E7%B8%BD%E5%BA%97" target="_blank" class="text-blue-600 hover:underline">函太郎 (宇賀浦總店)</a>', description: '搭計程車或市電轉乘。(可用特級套票折抵)<span class="emphasis">【美食任務：迴轉壽司已達成】</span>', parkingInfo: "設有大型免費專用停車場 (約60台)。", specialTags: [ { type: 'ig_hotspot', text: '📸 IG 熱門餐廳' } ] },
-                         { time: '21:30', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=La%20Vista%20%E5%87%BD%E9%A4%A8%E7%81%A3" target="_blank" class="text-blue-600 hover:underline">ラビスタ函館ベイ</a>'}
+                        { time: '09:00', type: '☕', event: '早餐: 岡山站內咖啡廳' },
+                        { time: '09:18-09:35', type: '🚆', event: '搭乘JR山陽本線前往倉敷', cost: 'JR Pass'},
+                        { time: '09:35-12:30', type: '🎨', event: '倉敷美觀地區散策 & <a href="https://www.google.com/maps/search/?api=1&query=大原美術館" target="_blank" class="text-blue-600 hover:underline">大原美術館</a>', ticketInfo: "大原美術館: 大人 1,300日圓", stay: '約 3 小時', parkingInfo: "請使用周邊停車場，如「倉敷市中央駐車場」(¥100/30分鐘)。" },
+                        { time: '12:30-14:00', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=三宅商店+倉敷" target="_blank" class="text-blue-600 hover:underline">三宅商店</a> 品嚐咖哩飯' },
+                        { time: '14:00-15:30', type: '☕', event: '下午茶: <a href="https://www.google.com/maps/search/?api=1&query=くらしき桃子+総本店" target="_blank" class="text-blue-600 hover:underline">くらしき桃子</a> 水果聖代', description: '品嚐水果王國岡山的豪華水果聖代。<span class="emphasis">【美食任務：下午茶已達成】</span>', parkingInfo: "無專用停車場，請使用美觀地區周邊的收費停車場。" },
+                        { time: '15:30-18:00', type: '🛍️', event: '<a href="https://www.google.com/maps/search/?api=1&query=三井アウトレットパーク+倉敷" target="_blank" class="text-blue-600 hover:underline">三井Outlet倉敷</a>購物', parkingInfo: "Outlet設有大型收費停車場 (購物可折抵時數)。" },
                     ]
                 },
                 optionB: {
-                    label: '選項B: 雨天備案・灣區室內 & 聖誕',
+                    label: '選項B: 丹寧聖地 & 鷲羽山夕陽',
                     timeline: [
-                         { time: '08:00', type: '☕', event: '早餐: <a href="https://www.google.com/maps/search/?api=1&query=La%20Vista%20%E5%87%BD%E9%A4%A8%E7%81%A3" target="_blank" class="text-blue-600 hover:underline">La Vista 函館灣</a> 傳說中的第一名早餐' },
-                         { time: '10:00-12:00', type: '🚶', event: '步行前往 <a href="https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E9%A4%A8%E6%9C%9D%E5%B8%82" target="_blank" class="text-blue-600 hover:underline">函館朝市</a> 體驗', description: '釣烏賊、品嚐海鮮。', stay: '2 小時', specialTags: [ { type: 'ig_hotspot', text: '📸 IG 熱門打卡點' } ] },
-                         { time: '12:00-16:00', type: '🚶', event: '灣區深度探索: <a href="https://www.google.com/maps/search/?api=1&query=%E9%87%91%E6%A3%AE%E7%B4%85%E7%A3%9A%E5%80%89%E5%BA%AB" target="_blank" class="text-blue-600 hover:underline">金森紅磚倉庫</a> & <a href="https://www.google.com/maps/search/?api=1&query=羽根屋+本店1" target="_blank" class="text-blue-600 hover:underline">函館明治館</a>', description: '增加室內購物與參觀時間 (明治館有音樂盒、玻璃工藝)。', ticketInfo: "倉庫/明治館免費入場", stay: '約 4 小時', parkingInfo: "『TIMES24』停車場。", specialTags: [ { type: 'pilgrimage', text: '🎥 聖地巡禮: Love Live! Sunshine!! 場景' }, { type: 'ig_hotspot', text: '📸 IG 熱門打卡點' } ] },
-                         { time: '16:00-17:00', type: '🍽️', event: '午餐/下午茶: <a href="https://www.google.com/maps/search/?api=1&query=%E5%B9%B8%E9%81%8B%E5%B0%8F%E4%B8%91%E6%BC%A2%E5%A0%A1%20%E7%81%A3%E5%8D%80%E6%9C%AC%E5%BA%97" target="_blank" class="text-blue-600 hover:underline">幸運小丑漢堡 (灣區本店)</a>', description: '品嚐油淋炸雞漢堡。 (可用特級套票4點)<span class="emphasis">【美食任務：速食店已達成】</span><span class="emphasis">【美食任務：B級美食已達成】</span>', parkingInfo: "使用金森倉庫停車場。", specialTags: [ { type: 'pilgrimage', text: '🎥 聖地巡禮: Love Live! Sunshine!! 場景' }, { type: 'ig_hotspot', text: '📸 IG 熱門餐廳' } ] },
-                         { time: '17:00-18:00', type: '☕', event: '下午茶: 灣區咖啡廳 (e.g. <a href="https://www.google.com/maps/search/?api=1&query=羽根屋+本店2" target="_blank" class="text-blue-600 hover:underline">Starbucks 函館ベイサイド店</a> 或 倉庫內咖啡店)', description: '避雨休息。<span class="emphasis">【美食任務：下午茶已達成】</span>', parkingInfo: "使用金森倉庫停車場。" },
-                         { time: '18:00', type: '🎄', event: '觀賞 <a href="https://www.google.com/maps/search/?api=1&query=%E9%87%91%E6%A3%AE%E7%B4%85%E7%A3%9A%E5%80%89%E5%BA%AB" target="_blank" class="text-blue-600 hover:underline">金森倉庫</a> 聖誕幻想點燈/煙火 (18:00開始)', description: '雨天也可欣賞的燈光活動。', stay: '約 1 小時', specialTags: [ { type: 'event', text: '🎄 冬季活動: 函館聖誕幻想' } ] },
-                         { time: '19:00', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=羽根屋+本店4" target="_blank" class="text-blue-600 hover:underline">函館啤酒館 (函館ビヤホール)</a>', description: '在紅磚倉庫內享用晚餐與啤酒。 (可用特級套票折抵)', parkingInfo: "使用金森倉庫停車場。", specialTags: [ { type: 'ig_hotspot', text: '📸 IG 熱門餐廳' } ] },
-                         { time: '21:00', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=La%20Vista%20%E5%87%BD%E9%A4%A8%E7%81%A3" target="_blank" class="text-blue-600 hover:underline">ラビスタ函館ベイ</a>'}
+                        { time: '09:30-10:00', type: '🚆', event: '移動: 從岡山站搭乘JR瀨戶大橋線前往兒島站。', cost: 'JR Pass'},
+                        { time: '10:00-12:30', type: '👖', event: '<a href="https://www.google.com/maps/search/?api=1&query=すし丸+ekie広島店9" target="_blank" class="text-blue-600 hover:underline">兒島牛仔褲大道</a> 散策', description: '探索日本丹寧的發源地，尋找特色店家與商品。', stay: '約 2.5 小時', parkingInfo: "可利用『兒島車站西口停車場』等公共停車設施 (約¥100-200/小時)，部分店家消費可折抵停車費。" },
+                        { time: '12:30-13:30', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=松江城0" target="_blank" class="text-blue-600 hover:underline">RIVETS CAFE</a>', description: '在充滿丹寧工業風的咖啡館享用特色輕食。' },
+                        { time: '14:00-14:30', type: '🚌', event: '移動: 從兒島站搭乘下電巴士前往「鷲羽山第二展望台」。', cost: '自理'},
+                        { time: '14:30-17:30', type: '🌅', event: '在 <a href="https://www.google.com/maps/search/?api=1&query=鷲羽山展望台" target="_blank" class="text-blue-600 hover:underline">鷲羽山展望台</a> 等待日落', awardHighlight: "日本夕陽百選", description: '欣賞瀨戶大橋與瀨戶內海群島的壯麗夕陽絕景。', stay: '約 3 小時', parkingInfo: "展望台設有免費停車場。" },
+                        { time: '傍晚', type: '🚆', event: '搭乘巴士返回兒島站，轉乘JR返回岡山。'},
+                    ]
+                },
+                optionC: {
+                    label: '選項C: 天空之城雲海挑戰 (高強度)',
+                    timeline: [
+                        { time: '05:25-06:17', type: '🚆', event: '搭乘JR伯備線 [普通] 首班車前往備中高梁', cost: 'JR Pass'},
+                        { time: '06:20-08:30', type: '🌅', event: '搭乘預約的「雲海計程車」前往展望台', description: "共乘制，每人單程約 ¥1,500", stay: '約 2 小時' },
+                        { time: '08:30-12:00', type: '🏯', event: '徒步登城 <a href="https://www.google.com/maps/search/?api=1&query=備中松山城" target="_blank" class="text-blue-600 hover:underline">備中松山城</a>', awardHighlight: "日本100名城 (No.68)", ticketInfo: "天守: 大人 500日圓", stay: '約 3.5 小時', parkingInfo: "計程車會送至登山口，「ふいご峠駐車場」免費。" },
                     ]
                 }
             },
-             intel: {
-                 christmas_fantasy: { title: '聖誕幻想攻略', text: '活動期間(11月底-12/25)每天18:00在金森倉庫前有聖誕樹點燈儀式與煙火。 還有熱湯吧攤位可取暖。 無論晴雨都是晚間亮點。' },
-                 rainy_day_alt: { title: '雨備選項B 提示', text: '選項B避開戶外視野為主的函館山。金森倉庫、明治館、啤酒館提供充足的室內活動。聖誕幻想活動雨天照常舉行。' },
-                  special_ticket_plan: { title: '特級套票交通券', text: '今日行程步行可達處多，可考慮將特級套票的交通一日券保留給後面需要搭乘市電/巴士較多的日子(如Day 4或Day 6)。' }
-             },
-             insights: {
-                 bay_area_focus: { title: '<span class="emphasis">灣區魅力</span>', text: '住宿灣區能深度體驗此區的日夜景致。白天逛朝市、倉庫，傍晚賞夕陽、聖誕燈飾，晚上還能就近用餐或回飯店泡湯，行程非常順暢。' }
-             }
-        },
-        day3: { // Dec 3rd (Sun)
-            title: '異國風情・元町坂道散策 (夜景備案)', date: 'Day 3 (12/03 週日)', location: '灣區 ↔ 元町', timeAnalysis: { travel: 0.5, activity: 7.5 },
-            options: {
-                 optionA: {
-                    label: '選項A: 晴天再戰夜景',
-                    timeline: [
-                        { time: '09:00', type: '☕', event: '早餐: 飯店 (La Vista 早餐)' },
-                        { time: '10:00-11:00', type: '⛩️', event: '步行前往 元町散策起點: <a href="https://www.google.com/maps/search/?api=1&query=%E8%88%B9%E9%AD%82%E7%A5%9E%E7%A4%BE" target="_blank" class="text-blue-600 hover:underline">船魂神社</a>', description: '參拜北海道最古老神社。', ticketInfo: "免費參拜", stay: '約 1 小時', specialTags: [ { type: 'recommendation', text: '🎯 必買推薦: 舵守' } ] },
-                        { time: '11:00-14:00', type: '🚶', event: '<a href="https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E9%A4%A8%20%E5%85%83%E7%94%BA%20%E5%85%AB%E5%B9%A1%E5%9D%82" target="_blank" class="text-blue-600 hover:underline">元町教會群 & 坂道巡禮</a>', description: '散步遊覽八幡坂、函館正教會、元町天主堂。', awardHighlight: "日本音風景100選 (正教會鐘聲)", stay: '約 3 小時', parkingInfo: "『函館市元町觀光停車場』。", specialTags: [ { type: 'pilgrimage', text: '🎥 聖地巡禮: Love Live! Sunshine!! / First Love 場景' }, { type: 'ig_hotspot', text: '📸 IG 熱門打卡點 (八幡坂/正教會)' } ] },
-                        { time: '14:00-15:00', type: '🏛️', event: '參觀 <a href="https://www.google.com/maps/search/?api=1&query=%E8%88%8A%E5%87%BD%E9%A4%A8%E5%8D%80%E5%85%AC%E6%9C%83%E5%A0%82" target="_blank" class="text-blue-600 hover:underline">舊函館區公會堂</a>', description: '欣賞華麗洋館。(可用特級套票1點)', ticketInfo: "大人 300日圓", stay: '約 1 小時', specialTags: [ { type: 'ig_hotspot', text: '📸 IG 熱門打卡點' } ] },
-                        { time: '15:30', type: '🍽️', event: '午餐/下午茶: 元町咖啡廳 (e.g. <a href="https://www.google.com/maps/search/?api=1&query=%E8%8C%B6%E6%88%BF%20%E8%8F%8A%E6%B3%89" target="_blank" class="text-blue-600 hover:underline">茶房 菊泉</a> 或 <a href="https://www.google.com/maps/search/?api=1&query=羽根屋+本店5" target="_blank" class="text-blue-600 hover:underline">Angelique Voyage</a>)', description: '在古民家咖啡廳或Tabelog第一名甜點店休息。' },
-                        { time: '17:00-17:30', type: '⛩️', event: '參拜 <a href="https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E9%A4%A8%E8%AD%B7%E5%9C%8B%E7%A5%9E%E7%A4%BE" target="_blank" class="text-blue-600 hover:underline">函館護國神社</a>', description: '尋找貓頭鷹御守。', ticketInfo: "免費參拜", parkingInfo: "可使用函館山纜車站免費停車場。", stay: '約 30 分鐘', specialTags: [ { type: 'recommendation', text: '🎯 必買推薦: 貓頭鷹御守' } ] },
-                        { time: '17:45', type: '🚠', event: '關鍵任務(二次機會): <a href="https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E9%A4%A8%E5%B1%B1%E7%BA%9C%E8%BB%8A%20%E5%B1%B1%E9%BA%93%E7%AB%99" target="_blank" class="text-blue-600 hover:underline">函館山纜車</a>', description: '再次挑戰百萬夜景！(使用特級套票7點)', ticketInfo: "來回 ¥1,800", parkingInfo: "山麓站免費停車場 (車位極少)。" },
-                        { time: '18:15-19:45', type: '🌃', event: '絕景鑑賞: <a href="https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E9%A4%A8%E5%B1%B1%E7%BA%9C%E8%BB%8A%20%E5%B1%B1%E9%BA%93%E7%AB%99" target="_blank" class="text-blue-600 hover:underline">函館山夜景</a>', description: '把握第二次機會欣賞夜景。', awardHighlight: "世界三大夜景 (米其林三星)", ticketInfo: "觀景台免費", stay: '約 1.5 小時', specialTags: [ { type: 'ig_hotspot', text: '📸 IG 熱門打卡點' } ] },
-                        { time: '20:15', type: '🍽️', event: '晚餐: 十字街周邊<a href="https://www.google.com/maps/search/?api=1&query=羽根屋+本店6" target="_blank" class="text-blue-600 hover:underline">大門橫丁</a> 或 返回灣區用餐', description: '體驗居酒屋小巷氛圍。(大門橫丁可用特級套票折抵)' },
-                        { time: '21:30', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=La%20Vista%20%E5%87%BD%E9%A4%A8%E7%81%A3" target="_blank" class="text-blue-600 hover:underline">ラビスタ函館ベイ</a>'}
-                    ]
-                 },
-                 optionB: {
-                    label: '選項B: 雨天/已看夜景',
-                    timeline: [
-                        { time: '09:00', type: '☕', event: '早餐: 飯店 (La Vista 早餐)' },
-                        { time: '10:00-11:00', type: '⛩️', event: '步行前往 元町散策起點: <a href="https://www.google.com/maps/search/?api=1&query=%E8%88%B9%E9%AD%82%E7%A5%9E%E7%A4%BE" target="_blank" class="text-blue-600 hover:underline">船魂神社</a>', description: '參拜北海道最古老神社。', ticketInfo: "免費參拜", stay: '約 1 小時', specialTags: [ { type: 'recommendation', text: '🎯 必買推薦: 舵守' } ] },
-                        { time: '11:00-14:00', type: '🚶', event: '<a href="https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E9%A4%A8%20%E5%85%83%E7%94%BA%20%E5%85%AB%E5%B9%A1%E5%9D%82" target="_blank" class="text-blue-600 hover:underline">元町教會群 & 坂道巡禮</a> (雨天可重點參觀教堂內部/領事館)', description: '散步遊覽八幡坂、函館正教會、舊英國領事館(可用特級套票1點)。', awardHighlight: "日本音風景100選 (正教會鐘聲)", stay: '約 3 小時', parkingInfo: "『函館市元町觀光停車場』。", specialTags: [ { type: 'pilgrimage', text: '🎥 聖地巡禮: Love Live! Sunshine!! / First Love 場景' }, { type: 'ig_hotspot', text: '📸 IG 熱門打卡點 (八幡坂/正教會)' } ] },
-                        { time: '14:00-15:00', type: '🏛️', event: '參觀 <a href="https://www.google.com/maps/search/?api=1&query=%E8%88%8A%E5%87%BD%E9%A4%A8%E5%8D%80%E5%85%AC%E6%9C%83%E5%A0%82" target="_blank" class="text-blue-600 hover:underline">舊函館區公會堂</a>', description: '欣賞華麗洋館。(可用特級套票1點)', ticketInfo: "大人 300日圓", stay: '約 1 小時', specialTags: [ { type: 'ig_hotspot', text: '📸 IG 熱門打卡點' } ] },
-                        { time: '15:30', type: '🍽️', event: '午餐/下午茶: 元町咖啡廳 (e.g. <a href="https://www.google.com/maps/search/?api=1&query=%E8%8C%B6%E6%88%BF%20%E8%8F%8A%E6%B3%89" target="_blank" class="text-blue-600 hover:underline">茶房 菊泉</a> 或 <a href="https://www.google.com/maps/search/?api=1&query=羽根屋+本店5" target="_blank" class="text-blue-600 hover:underline">Angelique Voyage</a>)', description: '在古民家咖啡廳或Tabelog第一名甜點店休息。' },
-                        { time: '17:00-18:30', type: '⛩️', event: '參拜 <a href="https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E9%A4%A8%E8%AD%B7%E5%9C%8B%E7%A5%9E%E7%A4%BE" target="_blank" class="text-blue-600 hover:underline">函館護國神社</a>', description: '尋找貓頭鷹御守。', ticketInfo: "免費參拜", parkingInfo: "可使用函館山纜車站免費停車場。", stay: '約 1.5 小時', specialTags: [ { type: 'recommendation', text: '🎯 必買推薦: 貓頭鷹御守' } ] },
-                        { time: '19:00', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=%E3%81%A8%E3%82%93%E6%82%A6%20%E5%87%BD%E9%A4%A8" target="_blank" class="text-blue-600 hover:underline">とん悦 (Tonetsu)</a>', description: '搭市電前往品嚐在地炸豬排。<span class="emphasis">【美食任務：豬排飯已達成】</span>', parkingInfo: "店家設有專用停車場。" },
-                        { time: '21:00', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=La%20Vista%20%E5%87%BD%E9%A4%A8%E7%81%A3" target="_blank" class="text-blue-600 hover:underline">ラビスタ函館ベイ</a>'}
-                    ]
-                 }
-            },
-             intel: {
-                  night_view_strategy: { title: '夜景策略：第二次機會 (選項A)', text: '如果Day 2天氣不佳或想再次欣賞，Day 3傍晚是第二次機會。結束元町行程後，護國神社就在纜車站旁，動線順暢。' },
-                  special_ticket_points: { title: '特級套票點數運用', text: '今日可使用點數於舊函館區公會堂(1點)、舊英國領事館(1點)。 若選擇Option A，則再加上函館山纜車(7點)，點數剛好用完！' }, // Updated point usage
-                  transport_hack: { title: '交通TIPS：步行+市電', text: '從La Vista出發，元町大部分景點可步行抵達。若要前往較遠處(如Tonetsu)或節省體力，可搭配市電一日券(¥600)。' }
-             },
-             insights: {
-                  motomachi_charm: { title: '<span class="emphasis">文化見解：元町的魅力</span>', text: '元町不僅有美麗的教堂和坂道，更承載了函館開港的歷史。漫步其中，可以感受不同文化交融的獨特氛圍。函館正教會的鐘聲更是被選為「日本音風景100選」。' }
-             }
-        },
-        day4: { // Dec 4th (Mon)
-            title: '星型要塞・冬日星芒', date: 'Day 4 (12/04 週一)', location: '灣區 ↔ 五稜郭', timeAnalysis: { travel: 1.5, activity: 7.0 },
-            timeline: [
-                 { time: '08:30', type: '☕', event: '早餐: 飯店 (La Vista 早餐)' },
-                 { time: '09:30', type: '🚋', event: '搭乘市電 (魚市場通 → 五稜郭公園前) (使用特級套票交通券)'},
-                 { time: '10:00-12:00', type: '🏯', event: '登上 <a href="https://www.google.com/maps/search/?api=1&query=%E4%BA%94%E7%A8%9C%E9%83%AD%E5%A1%94" target="_blank" class="text-blue-600 hover:underline">五稜郭塔</a>', description: '白天俯瞰星形要塞。(特級套票已用完點數，需購票)', awardHighlight: "日本100名城 (續)", ticketInfo: "大人 900日圓", stay: '約 2 小時', parkingInfo: "無專用停車場，使用周邊付費停車場。", specialTags: [ { type: 'ig_hotspot', text: '📸 IG 熱門打卡點' } ] },
-                 { time: '12:00-13:00', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E9%A4%A8%E9%BA%B5%E5%BB%9A%E6%88%BF%20%E5%91%B3%E5%BD%A9%20%E6%9C%AC%E5%BA%97" target="_blank" class="text-blue-600 hover:underline">函館麵厨房 味彩 (本店)</a>', description: '品嚐函館鹽味拉麵。(特級套票已用完點數，需付費)<span class="emphasis">【美食任務：拉麵已達成】</span>', parkingInfo: "有專用停車場 (7台)。", specialTags: [ { type: 'ig_hotspot', text: '📸 IG 熱門餐廳' } ] },
-                 { time: '13:00-15:00', type: '🚶', event: '漫步 <a href="https://www.google.com/maps/search/?api=1&query=%E4%BA%94%E7%A8%9C%E9%83%AD%E5%A1%94" target="_blank" class="text-blue-600 hover:underline">五稜郭公園</a> & <a href="https://www.google.com/maps/search/?api=1&query=羽根屋+本店7" target="_blank" class="text-blue-600 hover:underline">箱館奉行所</a>', description: '深入了解幕末歷史。(特級套票已用完點數，需購票)', awardHighlight: "日本櫻花名所100選", ticketInfo: "公園免費 (奉行所 500日圓)", stay: '約 2 小時', specialTags: [ { type: 'pilgrimage', text: '🎥 聖地巡禮: 黃金神威 場景' } ] },
-                 { time: '15:00-16:30', type: '☕', event: '下午茶: <a href="https://www.google.com/maps/search/?api=1&query=%E5%85%AD%E8%8A%B1%E4%BA%AD%20%E4%BA%94%E7%A8%9C%E9%83%AD%E5%BA%97" target="_blank" class="text-blue-600 hover:underline">六花亭 (五稜郭店)</a>', description: '享受喫茶室的甜點與咖啡。', parkingInfo: "設有免費專用停車場。" },
-                 { time: '17:00-18:00', type: '✨', event: '冬季限定: 觀賞 <a href="https://www.google.com/maps/search/?api=1&query=%E4%BA%94%E7%A8%9C%E9%83%AD%E5%A1%94" target="_blank" class="text-blue-600 hover:underline">五稜星之夢</a> 點燈', description: '在公園周邊欣賞護城河點燈。', stay: '約 1 小時', specialTags: [ { type: 'event', text: '✨ 冬季活動: 五稜星之夢' } ] },
-                 { time: '18:30', type: '🍽️', event: '晚餐 (選項A): <a href="https://www.google.com/maps/search/?api=1&query=Colz%20%E3%82%B3%E3%83%AB%E3%83%84%20%E5%87%BD%E9%A4%A8" target="_blank" class="text-blue-600 hover:underline">Colz (コルツ)</a> (需預約)', description: '品嚐Tabelog高分的在地義大利麵。<span class="emphasis">【美食任務：義大利麵已達成】</span>', parkingInfo: "店家後方設有專用停車場。" },
-                 { time: '18:30', type: '🍽️', event: '晚餐 (選項B): <a href="https://www.google.com/maps/search/?api=1&query=%E3%82%AC%E3%82%B9%E3%83%88%20%E5%87%BD%E9%A4%A8%E9%8D%9B%E5%86%B6%E5%BA%97" target="_blank" class="text-blue-600 hover:underline">ガスト (Gusto) 函館鍛治店</a>', description: '體驗日本家庭餐廳文化。<span class="emphasis">【美食任務：家庭餐廳已達成】</span>', parkingInfo: "設有專用停車場。" },
-                 { time: '20:30', type: '🏨', event: '返回飯店: <a href="https://www.google.com/maps/search/?api=1&query=La%20Vista%20%E5%87%BD%E9%A4%A8%E7%81%A3" target="_blank" class="text-blue-600 hover:underline">ラビスタ函館ベイ</a>'}
-            ],
-             intel: {
-                  goryokaku_illumination: { title: '五稜星之夢 觀賞點', text: '「五稜星之夢」(12月-2月)點亮星形護城河。 傍晚在公園周圍散步即可欣賞，無需再次登塔。搭配雪景更美。'},
-                  special_ticket_strategy: { title: '特級套票點數策略', text: '若前兩天已使用函館山(7點)+五稜郭塔(4點)，點數已用完。 今天參觀奉行所、味彩拉麵需另外付費。或者，可以調整點數用法，例如放棄其中一個點數景點，將點數用於味彩(3點)或奉行所(2點)。'}
-             },
-             insights: {
-                  golden_kamuy: { title: '文化見解：黃金神威與五稜郭', text: '五稜郭是《黃金神威》中土方歲三勢力的最終據點。在塔上俯瞰這片土地，更能感受到這段歷史與故事的厚重感。' },
-                  star_fort: { title: '<span class="emphasis">建築見解：星形要塞</span>', text: '五稜郭的星形設計是為了減少防禦死角，是當時歐洲流行的稜堡式城郭。從塔上俯瞰才能完全理解其設計巧思。' }
-             }
-        },
-        day5: { // Dec 5th (Tue)
-            title: '北國自然・大沼公園 & 特色漢堡', date: 'Day 5 (12/05 週二)', location: '灣區 ↔ 大沼公園 / 七飯町', timeAnalysis: { travel: 2.0, activity: 6.0 },
-            options: {
-                 optionA: {
-                     label: "選項A: 自駕遊 (含峠下總本店)",
-                     timeline: [
-                         { time: '09:00', type: '☕', event: '早餐: 飯店 (La Vista 早餐)' },
-                         { time: '09:30-10:10', type: '🚗', event: '租車/自駕前往大沼公園 (約40分鐘)' },
-                         { time: '10:10-14:10', type: '🏞️', event: '<a href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E6%B2%BC%E5%9C%8B%E5%AE%9A%E5%85%AC%E5%9C%92" target="_blank" class="text-blue-600 hover:underline">大沼國定公園</a> 深度遊覽', awardHighlight: "日本新三景, 日本紅葉名所100選", description: '冬季雪地散策、欣賞駒岳火山與結冰湖景。', ticketInfo: "公園免費", stay: '約 4 小時', parkingInfo: "JR站對面有收費停車場 (¥400/次)。" },
-                         { time: '14:10-14:30', type: '🚗', event: '駕車前往峠下總本店 (約15-20分鐘)' },
-                         { time: '14:30-15:30', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=ドーミーインPREMIUM五稜郭" target="_blank" class="text-blue-600 hover:underline">幸運小丑漢堡 (峠下總本店)</a>', description: '前往最具特色的分店，與巨大紅椅子合照。', parkingInfo: "設有大型免費停車場。", specialTags: [ { type: 'recommendation', text: '🚗 自駕推薦特色分店' } ] },
-                         { time: '15:30-16:30', type: '🚗', event: '移動: 返回函館市區'},
-                         { time: '18:00', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=%E7%82%AD%E7%81%AB%E7%87%92%E8%82%89%20%E6%B3%89%E5%91%B3%E4%BA%AD%20%E5%87%BD%E9%A4%A8" target="_blank" class="text-blue-600 hover:underline">炭火燒肉 泉味亭</a>', description: '搭市電或計程車前往五稜郭區域品嚐熟成和牛。<span class="emphasis">【美食任務：燒肉已達成】</span>', parkingInfo: "設有專屬停車場。", specialTags: [ { type: 'ig_hotspot', text: '📸 IG 熱門餐廳' } ] },
-                         { time: '20:30', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=La%20Vista%20%E5%87%BD%E9%A4%A8%E7%81%A3" target="_blank" class="text-blue-600 hover:underline">ラビスタ函館ベイ</a>'}
-                     ]
-                 },
-                 optionB: {
-                     label: "選項B: JR/大眾運輸",
-                     timeline: [
-                        { time: '09:00', type: '☕', event: '早餐: 飯店 (La Vista 早餐)' },
-                        { time: '09:30-10:30', type: '🚆', event: '移動: 搭乘市電至函館站，轉乘 JR特急北斗號 (函館→大沼公園)' },
-                        { time: '10:30-15:30', type: '🏞️', event: '<a href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E6%B2%BC%E5%9C%8B%E5%AE%9A%E5%85%AC%E5%9C%92" target="_blank" class="text-blue-600 hover:underline">大沼國定公園</a> 深度遊覽', awardHighlight: "日本新三景, 日本紅葉名所100選", description: '冬季雪地散策、欣賞駒岳火山與結冰湖景。', ticketInfo: "公園免費", stay: '約 5 小時', parkingInfo: "JR站對面有收費停車場 (¥400/次)。" },
-                        { time: '中午', type: '🍽️', event: '午餐: 大沼公園周邊餐廳 或 <a href="https://www.google.com/maps/search/?api=1&query=%E6%B2%BC%E4%B9%8B%E5%AE%B6" target="_blank" class="text-blue-600 hover:underline">沼之家 (沼の家)</a> 糰子配熱飲' },
-                        { time: '15:30-16:30', type: '🚆', event: '移動: JR (大沼公園→函館) → 市電返回灣區'},
-                        { time: '18:00', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=%E7%82%AD%E7%81%AB%E7%87%92%E8%82%89%20%E6%B3%89%E5%91%B3%E4%BA%AD%20%E5%87%BD%E9%A4%A8" target="_blank" class="text-blue-600 hover:underline">炭火燒肉 泉味亭</a>', description: '搭市電或計程車前往五稜郭區域品嚐熟成和牛。<span class="emphasis">【美食任務：燒肉已達成】</span>', parkingInfo: "設有專屬停車場。", specialTags: [ { type: 'ig_hotspot', text: '📸 IG 熱門餐廳' } ] },
-                        { time: '20:30', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=La%20Vista%20%E5%87%BD%E9%A4%A8%E7%81%A3" target="_blank" class="text-blue-600 hover:underline">ラビスタ函館ベイ</a>'}
-                     ]
-                 }
-            },
             intel: {
-                 togeshita_lp: { title: '峠下總本店 攻略 (選項A)', text: '此分店位於七飯町，從大沼公園開車約15-20分鐘，不在函館市區。其巨大椅子和獨特裝潢非常值得拍照留念，建議自駕旅客安排。'},
-                 onuma_winter_activity: { title: '大沼公園 冬季活動', text: '冬季(12月)湖面可能開始結冰，腳踏車環湖需注意路面濕滑或積雪。部分遊覽船可能停駛。可享受雪地散策的寧靜氛圍。出發前確認當地狀況。' }
+                denim_street_hack: { title: '兒島丹寧大道攻略', text: '許多店家提供免費的褲長修改服務，購買後可立即修改。此外，部分店家聯合提供停車優惠，購物時可詢問店員。' },
+                local_snacks: { title: '倉敷美觀地區特色小吃', items: [
+                    "岡山是水果王國，必嚐<span class='emphasis'>『くらしき桃子』</span>的季節水果聖代。",
+                    "可嘗試IG上熱門的牛仔布藍色<span class='emphasis'>『丹寧包子』</span>，造型特殊。"
+                ]},
+                cloud_sea_hack: { title: '雲海挑戰TIPS (選項C)', text: '雲海最佳觀賞期為9月下旬至4月上旬的清晨。必須搭乘<span class="emphasis">雲海計程車（需預約）</span>才能在日出前抵達展望台。' }
             },
             insights: {
-                new_japan_three_views: { title: '文化見解：新日本三景', text: '大沼公園因其「駒岳火山、湖泊、島嶼」三者合一的獨特景觀，在1915年被選為「新日本三景」。' }
+                washuzan: { title: '絕景攻略：鷲羽山夕陽', text: '被選為「日本夕陽百選」之一。看著太陽緩緩沉入瀨戶內海，將群島與宏偉的瀨戶大橋染成金黃色，是令人難忘的壯麗景色。' },
+                kojima_denim_story: { title: '文化見解：從制服到時尚聖地', text: '兒島最初以製作學生制服起家，憑藉其厚實布料的縫紉技術，在60年代成功轉型，成為日本第一條國產牛仔褲的誕生地，奠定了其「丹寧聖地」的地位。' },
+                photo_note: { title: "攝影師筆記：捕捉倉敷之美", text: "倉敷美觀地區的精髓在於光影。白天可在<span class='emphasis'>中橋</span>上拍攝川游船與垂柳的經典畫面；日落後，夜間點燈會亮至21:00，能拍出與白天截然不同的靜謐氛圍，建議攜帶腳架。" }
             }
         },
-        day6: { // Dec 6th (Wed)
-            title: '溫泉猴湯 & 郊區修道院', date: 'Day 6 (12/06 週三)', location: '灣區 ↔ 湯之川溫泉・函館郊區', timeAnalysis: { travel: 2.5, activity: 6.0 },
+        day13: {
+            title: '安藝小京都・竹原慢時光', date: '3/04 週三', location: '岡山 → 竹原 → 廣島', timeAnalysis: { travel: 3.0, activity: 5.0 },
             timeline: [
-                { time: '09:00', type: '☕', event: '早餐: 飯店 (La Vista 早餐)' },
-                { time: '10:00', type: '🚋', event: '搭乘市電 (魚市場通 → 湯の川温泉) (使用市電巴士共通一日券¥1000)'},
-                { time: '10:45-11:45', type: '⛩️', event: '溫泉區散策: <a href="https://www.google.com/maps/search/?api=1&query=%E6%B9%AF%E5%80%89%E7%A5%9E%E7%A4%BE" target="_blank" class="text-blue-600 hover:underline">湯倉神社</a>', description: '參拜溫泉守護神，體驗釣烏賊籤詩。', ticketInfo: "免費參拜", stay: '約 1 小時', parkingInfo: "設有大型免費專用停車場 (80台)。", specialTags: [ { type: 'recommendation', text: '🎯 必買推薦: 御神緣御守 / 釣烏賊籤詩' } ] },
-                { time: '11:45-12:45', type: '🐒', event: '<a href="https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E9%A4%A8%E5%B8%82%E7%86%B1%E5%B9%B6%E6%A4%8D%E7%89%A9%E5%9C%92" target="_blank" class="text-blue-600 hover:underline">函館市熱帶植物園</a>', description: '觀賞著名的猴子泡湯 (12/1開始)。', ticketInfo: "大人 300日圓", stay: '約 1 小時', parkingInfo: "設有免費停車場。", specialTags: [ { type: 'ig_hotspot', text: '📸 IG 熱門打卡點 (冬季)' }, { type: 'event', text: '🐒 冬季活動: 猴子泡湯' } ] },
-                 { time: '13:00-14:00', type: '🍽️', event: '午餐: 湯之川溫泉區 <a href="https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E9%A4%A8%E9%BA%B5%E5%BB%B3%20%E4%B8%80%E6%96%87%E5%AD%97%20%E6%B9%AF%E3%81%AE%E5%B7%9D" target="_blank" class="text-blue-600 hover:underline">一文字 拉麵</a> 或 其他餐廳' },
-                { time: '14:30-16:00', type: '⛪', event: '郊區巡禮: <a href="https://www.google.com/maps/search/?api=1&query=%E7%89%B9%E6%8B%89%E6%99%AE%E6%B4%BE%E5%A5%B3%E5%AD%90%E4%BF%AE%E9%81%93%E9%99%A2" target="_blank" class="text-blue-600 hover:underline">特拉普派女子修道院</a>', description: '搭乘巴士或租車前往，參觀紅磚修道院。(需查巴士時刻)', ticketInfo: "庭園免費", stay: '約 1.5 小時', parkingInfo: "對面「市民之森」有收費停車場 (¥200/次)。", specialTags: [ { type: 'recommendation', text: '🎯 必買推薦: Madalena 蛋糕捲' } ] },
-                { time: '16:00', type: '🍦', event: '點心/下午茶: <a href="https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E9%A4%A8%E5%B8%82%E6%B0%91%E3%81%AE%E6%A3%AE%20%E3%82%BD%E3%83%95%E3%83%88%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%A0" target="_blank" class="text-blue-600 hover:underline">市民之森 霜淇淋</a> & 購買修道院餅乾', specialTags: [ { type: 'recommendation', text: '🍦 必吃推薦: 牛奶霜淇淋' } ] },
-                { time: '17:00-18:00', type: '⛩️', event: '深度參拜: <a href="https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E9%A4%A8%E5%85%AB%E5%B9%A1%E5%AE%AE" target="_blank" class="text-blue-600 hover:underline">函館八幡宮</a>', description: '搭乘巴士/市電或租車前往。(市電需搭到「谷地頭」)', ticketInfo: "免費參拜 (社務所至17:00)", stay: '約 1 小時', parkingInfo: "設有免費停車場 (80台)。" },
-                { time: '18:30', type: '✨', event: '觀賞 <a href="https://www.google.com/maps/search/?api=1&query=羽根屋+本店8" target="_blank" class="text-blue-600 hover:underline">湯之川 冬之燈</a>', description: '感受溫泉街的冬季燈飾氛圍。', stay: '約 30 分鐘', specialTags: [ { type: 'event', text: '✨ 冬季活動: 湯之川 冬之燈' } ] },
-                { time: '19:00', type: '🍽️', event: '晚餐: 返回灣區/函館站前用餐 (e.g., <a href="https://www.google.com/maps/search/?api=1&query=羽根屋+本店6" target="_blank" class="text-blue-600 hover:underline">大門橫丁</a>)' },
-                { time: '21:00', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=La%20Vista%20%E5%87%BD%E9%A4%A8%E7%81%A3" target="_blank" class="text-blue-600 hover:underline">ラビスタ函館ベイ</a>'}
+                { time: '上午', type: '🚆', event: '移動: 從岡山搭乘新幹線至三原，轉乘JR吳線至竹原。', description: '將大行李寄送至廣島(Day 13)飯店。' },
+                { time: '11:00-16:00', type: '🚶', event: '<a href="https://www.google.com/maps/search/?api=1&query=竹原町並み保存地区" target="_blank" class="text-blue-600 hover:underline">竹原町並み保存地区</a> 散策', description: '在「安藝的小京都」體驗江戶時代的風情。', stay: '約 5 小時', parkingInfo: "保存地區周邊設有收費停車場，價格不明。" },
+                { time: '中午', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=すし丸+ekie広島店5" target="_blank" class="text-blue-600 hover:underline">ほり川</a>', description: '品嚐加入了清酒酒粕的特色御好燒(お好み焼き)。' },
+                { time: '傍晚', type: '🚆', event: '移動: 從竹原搭乘JR吳線或高速巴士前往廣島市區。' },
+                { time: '19:30', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=すし丸+ekie広島店9" target="_blank" class="text-blue-600 hover:underline">雑草庵</a>', description: '在市中心的隱密名店品嚐高品質的廣島鄉土料理與海鮮。' },
+                { time: '晚上', 'type': '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=広島ワシントンホテル" target="_blank" class="text-blue-600 hover:underline">広島ワシントンホテル</a>' },
             ],
-             intel: {
-                 trappistine_hack: { title: '修道院攻略 & 交通', text: '修道院位置較偏遠，從湯之川搭乘巴士約需20-30分鐘，班次可能不多，需預先查好時刻表。自駕最為方便。必買伴手禮(餅乾/蛋糕捲)在入口商店。' },
-                  bus_pass_option: { title: '交通選項：市電巴士共通券', text: '今日行程橫跨市電(湯之川)與巴士(修道院/八幡宮)，購買市電巴士共通一日券(¥1000)可能是最划算的選擇。' }
-             },
-             insights: {
-                 yunokawa_onsen: { title: '溫泉筆記：湯之川溫泉', text: '北海道三大溫泉鄉之一，距機場僅5分鐘車程。 泉質為鹽化物泉，保溫效果佳，對神經痛和手腳冰冷有效。' }
-             }
+            intel: {
+                takehara_anime: { title: '動漫聖地巡禮', text: '竹原是動畫《玉響～tamayura～》的主要舞台，可以尋找動畫中出現的場景，如「普明閣」等。' }
+            },
+            insights: {
+                cultural_deep_dive: { title: "深度解析：安藝小京都的鹽與酒", text: "竹原之所以被稱為『安藝的小京都』，是因為在江戶時代後期，這裡憑藉<span class='emphasis'>製鹽</span>與<span class='emphasis'>釀酒</span>業積累了巨大財富。如今保存完好的豪宅與街道，正是當時繁榮的見證。" }
+            }
         },
-        day7: { // Dec 7th (Thu)
-            title: '歸鄉・帶著北國的回憶', date: 'Day 7 (12/07 週四)', location: '灣區 → 函館機場', timeAnalysis: { travel: 1.0, activity: 1.0 },
+        day14: {
+            title: '從容歸途 & 廣島 Chill Day', date: '3/05 週四', location: '廣島市區', timeAnalysis: { travel: 1.0, activity: 7.0 },
             timeline: [
-                { time: '08:00', type: '☕', event: '早餐: 飯店 (La Vista 早餐) 或 <a href="https://www.google.com/maps/search/?api=1&query=%E5%87%BD%E9%A4%A8%E6%9C%9D%E5%B8%82" target="_blank" class="text-blue-600 hover:underline">函館朝市</a> 最後巡禮' },
-                { time: '09:30', type: '🏨', event: '飯店Check-out' },
-                { time: '10:00-11:00', type: '🛍️', event: '最後採買: 函館站前商店 或 機場商店', description: '進行最後的伴手禮補給。(機場可用特級套票折抵)' },
-                { time: '11:00', type: '🚗', event: '租車歸還 (若有)' },
-                { time: '11:30', type: '🚌', event: '前往 函館機場 (HKD)', description: '可從函館站搭乘機場接駁巴士。', cost: '約 ¥700'},
-                { time: '12:00', type: '🍽️', event: '午餐: 函館機場餐廳 (2025/8月後有新美食街) 或 便利商店' },
-                { time: '14:00', type: '✈️', event: '航班起飛: HKD → TPE' }
+                { time: '上午', type: '☕', event: '早餐: 市區咖啡廳' },
+                { time: '10:00-12:30', type: '🛍️', event: '購物: 廣島本通商店街', parkingInfo: "商店街為徒步區，可使用「広島市中央駐車場」(¥180/30分)。" },
+                { time: '12:30-14:00', type: '🍽️', event: '午餐: <a href="https://www.google.com/maps/search/?api=1&query=Italian+Bar+CENA+広島" target="_blank" class="text-blue-600 hover:underline">Italian Bar CENA</a>', description: '在商店街中享受義式午間套餐。<span class="emphasis">【美食任務：義大利麵已達成】</span>', parkingInfo: "位於徒步區，請使用「広島市中央駐車場」等周邊停車場。" },
+                { time: '14:00-18:00', type: '🛍️', event: '文化巡禮或購物: <a href="https://www.google.com/maps/search/?api=1&query=熊野筆セレクトショップ+広島" target="_blank" class="text-blue-600 hover:underline">熊野筆</a> / 藥妝補給', parkingInfo: "熊野筆廣島店有少量免費車位。" },
+                { time: '19:30', type: '🍽️', event: '晚餐: <a href="https://www.google.com/maps/search/?api=1&query=かき小屋+広島駅前店" target="_blank" class="text-blue-600 hover:underline">かき小屋 廣島駅前店 (烤牡蠣)</a>', parkingInfo: "店家無專用停車場，可使用廣島車站周邊的收費停車場。" },
+                { time: '21:00', type: '🏨', event: '住宿: <a href="https://www.google.com/maps/search/?api=1&query=ダイワロイネットホテル広島駅前" target="_blank" class="text-blue-600 hover:underline">ダイワロイネットホテル広島駅前</a>'}
             ],
-             intel: {
-                 airport_souvenir: { title: '機場伴手禮補給', text: '函館機場國內線航廈伴手禮店齊全，Snaffle\'s、六花亭、LeTAO等皆有設櫃。 可使用函館特級套票在指定店家折抵消費。' },
-                  airport_foodcourt: { title: '機場餐飲新選擇', text: '2025年8月後，國內線3樓新設美食街，集結函館及道南特色餐廳，提供更多用餐選擇。'}
-             },
-             insights: {
-                  la_vista_review: { title: '住宿回顧：La Vista 的優勢', text: '選擇La Vista，能充分享受灣區的便利性與氛圍，特別是其著名的早餐和頂樓溫泉。雖然價格較高，但對於重視住宿體驗和美食的旅客是絕佳選擇。' }
-             }
+            intel: {
+                souvenir: { title: '特色伴手禮', text: '<a href="https://www.google.com/maps/search/?api=1&query=熊野筆セレクトショップ+広島" target="_blank" class="text-blue-600 hover:underline">熊野筆セレクトショップ</a>的化妝刷品質享譽全球，是廣島代表性的高級伴手禮。'}
+            },
+            insights: {
+                last_day_strategy: { title: '<span class="emphasis">專家戰術：利用最後一日的緩衝</span>', text: '將最後一個整天安排為彈性日，是高明的行程規劃。這一天可以作為「緩衝」，處理旅途中未完成的事項，例如補買伴手禮、重遊特別喜歡的地點。' }
+            }
+        },
+        day15: {
+            title: '歸鄉・帶著星鰻飯的回憶', date: '3/06 週五', location: '廣島 → 台灣', timeAnalysis: { travel: 2.5, activity: 0.5 },
+            timeline: [
+                { time: '06:00', type: '🍽️', event: '早餐: <a href="https://www.google.com/maps/search/?api=1&query=マクドナルド+広島駅店" target="_blank" class="text-blue-600 hover:underline">麥當勞 広島駅店</a>', description: '用快速方便的速食早餐，為旅程的最後一天拉開序幕。<span class="emphasis">【美食任務：速食店已達成】</span>'},
+                { time: '06:30-07:30', type: '🚌', event: '前往廣島機場 (HIJ)', cost: '¥1,450'},
+                { time: '10:00-12:00', type: '✈️', event: '航班飛行: CI113 HIJ → TPE' }
+            ],
+            intel: {
+                airport_souvenir: { title: '機場伴手禮補給', text: '若在市區忘了買伴手禮，廣島機場國內線航廈的商店比國際線更豐富。必買的「八天堂奶油麵包」和「紅葉饅頭」在機場都設有專櫃。' }
+            },
+            insights: {
+                ekiben: { title: '文化筆記：駅弁 (車站便當)的儀式感', text: '在車站選購一份「駅弁」是一種充滿儀式感的體驗。廣島車站販售的「あなごめしうえの」星鰻飯便當，即使冷掉也依舊美味，是將旅途回憶帶上飛機的最佳選擇。' }
+            }
         }
     }
 };
